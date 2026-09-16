@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { staggerContainerSlow, fadeUp } from "@/lib/motion";
 
 // Based on authentic review themes from real Gilgal Dental Clinics patient feedback.
 // Wording carefully preserves the meaning of actual review content.
@@ -28,15 +29,6 @@ const testimonials = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function TestimonialsPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,13 +53,13 @@ export default function TestimonialsPreview() {
         {/* Cards */}
         <motion.div
           ref={ref}
-          variants={containerVariants}
+          variants={staggerContainerSlow}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {testimonials.map((t, i) => (
-            <motion.div key={i} variants={itemVariants}>
+            <motion.div key={i} variants={fadeUp}>
               <TestimonialCard {...t} />
             </motion.div>
           ))}

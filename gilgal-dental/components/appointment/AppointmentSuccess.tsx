@@ -5,6 +5,11 @@ import { CheckCircle, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import type { AppointmentFormData } from "@/lib/appointment/submitAppointment";
 import { buildAppointmentWhatsAppUrl } from "@/lib/data/clinicInfo";
+import {
+  successContainer,
+  successIcon,
+  successText,
+} from "@/lib/motion";
 
 interface AppointmentSuccessProps {
   data: AppointmentFormData;
@@ -20,28 +25,41 @@ export default function AppointmentSuccess({ data }: AppointmentSuccessProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4 }}
+      variants={successContainer}
+      initial="hidden"
+      animate="visible"
       className="bg-white rounded-2xl border border-slate-200 shadow-[0_4px_24px_-4px_rgb(1_53_101/0.1)] p-8 sm:p-12 text-center"
       role="status"
       aria-live="polite"
     >
-      <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+      {/* Icon — spring scale entrance */}
+      <motion.div
+        variants={successIcon}
+        className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-6"
+        aria-hidden="true"
+      >
         <CheckCircle className="w-8 h-8 text-emerald-500" strokeWidth={1.75} />
-      </div>
+      </motion.div>
 
-      <h2 className="text-h2 text-slate-900 mb-3">Request received</h2>
-      <p className="text-body text-slate-500 max-w-md mx-auto mb-2">
+      {/* Heading */}
+      <motion.h2 variants={successText} className="text-h2 text-slate-900 mb-3">
+        Request received
+      </motion.h2>
+
+      {/* Body copy */}
+      <motion.p variants={successText} className="text-body text-slate-500 max-w-md mx-auto mb-2">
         Thank you, <strong className="text-slate-700">{data.fullName}</strong>. Your appointment
         request has been received.
-      </p>
-      <p className="text-body text-slate-500 max-w-md mx-auto mb-8">
+      </motion.p>
+      <motion.p variants={successText} className="text-body text-slate-500 max-w-md mx-auto mb-8">
         <strong className="text-slate-700">We&rsquo;ll contact you to confirm your appointment.</strong>
-      </p>
+      </motion.p>
 
       {/* Summary */}
-      <div className="bg-[#FDFEFF] border border-slate-100 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto">
+      <motion.div
+        variants={successText}
+        className="bg-[#FDFEFF] border border-slate-100 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto"
+      >
         <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Your request summary</p>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
@@ -57,9 +75,13 @@ export default function AppointmentSuccess({ data }: AppointmentSuccessProps) {
             <span className="font-medium text-slate-800">{data.preferredTime}</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-6">
+      {/* CTA buttons */}
+      <motion.div
+        variants={successText}
+        className="flex flex-wrap justify-center gap-3 mb-6"
+      >
         <a
           href={whatsappUrl}
           target="_blank"
@@ -77,14 +99,16 @@ export default function AppointmentSuccess({ data }: AppointmentSuccessProps) {
           <Phone className="w-4 h-4" aria-hidden="true" />
           Call the Clinic
         </a>
-      </div>
+      </motion.div>
 
-      <Link
-        href="/"
-        className="text-sm text-slate-400 hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:underline"
-      >
-        Return to homepage
-      </Link>
+      <motion.div variants={successText}>
+        <Link
+          href="/"
+          className="text-sm text-slate-400 hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:underline"
+        >
+          Return to homepage
+        </Link>
+      </motion.div>
     </motion.div>
   );
 }

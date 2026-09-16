@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
+import { staggerContainer, fadeUp } from "@/lib/motion";
 
 interface Service {
   icon: LucideIcon;
@@ -82,15 +83,6 @@ const services: Service[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function ServicesPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -122,7 +114,7 @@ export default function ServicesPreview() {
         {/* Cards grid */}
         <motion.div
           ref={ref}
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
@@ -130,7 +122,7 @@ export default function ServicesPreview() {
           aria-label="Dental services offered"
         >
           {services.map((service) => (
-            <motion.div key={service.title} variants={cardVariants} role="listitem">
+            <motion.div key={service.title} variants={fadeUp} role="listitem">
               <ServiceCard {...service} />
             </motion.div>
           ))}

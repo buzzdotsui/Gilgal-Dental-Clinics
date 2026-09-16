@@ -59,7 +59,10 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{
+              height: { duration: 0.3, ease: [0, 0, 0.2, 1] },
+              opacity: { duration: 0.22, ease: [0, 0, 0.2, 1] },
+            }}
             className="overflow-hidden"
           >
             <div className="px-6 pb-5 pt-1 border-t border-slate-100 bg-white">

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
+import { staggerContainer, fadeUp, fadeRight } from "@/lib/motion";
 
 const features = [
   {
@@ -27,15 +28,6 @@ const features = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function Introduction() {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,22 +44,22 @@ export default function Introduction() {
           {/* Left: text */}
           <motion.div
             ref={ref}
-            variants={containerVariants}
+            variants={staggerContainer}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            <motion.p variants={itemVariants} className="text-eyebrow mb-3">
+            <motion.p variants={fadeUp} className="text-eyebrow mb-3">
               About Gilgal Dental Clinics
             </motion.p>
             <motion.h2
               id="intro-heading"
-              variants={itemVariants}
+              variants={fadeUp}
               className="text-h2 text-slate-900 mb-5"
             >
               A dental practice built around better patient experiences.
             </motion.h2>
             <motion.p
-              variants={itemVariants}
+              variants={fadeUp}
               className="text-body-lg text-slate-500 mb-8"
             >
               At Gilgal Dental Clinics, we believe good dental care goes beyond
@@ -77,7 +69,7 @@ export default function Introduction() {
               a setting that feels calm and reassuring.
             </motion.p>
             <motion.p
-              variants={itemVariants}
+              variants={fadeUp}
               className="text-body text-slate-500 mb-8"
             >
               Based in Ikoyi, Lagos, we offer a broad range of dental services
@@ -85,11 +77,11 @@ export default function Introduction() {
               the time to understand each patient&rsquo;s needs.
             </motion.p>
 
-            <motion.ul variants={containerVariants} className="space-y-4" role="list">
+            <motion.ul variants={staggerContainer} className="space-y-4" role="list">
               {features.map(({ title, description }) => (
                 <motion.li
                   key={title}
-                  variants={itemVariants}
+                  variants={fadeUp}
                   className="flex gap-3"
                 >
                   <div
@@ -109,9 +101,9 @@ export default function Introduction() {
 
           {/* Right: decorative info panel */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            variants={fadeRight}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
             className="hidden lg:block"
             aria-hidden="true"
           >

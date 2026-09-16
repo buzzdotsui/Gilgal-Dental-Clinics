@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { X, ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { services } from "@/lib/data/servicesData";
 import { buildWhatsAppUrl } from "@/lib/data/clinicInfo";
@@ -16,6 +16,16 @@ const panelVariants = {
   hidden: { x: "100%" },
   visible: { x: 0 },
   exit: { x: "100%" },
+};
+
+const navContainerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
+};
+
+const navItemVariants: Variants = {
+  hidden: { opacity: 0, x: 16 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
@@ -78,7 +88,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.32, ease: [0, 0, 0.2, 1] }}
             className="fixed top-0 right-0 bottom-0 z-50 w-[min(85vw,360px)] bg-white flex flex-col overflow-y-auto"
           >
             {/* Header */}
@@ -104,17 +114,23 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* Nav */}
             <nav className="flex-1 px-4 py-6" aria-label="Mobile navigation">
-              <ul className="space-y-1" role="list">
+              <motion.ul
+                className="space-y-1"
+                role="list"
+                variants={navContainerVariants}
+                initial="hidden"
+                animate="visible"
+              >
                 {mainLinks.slice(0, 2).map((link) => (
-                  <li key={link.href}>
+                  <motion.li key={link.href} variants={navItemVariants}>
                     <Link href={link.href} onClick={onClose} className="flex items-center px-4 py-3 text-base font-medium text-slate-700 hover:text-[#013565] hover:bg-slate-50 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]">
                       {link.label}
                     </Link>
-                  </li>
+                  </motion.li>
                 ))}
 
                 {/* Services expandable */}
-                <li>
+                <motion.li variants={navItemVariants}>
                   <button
                     type="button"
                     onClick={() => setServicesExpanded((v) => !v)}
@@ -149,16 +165,16 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       </motion.ul>
                     )}
                   </AnimatePresence>
-                </li>
+                </motion.li>
 
                 {mainLinks.slice(2).map((link) => (
-                  <li key={link.href}>
+                  <motion.li key={link.href} variants={navItemVariants}>
                     <Link href={link.href} onClick={onClose} className="flex items-center px-4 py-3 text-base font-medium text-slate-700 hover:text-[#013565] hover:bg-slate-50 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]">
                       {link.label}
                     </Link>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </nav>
 
             {/* CTAs */}

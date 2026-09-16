@@ -15,12 +15,13 @@ interface ServiceCardProps {
 export function ServiceCard({ icon: Icon, number, title, description, href }: ServiceCardProps) {
   return (
     <motion.article
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.25 }}
+      whileHover={{ y: -5, scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
+      transition={{ duration: 0.22, ease: [0, 0, 0.2, 1] }}
     >
       <Link
         href={href}
-        className="group block h-full card-base p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 rounded-[var(--radius-card)]"
+        className="group block h-full card-base p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 rounded-[var(--radius-card)] transition-shadow duration-300 hover:shadow-[0_8px_32px_-8px_rgb(1_53_101/0.18)]"
         aria-label={`Learn more about ${title}`}
       >
         {/* Top row: number + arrow */}
@@ -30,21 +31,26 @@ export function ServiceCard({ icon: Icon, number, title, description, href }: Se
           </span>
           <motion.span
             className="text-slate-300 group-hover:text-[#013565] transition-colors duration-200"
-            animate={{ x: 0 }}
-            whileHover={{ x: 2 }}
+            initial={{ x: 0 }}
+            whileHover={{ x: 3 }}
+            transition={{ duration: 0.18 }}
           >
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </motion.span>
         </div>
 
         {/* Icon */}
-        <div className="mb-4 w-11 h-11 rounded-lg bg-[#013565]/8 group-hover:bg-[#013565]/12 flex items-center justify-center transition-colors duration-250">
+        <motion.div
+          className="mb-4 w-11 h-11 rounded-lg bg-[#013565]/8 flex items-center justify-center transition-colors duration-250"
+          whileHover={{ backgroundColor: "rgba(1,53,101,0.14)" }}
+          transition={{ duration: 0.2 }}
+        >
           <Icon
             className="w-5 h-5 text-[#013565]"
             aria-hidden="true"
             strokeWidth={1.75}
           />
-        </div>
+        </motion.div>
 
         {/* Title */}
         <h3 className="font-semibold text-slate-900 text-base mb-2 group-hover:text-[#013565] transition-colors duration-200">

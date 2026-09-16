@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

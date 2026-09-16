@@ -3,9 +3,18 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { MapPin, Clock, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import {
+  heroContainer,
+  heroBadge,
+  heroHeadline,
+  heroBody,
+  heroCTAs,
+  heroStats,
+  heroImage,
+} from "@/lib/motion";
 
 const slides = [
   {
@@ -33,10 +42,7 @@ const WHATSAPP_URL = `https://wa.me/2348099906233?text=${encodeURIComponent(
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
-  const prefersReduced =
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false;
+  const prefersReduced = useReducedMotion();
 
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
@@ -52,6 +58,8 @@ export default function Hero() {
     return () => clearInterval(id);
   }, [next, paused, prefersReduced]);
 
+  const slideDuration = prefersReduced ? 0.01 : 0.85;
+
   return (
     <section
       className="relative bg-[#FDFEFF] overflow-hidden"
@@ -60,32 +68,29 @@ export default function Hero() {
       <div className="container-site py-12 lg:py-0 min-h-[calc(100vh-5rem)] lg:min-h-[calc(90vh)] flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 w-full items-center py-12 lg:py-16">
 
-          {/* ── Left: Content ── */}
-          <div className="order-2 lg:order-1">
+          {/* ── Left: Content — staggered entrance ── */}
+          <motion.div
+            className="order-2 lg:order-1"
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Location badge */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              variants={heroBadge}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#013565]/8 border border-[#013565]/12 mb-6"
               aria-label="Location and hours"
             >
               <MapPin className="w-3.5 h-3.5 text-[#013565]" aria-hidden="true" />
-              <span className="text-xs font-medium text-[#013565]">
-                Ikoyi, Lagos
-              </span>
+              <span className="text-xs font-medium text-[#013565]">Ikoyi, Lagos</span>
               <span className="w-px h-3 bg-[#013565]/20" aria-hidden="true" />
               <Clock className="w-3.5 h-3.5 text-[#013565]" aria-hidden="true" />
-              <span className="text-xs font-medium text-[#013565]">
-                Mon–Fri 9AM–6PM
-              </span>
+              <span className="text-xs font-medium text-[#013565]">Mon–Fri 9AM–6PM</span>
             </motion.div>
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              variants={heroHeadline}
               className="text-display text-slate-900 mb-5 max-w-[520px]"
             >
               Experienced dental care,{" "}
@@ -94,9 +99,7 @@ export default function Hero() {
 
             {/* Supporting copy */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              variants={heroBody}
               className="text-body-lg text-slate-500 mb-8 max-w-[460px]"
             >
               Comprehensive dental care in a relaxed, friendly environment in
@@ -105,9 +108,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              variants={heroCTAs}
               className="flex flex-wrap items-center gap-3"
             >
               <Button href="/book-an-appointment" variant="primary" size="lg">
@@ -125,11 +126,9 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Trust line */}
+            {/* Trust stats */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              variants={heroStats}
               className="mt-8 pt-8 border-t border-slate-100 flex flex-wrap items-center gap-6"
             >
               {[
@@ -143,13 +142,13 @@ export default function Hero() {
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* ── Right: Slideshow ── */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            variants={heroImage}
+            initial="hidden"
+            animate="visible"
             className="order-1 lg:order-2 relative"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
@@ -162,10 +161,10 @@ export default function Hero() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: prefersReduced ? 0.01 : 0.9 }}
+                  transition={{ duration: slideDuration, ease: [0, 0, 0.2, 1] }}
                   className="absolute inset-0"
                 >
                   <Image
@@ -179,7 +178,7 @@ export default function Hero() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Subtle gradient overlay for clarity */}
+              {/* Gradient overlay */}
               <div
                 className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none"
                 aria-hidden="true"
