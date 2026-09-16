@@ -1,130 +1,172 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import {
-  Stethoscope,
-  Bone,
-  Sparkles,
-  AlignCenter,
-  RefreshCw,
-  Baby,
-  Zap,
-  type LucideIcon,
-} from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ServiceCard } from "@/components/ui/ServiceCard";
-import { staggerContainer, fadeUp } from "@/lib/motion";
+import { useRef, useState } from "react";
+import Link from "next/link";
+import { motion, useInView, type Variants } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
-interface Service {
-  icon: LucideIcon;
-  number: string;
-  title: string;
-  description: string;
-  href: string;
-}
-
-const services: Service[] = [
+const services = [
   {
-    icon: Stethoscope,
     number: "01",
     title: "General Dentistry",
-    description:
-      "Routine examinations, cleanings, fillings, and preventive care to maintain your oral health.",
+    tagline: "Examinations, cleanings, fillings and preventive care.",
     href: "/services/general-dentistry",
   },
   {
-    icon: Bone,
     number: "02",
     title: "Implant Dentistry",
-    description:
-      "Natural-looking dental implants to replace missing teeth with lasting, stable results.",
+    tagline: "Stable, natural-looking replacements for missing teeth.",
     href: "/services/implant-dentistry",
   },
   {
-    icon: Sparkles,
     number: "03",
     title: "Cosmetic Dentistry",
-    description:
-      "Smile-enhancing treatments including veneers, bonding, and aesthetic improvements.",
+    tagline: "Veneers, bonding and smile-enhancing treatments.",
     href: "/services/cosmetic-dentistry",
   },
   {
-    icon: AlignCenter,
     number: "04",
     title: "Orthodontics",
-    description:
-      "Teeth straightening solutions — including braces and clear aligner options.",
+    tagline: "Teeth straightening with braces and clear aligners.",
     href: "/services/orthodontics",
   },
   {
-    icon: RefreshCw,
     number: "05",
     title: "Restorative Dentistry",
-    description:
-      "Crowns, bridges, dentures, and restorations to rebuild and strengthen damaged teeth.",
+    tagline: "Crowns, bridges and dentures to rebuild damaged teeth.",
     href: "/services/restorative-dentistry",
   },
   {
-    icon: Baby,
     number: "06",
     title: "Children's Dentistry",
-    description:
-      "Gentle, patient-centered dental care designed to build confidence in young patients.",
+    tagline: "Gentle, patient-centred care for young patients.",
     href: "/services/childrens-dentistry",
   },
   {
-    icon: Zap,
     number: "07",
     title: "Laser Teeth Whitening",
-    description:
-      "Professional in-clinic whitening treatment for a noticeably brighter smile.",
-    href: "/services/teeth-whitening",
+    tagline: "Professional in-clinic treatment for a brighter smile.",
+    href: "/services/laser-teeth-whitening",
   },
 ];
 
+const container: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05 } },
+};
+const rowVariant: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+function ServiceRow({ number, title, tagline, href }: typeof services[0]) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      variants={rowVariant}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+    >
+      <Link
+        href={href}
+        className="group flex items-center justify-between gap-6 py-5 border-b border-[#E8EBF0] hover:border-[#013565]/20 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:rounded"
+        aria-label={`${title} — ${tagline}`}
+      >
+        {/* Number */}
+        <span
+          className="text-xs font-semibold tabular-nums flex-shrink-0 transition-colors duration-200"
+          style={{
+            letterSpacing: "0.06em",
+            color: hovered ? "#013565" : "#CBD5E1",
+            minWidth: "2rem",
+          }}
+          aria-hidden="true"
+        >
+          {number}
+        </span>
+
+        {/* Title + tagline */}
+        <div className="flex-1 flex items-baseline gap-4 lg:gap-8 min-w-0">
+          <h3
+            className="font-semibold text-slate-900 flex-shrink-0 transition-colors duration-200 group-hover:text-[#013565]"
+            style={{ fontSize: "clamp(0.9375rem, 1.5vw, 1.0625rem)" }}
+          >
+            {title}
+          </h3>
+          <p
+            className="text-slate-400 text-sm hidden sm:block truncate transition-colors duration-200 group-hover:text-slate-500"
+          >
+            {tagline}
+          </p>
+        </div>
+
+        {/* Arrow */}
+        <motion.span
+          className="flex-shrink-0 text-slate-300 group-hover:text-[#013565] transition-colors duration-200"
+          animate={{ x: hovered ? 4 : 0 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        >
+          <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+        </motion.span>
+      </Link>
+    </motion.div>
+  );
+}
 
 export default function ServicesPreview() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" as never });
 
   return (
     <section
-      className="section-padding bg-slate-50"
+      className="section-padding bg-[#F7F8FA]"
       aria-labelledby="services-heading"
     >
       <div className="container-site">
         {/* Section header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-          <SectionHeading
-            eyebrow="Our Services"
-            heading="Dental care for every stage of your smile."
-            subheading="We offer a comprehensive range of dental treatments for children, adults, and the whole family."
-            headingAs="h2"
-          />
-          <a
+          <div className="max-w-lg">
+            <p className="text-overline mb-4">Our Services</p>
+            <h2
+              id="services-heading"
+              className="text-slate-900"
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+                fontWeight: 700,
+                lineHeight: 1.15,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Comprehensive care,
+              <br className="hidden sm:block" />
+              thoughtfully delivered.
+            </h2>
+          </div>
+          <Link
             href="/services"
-            className="text-sm font-semibold text-[#013565] hover:underline underline-offset-2 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded"
-            aria-label="View all dental services"
+            className="text-sm font-semibold text-[#013565] hover:underline underline-offset-4 flex-shrink-0 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded"
+            aria-label="View all dental services at Gilgal"
           >
-            View all services →
-          </a>
+            All Services →
+          </Link>
         </div>
 
-        {/* Cards grid */}
+        {/* Service rows */}
         <motion.div
           ref={ref}
-          variants={staggerContainer}
+          variants={container}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
           role="list"
-          aria-label="Dental services offered"
+          aria-label="Dental services"
         >
-          {services.map((service) => (
-            <motion.div key={service.title} variants={fadeUp} role="listitem">
-              <ServiceCard {...service} />
-            </motion.div>
+          {/* Top border */}
+          <div className="border-t border-[#E8EBF0]" />
+          {services.map((s) => (
+            <div key={s.href} role="listitem">
+              <ServiceRow {...s} />
+            </div>
           ))}
         </motion.div>
       </div>

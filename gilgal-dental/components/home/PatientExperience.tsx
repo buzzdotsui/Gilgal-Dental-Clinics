@@ -1,119 +1,125 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Heart, MessageSquare, Users, Microscope } from "lucide-react";
+import Image from "next/image";
+import { motion, useInView, type Variants } from "framer-motion";
 
-const pillars = [
-  {
-    icon: Heart,
-    title: "Genuine care",
-    description:
-      "We take the time to understand how patients feel — not just what they need clinically.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Clear communication",
-    description:
-      "Every step of your treatment is explained clearly, so you always know what to expect.",
-  },
-  {
-    icon: Users,
-    title: "A welcoming environment",
-    description:
-      "From the reception to the chair, the clinic is designed to feel comfortable and unhurried.",
-  },
-  {
-    icon: Microscope,
-    title: "Modern equipment",
-    description:
-      "We use up-to-date dental equipment to deliver accurate, effective treatment.",
-  },
-];
-
-const containerVariants = {
+const imageReveal: Variants = {
+  hidden: { opacity: 0, x: -24 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+const textReveal: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+const textItem: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
 
 export default function PatientExperience() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" as never });
 
   return (
     <section
-      className="section-padding bg-slate-50"
+      className="section-padding bg-white"
       aria-labelledby="experience-heading"
     >
       <div className="container-site">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl mb-14"
-        >
-          <p className="text-eyebrow mb-3">Patient Experience</p>
-          <h2
-            id="experience-heading"
-            className="text-h2 text-slate-900 mb-4"
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* Left: full-column photography */}
+          <motion.div
+            variants={imageReveal}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="relative"
           >
-            People who genuinely care about your experience.
-          </h2>
-          <p className="text-body-lg text-slate-500">
-            At Gilgal, every decision is made with the patient in mind — from
-            the way we schedule appointments to how we explain treatment
-            options. You should leave every visit feeling informed, respected,
-            and well cared for.
-          </p>
-        </motion.div>
-
-        {/* Pillars grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {pillars.map(({ icon: Icon, title, description }) => (
-            <motion.div
-              key={title}
-              variants={itemVariants}
-              className="card-base p-6"
+            <div
+              className="relative w-full overflow-hidden bg-slate-100"
+              style={{ aspectRatio: "4/5", borderRadius: "4px" }}
             >
+              <Image
+                src="/images/hero/slideshow-1.jpg"
+                alt="Gilgal Dental Clinics — clinical environment"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
               <div
-                className="w-11 h-11 rounded-xl bg-[#013565]/8 flex items-center justify-center mb-4"
+                className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none"
                 aria-hidden="true"
-              >
-                <Icon className="w-5 h-5 text-[#013565]" strokeWidth={1.75} />
-              </div>
-              <h3 className="font-semibold text-slate-900 text-base mb-2">{title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+              />
+            </div>
+          </motion.div>
 
-        {/* Pull quote */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 rounded-2xl bg-[#013565] text-white px-8 py-8 lg:px-12 lg:py-10"
-        >
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xl lg:text-2xl font-medium text-sky-100 leading-relaxed">
-              &ldquo;You are not just a patient here — you are a person, and we
-              treat you accordingly.&rdquo;
-            </p>
-            <p className="mt-4 text-slate-300 text-sm">Gilgal Dental Clinics — Ikoyi, Lagos</p>
-          </div>
-        </motion.div>
+          {/* Right: editorial quote + text */}
+          <motion.div
+            variants={textReveal}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
+            <motion.p variants={textItem} className="text-overline mb-6">
+              Patient Experience
+            </motion.p>
+
+            {/* Large pull quote */}
+            <motion.blockquote
+              variants={textItem}
+              className="mb-8"
+              cite="https://gilgaldentalclinics.com"
+            >
+              <p
+                className="text-slate-900 font-medium"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
+                  lineHeight: 1.4,
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                &ldquo;You are not just a patient
+                here&nbsp;&mdash; you are a person,
+                and we treat you accordingly.&rdquo;
+              </p>
+              <footer className="mt-4">
+                <cite
+                  className="not-italic text-slate-400 text-sm"
+                  style={{ letterSpacing: "0.04em" }}
+                >
+                  Gilgal Dental Clinics&nbsp;&nbsp;·&nbsp;&nbsp;Ikoyi, Lagos
+                </cite>
+              </footer>
+            </motion.blockquote>
+
+            <motion.div
+              variants={textItem}
+              className="pt-8 border-t border-[#E8EBF0] space-y-4"
+            >
+              <div className="flex gap-3">
+                <div className="w-1 flex-shrink-0 bg-[#013565] rounded-full" aria-hidden="true" />
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Thorough examination and honest diagnosis — we explain every step
+                  clearly before treatment begins.
+                </p>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-1 flex-shrink-0 bg-[#013565] rounded-full" aria-hidden="true" />
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Comfortable pacing with no rush — appointments scheduled so you
+                  are never made to feel hurried.
+                </p>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-1 flex-shrink-0 bg-[#013565] rounded-full" aria-hidden="true" />
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Family-friendly care for patients of all ages, from children
+                  to adults, in one welcoming environment.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

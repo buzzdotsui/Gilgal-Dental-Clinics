@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -21,51 +20,54 @@ const serviceLinks = [
   { label: "Laser Teeth Whitening", href: "/services/laser-teeth-whitening" },
 ];
 
-const WHATSAPP_URL = `https://wa.me/2348099906233?text=${encodeURIComponent("Hello Gilgal Dental Clinics, I would like to book an appointment. Please let me know the available dates and times.")}`;
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#013565] text-white" role="contentinfo">
-      {/* Main footer content */}
-      <div className="container-site pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+    <footer
+      className="bg-[#FDFEFF] border-t border-[#E8EBF0]"
+      role="contentinfo"
+    >
+      {/* Main content */}
+      <div className="container-site py-14 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr_1.4fr_1.4fr] gap-10 lg:gap-8">
 
-          {/* Column 1: Brand */}
-          <div className="lg:col-span-1">
+          {/* ── Brand column ── */}
+          <div>
             <Link
               href="/"
-              className="inline-flex items-center gap-3 mb-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#013565] rounded-md"
+              className="inline-flex items-center gap-3 mb-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 rounded-md"
               aria-label="Gilgal Dental Clinics — Home"
             >
-              <div className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-white/20 flex-shrink-0">
+              <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-slate-200 flex-shrink-0">
                 <Image
                   src="/images/logo.jpg"
                   alt="Gilgal Dental Clinics logo"
                   fill
                   className="object-contain"
-                  sizes="44px"
+                  sizes="36px"
                 />
               </div>
-              <div>
-                <p className="font-semibold text-white text-sm leading-tight">Gilgal Dental Clinics</p>
-                <p className="text-sky-300 text-xs mt-0.5">Ikoyi, Lagos</p>
-              </div>
+              <span className="font-semibold text-slate-900 text-sm leading-tight">
+                Gilgal Dental Clinics
+              </span>
             </Link>
-            <p className="text-slate-300 text-sm leading-relaxed max-w-[240px]">
-              Comprehensive dental care in a relaxed, friendly environment. Serving patients in Ikoyi, Lagos for over 17 years.
+
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-[220px]">
+              Dental care, centered around&nbsp;you.
+              <br />Ikoyi, Lagos.
             </p>
-            {/* Social links */}
-            <div className="flex items-center gap-3 mt-6">
+
+            {/* Social */}
+            <div className="flex items-center gap-2.5">
               <a
                 href="https://www.instagram.com/gilgaldental.clinic/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-8 h-8 rounded-full border border-[#E8EBF0] hover:border-[#013565]/30 hover:text-[#013565] flex items-center justify-center text-slate-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
                 aria-label="Gilgal Dental Clinics on Instagram"
               >
-                <svg aria-hidden="true" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -75,129 +77,117 @@ export default function Footer() {
                 href="https://web.facebook.com/gilgaldental.clinics/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-8 h-8 rounded-full border border-[#E8EBF0] hover:border-[#013565]/30 hover:text-[#013565] flex items-center justify-center text-slate-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
                 aria-label="Gilgal Dental Clinics on Facebook"
               >
-                <svg aria-hidden="true" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a>
             </div>
           </div>
 
-          {/* Column 2: Navigation */}
+          {/* ── Explore ── */}
           <div>
-            <h3 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">
-              Navigation
-            </h3>
+            <p className="text-overline mb-4">Explore</p>
             <ul className="space-y-2.5" role="list">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+              {navLinks.map(({ label, href }) => (
+                <li key={href}>
                   <Link
-                    href={link.href}
-                    className="text-slate-300 hover:text-white text-sm transition-colors focus-visible:outline-none focus-visible:underline"
+                    href={href}
+                    className="text-slate-500 hover:text-[#013565] text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
                   >
-                    {link.label}
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* ── Services ── */}
           <div>
-            <h3 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">
-              Services
-            </h3>
+            <p className="text-overline mb-4">Services</p>
             <ul className="space-y-2.5" role="list">
-              {serviceLinks.map((link) => (
-                <li key={link.href}>
+              {serviceLinks.map(({ label, href }) => (
+                <li key={href}>
                   <Link
-                    href={link.href}
-                    className="text-slate-300 hover:text-white text-sm transition-colors focus-visible:outline-none focus-visible:underline"
+                    href={href}
+                    className="text-slate-500 hover:text-[#013565] text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
                   >
-                    {link.label}
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* ── Visit ── */}
           <div>
-            <h3 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">
-              Contact
-            </h3>
-            <ul className="space-y-4" role="list">
-              <li className="flex gap-3">
-                <MapPin className="w-4 h-4 text-sky-300 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <address className="text-slate-300 text-sm not-italic leading-relaxed">
-                  2 Olawale Daodu Road, off Kingsway Road,<br />
-                  Ikoyi, Lagos, Nigeria
-                </address>
-              </li>
-              <li className="flex gap-3 items-center">
-                <Phone className="w-4 h-4 text-sky-300 flex-shrink-0" aria-hidden="true" />
-                <a
-                  href="tel:+2348099906233"
-                  className="text-slate-300 hover:text-white text-sm transition-colors"
-                >
-                  +234 809 990 6233
-                </a>
-              </li>
-              <li className="flex gap-3 items-center">
-                <Mail className="w-4 h-4 text-sky-300 flex-shrink-0" aria-hidden="true" />
-                <a
-                  href="mailto:gilgaldentalclinics@gmail.com"
-                  className="text-slate-300 hover:text-white text-sm transition-colors break-all"
-                >
-                  gilgaldentalclinics@gmail.com
-                </a>
-              </li>
-              <li className="flex gap-3">
-                <Clock className="w-4 h-4 text-sky-300 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div className="text-slate-300 text-sm leading-relaxed space-y-1">
-                  <p>Mon – Fri: 9:00 AM – 6:00 PM</p>
-                  <p>Sat & Public Holidays: 9:00 AM – 3:00 PM</p>
-                  <p>Sunday: Closed</p>
-                </div>
-              </li>
-            </ul>
+            <p className="text-overline mb-4">Visit</p>
+            <address className="not-italic text-slate-500 text-sm leading-relaxed mb-5">
+              2 Olawale Daodu Road,<br />
+              off Kingsway Road,<br />
+              Ikoyi, Lagos, Nigeria
+            </address>
+            <p className="text-overline mb-3">Contact</p>
+            <div className="space-y-2">
+              <a
+                href="tel:+2348099906233"
+                className="block text-slate-500 hover:text-[#013565] text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
+                aria-label="Call +234 809 990 6233"
+              >
+                +234 809 990 6233
+              </a>
+              <a
+                href="mailto:gilgaldentalclinics@gmail.com"
+                className="block text-slate-500 hover:text-[#013565] text-sm transition-colors break-all focus-visible:outline-none focus-visible:underline underline-offset-4"
+                aria-label="Email gilgaldentalclinics@gmail.com"
+              >
+                gilgaldentalclinics@gmail.com
+              </a>
+            </div>
+            <div className="mt-5 pt-5 border-t border-[#E8EBF0]">
+              <p className="text-overline mb-2">Hours</p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Mon – Fri&nbsp;&nbsp;9:00 AM – 6:00 PM<br />
+                Sat&nbsp;&nbsp;9:00 AM – 3:00 PM<br />
+                Sunday&nbsp;&nbsp;Closed
+              </p>
+            </div>
           </div>
+
         </div>
+      </div>
 
-        {/* CTA strip */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-300 text-sm text-center sm:text-left">
-            Ready to take care of your smile?{" "}
-            <Link
-              href="/book-an-appointment"
-              className="text-white underline underline-offset-2 hover:no-underline transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
-            >
-              Book an appointment
-            </Link>{" "}
-            or{" "}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white underline underline-offset-2 hover:no-underline transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
-            >
-              message us on WhatsApp
-            </a>.
+      {/* Bottom bar */}
+      <div className="border-t border-[#E8EBF0]">
+        <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-slate-400 text-xs">
+            © {currentYear} Gilgal Dental Clinics. All rights reserved.
           </p>
-        </div>
-
-        {/* Legal bar */}
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
-          <p>© {currentYear} Gilgal Dental Clinics. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link
               href="/privacy-policy"
-              className="hover:text-slate-300 transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-slate-400 hover:text-slate-600 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
             >
               Privacy Policy
             </Link>
+            <a
+              href="https://www.instagram.com/gilgaldental.clinic/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-slate-600 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://web.facebook.com/gilgaldental.clinics/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-slate-600 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+            >
+              Facebook
+            </a>
           </div>
         </div>
       </div>
