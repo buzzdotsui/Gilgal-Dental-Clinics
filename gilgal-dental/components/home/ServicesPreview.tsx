@@ -1,114 +1,118 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-const services = [
+// Services grouped into two clinical categories per design brief
+const serviceGroups = [
   {
-    number: "01",
-    title: "General Dentistry",
-    tagline: "Examinations, cleanings, fillings and preventive care.",
-    href: "/services/general-dentistry",
+    category: "General Dentistry",
+    services: [
+      {
+        title: "Examinations & Diagnosis",
+        tagline: "Thorough assessments and honest, clear findings.",
+        href: "/services/general-dentistry",
+      },
+      {
+        title: "Cleaning & Scaling",
+        tagline: "Professional hygiene care and preventive treatment.",
+        href: "/services/general-dentistry",
+      },
+      {
+        title: "Wisdom Tooth Removal",
+        tagline: "Careful extractions, explained step by step.",
+        href: "/services/general-dentistry",
+      },
+      {
+        title: "Root Canal Treatment",
+        tagline: "Endodontic care to save and restore affected teeth.",
+        href: "/services/general-dentistry",
+      },
+      {
+        title: "Periodontal Care",
+        tagline: "Treatment and management of gum disease.",
+        href: "/services/general-dentistry",
+      },
+    ],
   },
   {
-    number: "02",
-    title: "Implant Dentistry",
-    tagline: "Stable, natural-looking replacements for missing teeth.",
-    href: "/services/implant-dentistry",
-  },
-  {
-    number: "03",
-    title: "Cosmetic Dentistry",
-    tagline: "Veneers, bonding and smile-enhancing treatments.",
-    href: "/services/cosmetic-dentistry",
-  },
-  {
-    number: "04",
-    title: "Orthodontics",
-    tagline: "Teeth straightening with braces and clear aligners.",
-    href: "/services/orthodontics",
-  },
-  {
-    number: "05",
-    title: "Restorative Dentistry",
-    tagline: "Crowns, bridges and dentures to rebuild damaged teeth.",
-    href: "/services/restorative-dentistry",
-  },
-  {
-    number: "06",
-    title: "Children's Dentistry",
-    tagline: "Gentle, patient-centred care for young patients.",
-    href: "/services/childrens-dentistry",
-  },
-  {
-    number: "07",
-    title: "Laser Teeth Whitening",
-    tagline: "Professional in-clinic treatment for a brighter smile.",
-    href: "/services/laser-teeth-whitening",
+    category: "Specialist & Elective Care",
+    services: [
+      {
+        title: "Dental Implants",
+        tagline: "Stable, permanent replacements for missing teeth.",
+        href: "/services/implant-dentistry",
+      },
+      {
+        title: "Restorative Dentistry",
+        tagline: "Crowns, bridges and dentures to rebuild and repair.",
+        href: "/services/restorative-dentistry",
+      },
+      {
+        title: "Cosmetic Dentistry",
+        tagline: "Veneers, bonding and smile enhancement.",
+        href: "/services/cosmetic-dentistry",
+      },
+      {
+        title: "Orthodontics",
+        tagline: "Teeth straightening with braces and clear aligners.",
+        href: "/services/orthodontics",
+      },
+      {
+        title: "Children's Dentistry",
+        tagline: "Gentle, reassuring care for young patients.",
+        href: "/services/childrens-dentistry",
+      },
+      {
+        title: "Laser Teeth Whitening",
+        tagline: "Professional in-clinic treatment for a brighter smile.",
+        href: "/services/laser-teeth-whitening",
+      },
+    ],
   },
 ];
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
+  visible: { transition: { staggerChildren: 0.04 } },
 };
 const rowVariant: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
-function ServiceRow({ number, title, tagline, href }: typeof services[0]) {
-  const [hovered, setHovered] = useState(false);
-
+function ServiceRow({
+  title,
+  tagline,
+  href,
+}: {
+  title: string;
+  tagline: string;
+  href: string;
+}) {
   return (
-    <motion.div
-      variants={rowVariant}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-    >
+    <motion.div variants={rowVariant}>
       <Link
         href={href}
-        className="group flex items-center justify-between gap-6 py-5 border-b border-[#E8EBF0] hover:border-[#013565]/20 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:rounded"
+        className="group flex items-center justify-between gap-6 py-4 border-b border-[#E2DFD9] hover:border-[#013565]/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:rounded-[2px]"
         aria-label={`${title} — ${tagline}`}
       >
-        {/* Number */}
-        <span
-          className="text-xs font-semibold tabular-nums flex-shrink-0 transition-colors duration-200"
-          style={{
-            letterSpacing: "0.06em",
-            color: hovered ? "#013565" : "#CBD5E1",
-            minWidth: "2rem",
-          }}
-          aria-hidden="true"
-        >
-          {number}
-        </span>
-
-        {/* Title + tagline */}
-        <div className="flex-1 flex items-baseline gap-4 lg:gap-8 min-w-0">
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-5 flex-1 min-w-0">
           <h3
-            className="font-semibold text-slate-900 flex-shrink-0 transition-colors duration-200 group-hover:text-[#013565]"
-            style={{ fontSize: "clamp(0.9375rem, 1.5vw, 1.0625rem)" }}
+            className="font-semibold text-slate-800 flex-shrink-0 transition-colors duration-200 group-hover:text-[#013565]"
+            style={{ fontSize: "0.9375rem" }}
           >
             {title}
           </h3>
-          <p
-            className="text-slate-400 text-sm hidden sm:block truncate transition-colors duration-200 group-hover:text-slate-500"
-          >
+          <p className="text-slate-400 text-[0.8125rem] hidden sm:block truncate transition-colors duration-200 group-hover:text-slate-500">
             {tagline}
           </p>
         </div>
-
-        {/* Arrow */}
-        <motion.span
-          className="flex-shrink-0 text-slate-300 group-hover:text-[#013565] transition-colors duration-200"
-          animate={{ x: hovered ? 4 : 0 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-        >
-          <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-        </motion.span>
+        <span className="flex-shrink-0 text-slate-300 group-hover:text-[#013565] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+        </span>
       </Link>
     </motion.div>
   );
@@ -120,12 +124,12 @@ export default function ServicesPreview() {
 
   return (
     <section
-      className="section-padding bg-[#F7F8FA]"
+      className="section-padding bg-[#F9F8F6]"
       aria-labelledby="services-heading"
     >
       <div className="container-site">
         {/* Section header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
           <div className="max-w-lg">
             <p className="text-overline mb-4">Our Services</p>
             <h2
@@ -138,37 +142,52 @@ export default function ServicesPreview() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Comprehensive care,
+              Dental care across
               <br className="hidden sm:block" />
-              thoughtfully delivered.
+              every stage of life.
             </h2>
           </div>
           <Link
             href="/services"
-            className="text-sm font-semibold text-[#013565] hover:underline underline-offset-4 flex-shrink-0 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded"
+            className="text-[0.8125rem] font-semibold text-[#013565] hover:underline underline-offset-4 flex-shrink-0 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"
             aria-label="View all dental services at Gilgal"
           >
             All Services →
           </Link>
         </div>
 
-        {/* Service rows */}
-        <motion.div
-          ref={ref}
-          variants={container}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          role="list"
-          aria-label="Dental services"
-        >
-          {/* Top border */}
-          <div className="border-t border-[#E8EBF0]" />
-          {services.map((s) => (
-            <div key={s.href} role="listitem">
-              <ServiceRow {...s} />
+        {/* Two-column grouped service architecture */}
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 xl:gap-20">
+          {serviceGroups.map((group, gi) => (
+            <div key={group.category}>
+              {/* Group label */}
+              <div className="flex items-center gap-4 mb-1 pb-4 border-b-2 border-[#013565]">
+                <p
+                  className="text-[#013565] font-semibold"
+                  style={{ fontSize: "0.75rem", letterSpacing: "0.10em", textTransform: "uppercase" }}
+                >
+                  {group.category}
+                </p>
+              </div>
+
+              {/* Service rows */}
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+                role="list"
+                aria-label={`${group.category} services`}
+                style={{ transitionDelay: gi === 1 ? "0.08s" : "0s" }}
+              >
+                {group.services.map((s) => (
+                  <div key={s.href + s.title} role="listitem">
+                    <ServiceRow {...s} />
+                  </div>
+                ))}
+              </motion.div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

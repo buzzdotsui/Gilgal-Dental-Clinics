@@ -54,7 +54,7 @@ export default function Header() {
   }, []);
 
   const linkCls =
-    "px-3.5 py-2 text-[0.8125rem] font-medium text-slate-500 hover:text-[#013565] rounded transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]";
+    "px-3.5 py-2 text-[0.8125rem] font-medium text-slate-500 hover:text-[#013565] rounded-[2px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]";
 
   return (
     <>
@@ -162,9 +162,9 @@ export default function Header() {
           <div className="hidden lg:block">
             <Link
               href="/book-an-appointment"
-              className="inline-flex items-center px-5 py-2 bg-[#013565] text-white text-[0.8125rem] font-semibold rounded-md hover:bg-[#012550] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
+              className="inline-flex items-center px-5 py-2.5 bg-[#013565] text-white text-[0.8125rem] font-semibold rounded-[2px] border border-[#013565] hover:bg-[#0A2E58] hover:border-[#0A2E58] hover:-translate-y-px active:translate-y-0 shadow-[0_1px_3px_0_rgb(1_53_101/0.22)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
             >
-              Book an Appointment
+              Book a Consultation
             </Link>
           </div>
 

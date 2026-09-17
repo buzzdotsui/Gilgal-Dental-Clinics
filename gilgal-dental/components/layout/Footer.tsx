@@ -20,26 +20,28 @@ const serviceLinks = [
   { label: "Laser Teeth Whitening", href: "/services/laser-teeth-whitening" },
 ];
 
+const linkCls = "text-white/50 hover:text-white/85 text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:underline underline-offset-4";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer
-      className="bg-[#FDFEFF] border-t border-[#E8EBF0]"
+      className="bg-[#0A2E58]"
       role="contentinfo"
     >
       {/* Main content */}
-      <div className="container-site py-14 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr_1.4fr_1.4fr] gap-10 lg:gap-8">
+      <div className="container-site py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1.3fr_1.5fr] gap-10 lg:gap-8">
 
           {/* ── Brand column ── */}
           <div>
             <Link
               href="/"
-              className="inline-flex items-center gap-3 mb-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 rounded-md"
+              className="inline-flex items-center gap-3 mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A2E58] rounded-[2px]"
               aria-label="Gilgal Dental Clinics — Home"
             >
-              <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-slate-200 flex-shrink-0">
+              <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/15 flex-shrink-0">
                 <Image
                   src="/images/logo.jpg"
                   alt="Gilgal Dental Clinics logo"
@@ -48,23 +50,23 @@ export default function Footer() {
                   sizes="36px"
                 />
               </div>
-              <span className="font-semibold text-slate-900 text-sm leading-tight">
+              <span className="font-semibold text-white text-sm leading-tight">
                 Gilgal Dental Clinics
               </span>
             </Link>
 
-            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-[220px]">
-              Dental care, centered around&nbsp;you.
-              <br />Ikoyi, Lagos.
+            {/* Tagline — specific per brief */}
+            <p className="text-white/45 text-sm leading-relaxed mb-7 max-w-[230px]">
+              Specialist restorative and family dental care in Ikoyi, Lagos.
             </p>
 
-            {/* Social */}
+            {/* Social — white strokes */}
             <div className="flex items-center gap-2.5">
               <a
                 href="https://www.instagram.com/gilgaldental.clinic/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full border border-[#E8EBF0] hover:border-[#013565]/30 hover:text-[#013565] flex items-center justify-center text-slate-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
+                className="w-8 h-8 rounded-[2px] border border-white/15 hover:border-white/35 hover:bg-white/8 flex items-center justify-center text-white/50 hover:text-white/85 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 aria-label="Gilgal Dental Clinics on Instagram"
               >
                 <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -77,7 +79,7 @@ export default function Footer() {
                 href="https://web.facebook.com/gilgaldental.clinics/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full border border-[#E8EBF0] hover:border-[#013565]/30 hover:text-[#013565] flex items-center justify-center text-slate-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
+                className="w-8 h-8 rounded-[2px] border border-white/15 hover:border-white/35 hover:bg-white/8 flex items-center justify-center text-white/50 hover:text-white/85 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 aria-label="Gilgal Dental Clinics on Facebook"
               >
                 <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -89,14 +91,16 @@ export default function Footer() {
 
           {/* ── Explore ── */}
           <div>
-            <p className="text-overline mb-4">Explore</p>
+            <p
+              className="text-white/30 mb-4"
+              style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            >
+              Explore
+            </p>
             <ul className="space-y-2.5" role="list">
               {navLinks.map(({ label, href }) => (
                 <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-slate-500 hover:text-[#013565] text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
-                  >
+                  <Link href={href} className={linkCls}>
                     {label}
                   </Link>
                 </li>
@@ -106,14 +110,16 @@ export default function Footer() {
 
           {/* ── Services ── */}
           <div>
-            <p className="text-overline mb-4">Services</p>
+            <p
+              className="text-white/30 mb-4"
+              style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            >
+              Services
+            </p>
             <ul className="space-y-2.5" role="list">
               {serviceLinks.map(({ label, href }) => (
                 <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-slate-500 hover:text-[#013565] text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
-                  >
+                  <Link href={href} className={linkCls}>
                     {label}
                   </Link>
                 </li>
@@ -123,36 +129,60 @@ export default function Footer() {
 
           {/* ── Visit ── */}
           <div>
-            <p className="text-overline mb-4">Visit</p>
-            <address className="not-italic text-slate-500 text-sm leading-relaxed mb-5">
+            <p
+              className="text-white/30 mb-4"
+              style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            >
+              Visit
+            </p>
+            <address className="not-italic text-white/55 text-sm leading-relaxed mb-6">
               2 Olawale Daodu Road,<br />
               off Kingsway Road,<br />
               Ikoyi, Lagos, Nigeria
             </address>
-            <p className="text-overline mb-3">Contact</p>
-            <div className="space-y-2">
+
+            <p
+              className="text-white/30 mb-3"
+              style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            >
+              Opening Hours
+            </p>
+            <dl className="space-y-1.5 mb-6">
+              {[
+                { day: "Mon – Fri", time: "9:00 AM – 6:00 PM" },
+                { day: "Sat & Public Holidays", time: "9:00 AM – 3:00 PM" },
+                { day: "Sunday", time: "Closed" },
+              ].map(({ day, time }) => (
+                <div key={day} className="flex items-start justify-between gap-4">
+                  <dt className="text-white/45 text-xs">{day}</dt>
+                  <dd className={`text-xs font-medium flex-shrink-0 ${time === "Closed" ? "text-white/25" : "text-white/65"}`}>
+                    {time}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <p
+              className="text-white/30 mb-3"
+              style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
+            >
+              Contact
+            </p>
+            <div className="space-y-1.5">
               <a
                 href="tel:+2348099906233"
-                className="block text-slate-500 hover:text-[#013565] text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
+                className="block text-white/55 hover:text-white/85 text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
                 aria-label="Call +234 809 990 6233"
               >
                 +234 809 990 6233
               </a>
               <a
                 href="mailto:gilgaldentalclinics@gmail.com"
-                className="block text-slate-500 hover:text-[#013565] text-sm transition-colors break-all focus-visible:outline-none focus-visible:underline underline-offset-4"
+                className="block text-white/55 hover:text-white/85 text-sm transition-colors break-all focus-visible:outline-none focus-visible:underline underline-offset-4"
                 aria-label="Email gilgaldentalclinics@gmail.com"
               >
                 gilgaldentalclinics@gmail.com
               </a>
-            </div>
-            <div className="mt-5 pt-5 border-t border-[#E8EBF0]">
-              <p className="text-overline mb-2">Hours</p>
-              <p className="text-slate-400 text-xs leading-relaxed">
-                Mon – Fri&nbsp;&nbsp;9:00 AM – 6:00 PM<br />
-                Sat&nbsp;&nbsp;9:00 AM – 3:00 PM<br />
-                Sunday&nbsp;&nbsp;Closed
-              </p>
             </div>
           </div>
 
@@ -160,23 +190,29 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#E8EBF0]">
+      <div className="border-t border-white/8">
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-slate-400 text-xs">
+          <p className="text-white/30 text-xs">
             © {currentYear} Gilgal Dental Clinics. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               href="/privacy-policy"
-              className="text-slate-400 hover:text-slate-600 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
             >
               Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+            >
+              Terms &amp; Conditions
             </Link>
             <a
               href="https://www.instagram.com/gilgaldental.clinic/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-slate-600 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
             >
               Instagram
             </a>
@@ -184,7 +220,7 @@ export default function Footer() {
               href="https://web.facebook.com/gilgaldental.clinics/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-slate-600 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
             >
               Facebook
             </a>

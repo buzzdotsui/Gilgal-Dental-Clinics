@@ -8,15 +8,15 @@ import Link from "next/link";
 
 const textContainer: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.09 } },
 };
 const textItem: Variants = {
   hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0, 0, 0.2, 1] } },
 };
 const imageReveal: Variants = {
-  hidden: { opacity: 0, x: 28 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  hidden: { opacity: 0, x: 24 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0, 0, 0.2, 1] } },
 };
 
 export default function Introduction() {
@@ -25,7 +25,7 @@ export default function Introduction() {
 
   return (
     <section
-      className="section-padding bg-white"
+      className="section-padding bg-[#F4F3F1]"
       aria-labelledby="intro-heading"
     >
       <div className="container-site">
@@ -52,21 +52,19 @@ export default function Introduction() {
                 letterSpacing: "-0.025em",
               }}
             >
-              A calmer approach
+              Comprehensive care.
               <br />
-              to dental care.
+              Experienced hands.
             </motion.h2>
 
             <motion.p
               variants={textItem}
-              className="text-slate-500 mb-6"
+              className="text-slate-500 mb-5"
               style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}
             >
-              At Gilgal Dental Clinics, we believe good dental care goes beyond
-              procedures — it&rsquo;s about how patients feel throughout the entire
-              experience. From your first visit to your final appointment, our goal
-              is to provide comprehensive, high-quality dental care in a setting
-              that feels calm and reassuring.
+              At Gilgal Dental Clinics, we deliver high-quality dental care across
+              a broad range of specialties — from routine examinations and preventive
+              care to complex restorative work and dental implants.
             </motion.p>
 
             <motion.p
@@ -74,43 +72,15 @@ export default function Introduction() {
               className="text-slate-500 mb-10"
               style={{ fontSize: "1rem", lineHeight: 1.65 }}
             >
-              Based in Ikoyi, Lagos, we offer a broad range of dental services for
-              the whole family, delivered by an experienced team that takes the
-              time to understand each patient&rsquo;s needs.
+              Based in Ikoyi, Lagos, our practice is built around clinical excellence
+              and a patient experience that is unhurried, clear, and reassuring —
+              for adults and children alike.
             </motion.p>
-
-            {/* Editorial inline stats */}
-            <motion.div
-              variants={textItem}
-              className="flex items-center gap-0 pb-10 mb-10 border-b border-[#E8EBF0]"
-            >
-              {[
-                { value: "17+", label: "Years" },
-                { value: "200+", label: "Implants" },
-                { value: "Ikoyi", label: "Lagos" },
-              ].map(({ value, label }, i) => (
-                <div
-                  key={label}
-                  className={[
-                    "pr-8",
-                    i > 0 ? "pl-8 border-l border-[#E8EBF0]" : "",
-                  ].join(" ")}
-                >
-                  <p
-                    className="text-[#013565] font-bold"
-                    style={{ fontSize: "1.375rem", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-                  >
-                    {value}
-                  </p>
-                  <p className="text-slate-400 text-xs mt-0.5">{label}</p>
-                </div>
-              ))}
-            </motion.div>
 
             <motion.div variants={textItem}>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-[#013565] text-sm font-semibold hover:gap-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded"
+                className="inline-flex items-center gap-2 text-[#013565] text-sm font-semibold hover:gap-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"
               >
                 Learn about Gilgal
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -126,33 +96,30 @@ export default function Introduction() {
             className="relative hidden lg:block"
           >
             <div
-              className="relative w-full overflow-hidden bg-slate-100"
+              className="relative w-full overflow-hidden bg-[#E2DFD9]"
               style={{ aspectRatio: "3/4", borderRadius: "4px" }}
             >
               <Image
                 src="/images/hero/group-picture.png"
-                alt="The Gilgal Dental Clinics team"
+                alt="The Gilgal Dental Clinics team, Ikoyi Lagos"
                 fill
                 className="object-cover object-center"
                 sizes="50vw"
               />
-              {/* Subtle bottom fade */}
               <div
-                className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none"
+                className="absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-transparent pointer-events-none"
                 aria-hidden="true"
               />
-              {/* Location badge — editorial */}
+              {/* Location label */}
               <div className="absolute bottom-5 left-5">
-                <p className="text-white/90 text-xs font-medium tracking-widest uppercase">
+                <p
+                  className="text-white/85 font-medium tracking-widest uppercase"
+                  style={{ fontSize: "0.625rem" }}
+                >
                   Ikoyi · Lagos
                 </p>
               </div>
             </div>
-            {/* Decorative vertical rule */}
-            <div
-              className="absolute -right-8 top-1/4 bottom-1/4 w-px bg-[#E8EBF0]"
-              aria-hidden="true"
-            />
           </motion.div>
         </div>
       </div>

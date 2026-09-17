@@ -52,12 +52,12 @@ export default function ContactPreview() {
           </motion.div>
 
           {/* Main grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border-t border-[#E8EBF0]">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border-t border-[#E2DFD9]">
 
             {/* Address */}
             <motion.div
               variants={item}
-              className="py-8 lg:pr-10 border-b lg:border-b-0 lg:border-r border-[#E8EBF0]"
+              className="py-8 lg:pr-10 border-b lg:border-b-0 lg:border-r border-[#E2DFD9]"
             >
               <p className="text-overline mb-4">Address</p>
               <address className="not-italic text-slate-600 leading-relaxed mb-4" style={{ fontSize: "0.9375rem" }}>
@@ -80,7 +80,7 @@ export default function ContactPreview() {
             {/* Hours */}
             <motion.div
               variants={item}
-              className="py-8 lg:px-10 border-b lg:border-b-0 lg:border-r border-[#E8EBF0]"
+              className="py-8 lg:px-10 border-b lg:border-b-0 lg:border-r border-[#E2DFD9]"
             >
               <p className="text-overline mb-4">Opening Hours</p>
               <dl className="space-y-3">
@@ -124,9 +124,9 @@ export default function ContactPreview() {
               </div>
               <Link
                 href="/book-an-appointment"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-md hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] border border-[#013565] hover:bg-[#0A2E58] hover:border-[#0A2E58] hover:-translate-y-px active:translate-y-0 shadow-[0_1px_3px_0_rgb(1_53_101/0.22)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
               >
-                Book an Appointment
+                Book a Consultation
               </Link>
             </motion.div>
           </div>

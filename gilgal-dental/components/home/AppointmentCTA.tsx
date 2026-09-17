@@ -6,16 +6,16 @@ import { motion, useInView, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 const WA_URL = `https://wa.me/2348099906233?text=${encodeURIComponent(
-  "Hello Gilgal Dental Clinics, I would like to book an appointment. Please let me know the available dates and times."
+  "Hello Gilgal Dental Clinics, I would like to book a consultation. Please let me know the available dates and times."
 )}`;
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.09 } },
 };
 const item: Variants = {
   hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0, 0, 0.2, 1] } },
 };
 
 export default function AppointmentCTA() {
@@ -24,7 +24,7 @@ export default function AppointmentCTA() {
 
   return (
     <section
-      className="section-padding bg-[#F7F8FA] border-y border-[#E8EBF0]"
+      className="section-padding bg-[#F9F8F6] border-y border-[#E2DFD9]"
       aria-labelledby="cta-heading"
     >
       <div className="container-site">
@@ -36,7 +36,7 @@ export default function AppointmentCTA() {
           className="max-w-2xl"
         >
           <motion.p variants={item} className="text-overline mb-5">
-            Get in touch
+            Book an appointment
           </motion.p>
 
           <motion.h2
@@ -52,9 +52,7 @@ export default function AppointmentCTA() {
           >
             Your next dental visit
             <br />
-            <span className="text-[#013565]" style={{ fontWeight: 400, fontStyle: "italic" }}>
-              starts here.
-            </span>
+            <span className="text-[#013565]">starts here.</span>
           </motion.h2>
 
           <motion.p
@@ -62,32 +60,32 @@ export default function AppointmentCTA() {
             className="text-slate-500 mb-10"
             style={{ fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "480px" }}
           >
-            Request an appointment at Gilgal Dental Clinics in Ikoyi, Lagos.
+            Request a consultation at Gilgal Dental Clinics in Ikoyi, Lagos.
             We&rsquo;ll confirm your preferred date and time as soon as possible.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-3 mb-10">
             <Link
               href="/book-an-appointment"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#013565] text-white text-sm font-semibold rounded-md hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] border border-[#013565] hover:bg-[#0A2E58] hover:border-[#0A2E58] hover:-translate-y-px active:translate-y-0 shadow-[0_1px_3px_0_rgb(1_53_101/0.25)] hover:shadow-[0_4px_12px_0_rgb(1_53_101/0.30)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
             >
-              Book an Appointment
+              Book a Consultation
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-slate-200 text-slate-700 text-sm font-semibold rounded-md hover:border-[#013565]/30 hover:text-[#013565] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
-              aria-label="WhatsApp Gilgal Dental Clinics"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-transparent text-slate-700 text-sm font-semibold rounded-[2px] border border-[#C8C4BC] hover:border-[#013565] hover:text-[#013565] hover:bg-[#013565]/[0.04] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
+              aria-label="WhatsApp Gilgal Dental Clinics to book a consultation"
             >
-              WhatsApp Us
+              WhatsApp the Clinic
             </a>
           </motion.div>
 
           <motion.div
             variants={item}
-            className="flex flex-wrap items-center gap-5 text-sm text-slate-400 pt-8 border-t border-[#E8EBF0]"
+            className="flex flex-wrap items-center gap-5 text-sm text-slate-400 pt-8 border-t border-[#E2DFD9]"
           >
             <a
               href="tel:+2348099906233"
@@ -96,7 +94,7 @@ export default function AppointmentCTA() {
             >
               +234 809 990 6233
             </a>
-            <span className="text-slate-200" aria-hidden="true">·</span>
+            <span className="text-[#E2DFD9]" aria-hidden="true">·</span>
             <a
               href="mailto:gilgaldentalclinics@gmail.com"
               className="hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:underline"

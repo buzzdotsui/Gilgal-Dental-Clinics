@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "whatsapp" | "outline-white";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "whatsapp" | "outline-white" | "ghost-light";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps {
@@ -19,21 +19,23 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-[#013565] text-white hover:bg-[#012550] focus-visible:ring-[#013565] shadow-sm hover:shadow-md",
+    "bg-[#013565] text-white border border-[#013565] hover:bg-[#0A2E58] hover:border-[#0A2E58] hover:-translate-y-px active:translate-y-0 shadow-[0_1px_3px_0_rgb(1_53_101/0.25)] hover:shadow-[0_4px_12px_0_rgb(1_53_101/0.30)] focus-visible:ring-[#013565]",
   secondary:
-    "bg-white text-[#013565] border border-[#013565]/20 hover:border-[#013565]/40 hover:bg-[#013565]/5 focus-visible:ring-[#013565] shadow-sm",
+    "bg-transparent text-slate-700 border border-[#C8C4BC] hover:border-[#013565] hover:text-[#013565] hover:bg-[#013565]/[0.04] active:bg-[#013565]/[0.07] focus-visible:ring-[#013565]",
   ghost:
-    "text-[#013565] hover:bg-[#013565]/8 focus-visible:ring-[#013565]",
+    "text-[#013565] border border-transparent hover:bg-[#013565]/[0.06] focus-visible:ring-[#013565]",
   whatsapp:
-    "bg-[#25D366] text-white hover:bg-[#1ebe57] focus-visible:ring-[#25D366] shadow-sm hover:shadow-md",
+    "bg-[#25D366] text-white border border-[#25D366] hover:bg-[#1ebe57] hover:border-[#1ebe57] hover:-translate-y-px active:translate-y-0 shadow-sm focus-visible:ring-[#25D366]",
   "outline-white":
-    "border border-white/40 text-white hover:bg-white/10 focus-visible:ring-white backdrop-blur-sm",
+    "border border-white/30 text-white/85 hover:bg-white/10 hover:text-white hover:border-white/50 focus-visible:ring-white",
+  "ghost-light":
+    "bg-transparent text-white/85 border border-white/25 hover:bg-white/10 hover:text-white hover:border-white/40 focus-visible:ring-white",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm font-medium rounded-md",
-  md: "px-6 py-2.5 text-sm font-semibold rounded-lg",
-  lg: "px-8 py-3.5 text-base font-semibold rounded-lg",
+  sm: "px-4 py-2 text-[0.8125rem] font-semibold",
+  md: "px-6 py-2.5 text-sm font-semibold",
+  lg: "px-7 py-3.5 text-sm font-semibold",
 };
 
 export function Button({
@@ -48,8 +50,9 @@ export function Button({
   className,
   "aria-label": ariaLabel,
 }: ButtonProps) {
+  // Strictly rectangular — no pill buttons per design spec
   const baseStyles =
-    "inline-flex items-center gap-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed select-none";
+    "inline-flex items-center gap-2.5 rounded-[2px] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed select-none tracking-[0.01em]";
 
   const classes = cn(
     baseStyles,

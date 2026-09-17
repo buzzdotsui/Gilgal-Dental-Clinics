@@ -4,25 +4,24 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
+const imageReveal: Variants = {
+  hidden: { opacity: 0, x: -24 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.85, ease: [0, 0, 0.2, 1] } },
+};
 const textReveal: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
+  visible: { transition: { staggerChildren: 0.09 } },
 };
 const textItem: Variants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
-};
-const imageReveal: Variants = {
-  hidden: { opacity: 0, x: -24 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0, 0, 0.2, 1] } },
 };
 
 const credentials = [
-  "Eastman Dental Institute, United Kingdom",
-  "BICON Institute, United States",
-  "Affiliate Member, American Dental Association",
+  { label: "Eastman Dental Institute", location: "University College London, United Kingdom" },
+  { label: "BICON Institute", location: "Boston, United States" },
+  { label: "Affiliate Member", location: "American Dental Association" },
 ];
 
 export default function DoctorPreview() {
@@ -31,71 +30,71 @@ export default function DoctorPreview() {
 
   return (
     <section
-      className="section-padding bg-[#F7F8FA]"
+      className="section-padding-xl bg-[#0A2E58]"
       aria-labelledby="doctor-heading"
+      style={{ backgroundColor: "#0A2E58" }}
     >
       <div className="container-site">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-          {/* Left: large portrait */}
+          {/* Left: portrait */}
           <motion.div
             variants={imageReveal}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             className="relative"
           >
-            {/* Portrait — full column, tall, minimal rounding */}
+            {/* Subtle gold frame line — editorial detail */}
             <div
-              className="relative w-full overflow-hidden bg-slate-100"
+              className="absolute -top-3 -left-3 right-8 bottom-8 border border-[#C8A96E]/25 pointer-events-none"
+              style={{ borderRadius: "4px" }}
+              aria-hidden="true"
+            />
+            {/* Portrait */}
+            <div
+              className="relative w-full overflow-hidden"
               style={{
                 aspectRatio: "3/4",
-                maxHeight: "600px",
+                maxHeight: "580px",
                 borderRadius: "4px",
               }}
             >
               <Image
                 src="/images/dr-ugbo.png"
-                alt="Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics"
+                alt="Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics, Ikoyi Lagos"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
-              {/* Name overlay — editorial bottom strip */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 py-5 bg-gradient-to-t from-[#011f3f]/80 via-[#011f3f]/40 to-transparent">
-                <p
-                  className="text-white font-semibold"
-                  style={{ fontSize: "0.8125rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
-                >
-                  Dr. Osaze Ugbo
-                </p>
-                <p className="text-white/60 text-xs mt-0.5 tracking-wide">
-                  Principal Dentist
-                </p>
-              </div>
             </div>
           </motion.div>
 
-          {/* Right: editorial text */}
+          {/* Right: editorial trust content */}
           <motion.div
             variants={textReveal}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="lg:pt-4"
+            className="lg:pt-6"
           >
-            <motion.p variants={textItem} className="text-overline mb-5">
+            <motion.p
+              variants={textItem}
+              className="text-overline-light mb-5"
+            >
               Our Dentist
             </motion.p>
 
+            {/* Name — large, Cormorant serif */}
             <motion.h2
               id="doctor-heading"
               variants={textItem}
-              className="text-slate-900 mb-2"
+              className="text-white mb-3"
               style={{
-                fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                letterSpacing: "-0.025em",
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "clamp(2rem, 3.5vw, 3.25rem)",
+                fontWeight: 600,
+                lineHeight: 1.08,
+                letterSpacing: "-0.01em",
               }}
             >
               Dr. Osaze Ugbo
@@ -103,42 +102,82 @@ export default function DoctorPreview() {
 
             <motion.p
               variants={textItem}
-              className="text-[#013565] text-sm font-medium mb-7"
-              style={{ letterSpacing: "0.04em" }}
+              className="text-[#C8A96E] text-sm font-medium mb-8"
+              style={{ letterSpacing: "0.05em" }}
             >
-              Principal Dentist&nbsp;&nbsp;·&nbsp;&nbsp;17+ Years Experience
+              Principal Dentist&nbsp;&nbsp;·&nbsp;&nbsp;General &amp; Restorative Dentistry
             </motion.p>
 
-            <motion.div variants={textItem} className="space-y-4 mb-8">
-              <p className="text-slate-500" style={{ fontSize: "1.0rem", lineHeight: 1.7 }}>
-                Dr. Osaze Ugbo brings over 17 years of clinical experience to
-                Gilgal Dental Clinics. He is passionate about dentistry and
-                committed to delivering high-quality care that patients trust.
+            {/* Experience figures — editorial, not dashboard */}
+            <motion.div
+              variants={textItem}
+              className="flex items-start gap-0 mb-8 pb-8 border-b border-white/10"
+            >
+              {[
+                { value: "17+", label: "Years of\nclinical experience" },
+                { value: "200+", label: "Dental implants\nsuccessfully placed" },
+              ].map(({ value, label }, i) => (
+                <div
+                  key={value}
+                  className={i > 0 ? "pl-8 ml-8 border-l border-white/12" : ""}
+                >
+                  <p
+                    className="text-white font-bold mb-1"
+                    style={{
+                      fontFamily: "var(--font-cormorant), Georgia, serif",
+                      fontSize: "clamp(2rem, 3vw, 2.75rem)",
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {value}
+                  </p>
+                  <p
+                    className="text-white/50"
+                    style={{ fontSize: "0.75rem", lineHeight: 1.5, whiteSpace: "pre-line" }}
+                  >
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={textItem} className="space-y-4 mb-10">
+              <p className="text-white/65" style={{ fontSize: "1rem", lineHeight: 1.7 }}>
+                Dr. Osaze Ugbo brings over 17 years of clinical experience to Gilgal
+                Dental Clinics. He practises General Dentistry with a particular
+                interest in Restorative Dentistry, and has successfully placed more
+                than 200 dental implants.
               </p>
-              <p className="text-slate-500" style={{ fontSize: "1rem", lineHeight: 1.65 }}>
-                He practises General Dentistry with a particular interest in
-                Restorative Dentistry, and has successfully completed more than
-                200 dental implants.
+              <p className="text-white/65" style={{ fontSize: "1rem", lineHeight: 1.65 }}>
+                He is committed to delivering the highest standard of care in a
+                setting where every patient feels heard, informed, and comfortable.
               </p>
             </motion.div>
 
-            {/* Credentials — clean list, no icon squares */}
+            {/* Credentials — clean editorial list */}
             <motion.div
               variants={textItem}
-              className="border-t border-[#E8EBF0] pt-7 mb-8"
+              className="border-t border-white/10 pt-8 mb-10"
             >
-              <p className="text-overline mb-4">Training &amp; Affiliations</p>
-              <ul className="space-y-2.5" role="list">
+              <p
+                className="text-overline-light mb-5"
+              >
+                Training &amp; Affiliations
+              </p>
+              <ul className="space-y-4" role="list">
                 {credentials.map((c) => (
-                  <li
-                    key={c}
-                    className="flex items-start gap-3 text-sm text-slate-500"
-                  >
+                  <li key={c.label} className="flex items-start gap-3">
                     <span
-                      className="mt-1.5 w-1 h-1 rounded-full bg-[#013565] flex-shrink-0"
+                      className="mt-1.5 flex-shrink-0 block w-5"
                       aria-hidden="true"
-                    />
-                    {c}
+                    >
+                      <span className="block w-4 h-px bg-[#C8A96E]" />
+                    </span>
+                    <div>
+                      <p className="text-white text-sm font-medium leading-snug">{c.label}</p>
+                      <p className="text-white/45 text-xs mt-0.5">{c.location}</p>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -147,11 +186,13 @@ export default function DoctorPreview() {
             <motion.div variants={textItem}>
               <Link
                 href="/our-dentist"
-                className="inline-flex items-center gap-2 text-[#013565] text-sm font-semibold hover:gap-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded"
-                aria-label="Meet Dr. Osaze Ugbo"
+                className="inline-flex items-center gap-2.5 text-white/80 hover:text-white text-sm font-semibold transition-all duration-200 border-b border-white/20 hover:border-white/50 pb-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-[2px]"
+                aria-label="Learn more about Dr. Osaze Ugbo"
               >
-                Meet Dr. Ugbo
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                Learn more about Dr. Ugbo
+                <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
             </motion.div>
           </motion.div>

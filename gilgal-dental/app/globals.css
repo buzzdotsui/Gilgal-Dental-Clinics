@@ -4,9 +4,10 @@
 @theme inline {
   /* Brand Colors */
   --color-gilgal-navy:       #013565;
-  --color-gilgal-navy-dark:  #012550;
+  --color-gilgal-navy-dark:  #0A2E58;
+  --color-gilgal-navy-deep:  #071E3D;
   --color-gilgal-navy-light: #0d4a8a;
-  --color-gilgal-white:      #FDFEFF;
+  --color-gilgal-white:      #F9F8F6;
 
   /* Supporting Palette */
   --color-slate-50:   #f8fafc;
@@ -20,9 +21,10 @@
   --color-slate-800:  #1e293b;
   --color-slate-900:  #0f172a;
 
-  /* Surfaces */
-  --color-surface:    #F7F8FA;   /* off-white for section alternation */
-  --color-border:     #E8EBF0;   /* slightly warmer than slate-200 */
+  /* Surfaces — warm toned */
+  --color-surface:    #F4F3F1;   /* warm off-white for section alternation */
+  --color-surface-2:  #EEECEA;   /* slightly deeper warm surface */
+  --color-border:     #E2DFD9;   /* warm border, not cold slate */
 
   --color-warm-50:  #fafaf9;
   --color-warm-100: #f5f5f4;
@@ -34,47 +36,53 @@
   --color-sky-200:  #bae6fd;
   --color-sky-600:  #0284c7;
 
-  /* Accent */
-  --color-gold-400: #d4a857;
-  --color-gold-500: #c49a3c;
+  /* Accent — gold, used sparingly for credential rules only */
+  --color-gold-400: #C8A96E;
+  --color-gold-500: #B8954E;
 
   /* Typography */
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans:   "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif:  "Cormorant Garamond", "Georgia", serif;
 
   /* Font Sizes */
-  --text-display:    clamp(2.75rem, 5.5vw, 4.5rem);
-  --text-h1:         clamp(2rem, 4vw, 3rem);
-  --text-h2:         clamp(1.5rem, 3vw, 2.25rem);
-  --text-h3:         clamp(1.125rem, 2vw, 1.5rem);
-  --text-h4:         1.125rem;
-  --text-body-lg:    1.125rem;
-  --text-body:       1rem;
-  --text-body-sm:    0.9375rem;
-  --text-label:      0.8125rem;
-  --text-overline:   0.6875rem;
-  --text-xs:         0.75rem;
+  --text-display-serif: clamp(3rem, 6.5vw, 5.25rem);
+  --text-display:       clamp(2.75rem, 5.5vw, 4.5rem);
+  --text-h1:            clamp(2rem, 4vw, 3rem);
+  --text-h2:            clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3:            clamp(1.125rem, 2vw, 1.5rem);
+  --text-h4:            1.125rem;
+  --text-body-lg:       1.125rem;
+  --text-body:          1rem;
+  --text-body-sm:       0.9375rem;
+  --text-label:         0.8125rem;
+  --text-overline:      0.6875rem;
+  --text-xs:            0.75rem;
 
   /* Spacing / Container */
   --container-max:   1280px;
-  --section-y:       5rem;
-  --section-y-lg:    7rem;
+  --section-y:       4.5rem;
+  --section-y-lg:    6rem;
+  --section-y-xl:    7.5rem;
 
-  /* Border Radius */
-  --radius-sm:   0.375rem;
-  --radius-md:   0.625rem;
-  --radius-lg:   1rem;
-  --radius-xl:   1.5rem;
-  --radius-card: 0.75rem;
+  /* Border Radius — rectangular system per spec */
+  --radius-btn:    2px;
+  --radius-sm:     2px;
+  --radius-md:     4px;
+  --radius-lg:     6px;
+  --radius-card:   4px;
 
   /* Shadows */
-  --shadow-card:   0 1px 3px 0 rgb(0 0 0 / 0.07), 0 4px 16px 0 rgb(0 0 0 / 0.06);
-  --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.10), 0 16px 40px 0 rgb(0 0 0 / 0.10);
-  --shadow-nav:    0 1px 0 0 rgb(0 0 0 / 0.08);
-  --shadow-sm:     0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-lg:     0 10px 30px -8px rgb(1 53 101 / 0.20);
+  --shadow-card:       0 1px 3px 0 rgb(0 0 0 / 0.06), 0 4px 16px 0 rgb(0 0 0 / 0.05);
+  --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.09), 0 16px 40px 0 rgb(0 0 0 / 0.09);
+  --shadow-nav:        0 1px 0 0 rgb(0 0 0 / 0.07);
+  --shadow-sm:         0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-lg:         0 10px 30px -8px rgb(1 53 101 / 0.18);
+  --shadow-btn:        0 1px 3px 0 rgb(1 53 101 / 0.25);
+  --shadow-btn-hover:  0 4px 12px 0 rgb(1 53 101 / 0.30);
 
   /* Transitions */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
   --duration-fast:   150ms;
   --duration-base:   250ms;
   --duration-slow:   400ms;
@@ -82,7 +90,7 @@
 
 /* ─── Base Styles ───────────────────────────────────────────── */
 :root {
-  --background: #FDFEFF;
+  --background: #F9F8F6;
   --foreground: #0f172a;
 }
 
@@ -124,28 +132,28 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-gilgal-navy);
   outline-offset: 3px;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
 }
 
 /* ─── Selection ─────────────────────────────────────────────── */
 ::selection {
-  background-color: rgb(1 53 101 / 0.15);
+  background-color: rgb(1 53 101 / 0.12);
   color: var(--color-gilgal-navy);
 }
 
 /* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-slate-100);
+  background: #EEECEA;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-slate-300);
+  background: #C8BFB3;
   border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-slate-400);
+  background: #A89E92;
 }
 
 /* ─── Utility Classes ───────────────────────────────────────── */
@@ -178,7 +186,19 @@ body {
   }
 }
 
-/* Text styles */
+.section-padding-xl {
+  padding-block: var(--section-y-xl);
+}
+
+/* ─── Typography Utilities ──────────────────────────────────── */
+.text-display-serif {
+  font-family: var(--font-serif);
+  font-size: var(--text-display-serif);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
 .text-display {
   font-size: var(--text-display);
   font-weight: 700;
@@ -215,13 +235,22 @@ body {
   color: var(--color-gilgal-navy);
 }
 
-/* Overline — smaller than eyebrow, for editorial metadata */
+/* Overline — editorial metadata */
 .text-overline {
   font-size: var(--text-overline);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-slate-400);
+}
+
+/* Overline on dark backgrounds */
+.text-overline-light {
+  font-size: var(--text-overline);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(200 169 110 / 0.85);
 }
 
 .text-body-lg {
@@ -239,25 +268,109 @@ body {
   line-height: 1.6;
 }
 
-/* Divider */
+/* ─── Divider ────────────────────────────────────────────────── */
 .divider {
   height: 1px;
-  background-color: var(--color-slate-200);
+  background-color: var(--color-border);
 }
 
-/* Card base */
+.divider-light {
+  height: 1px;
+  background-color: rgb(255 255 255 / 0.12);
+}
+
+/* ─── Card base ─────────────────────────────────────────────── */
 .card-base {
   background: white;
   border-radius: var(--radius-card);
-  border: 1px solid var(--color-slate-200);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-card);
   transition: box-shadow var(--duration-slow) var(--ease-smooth),
-              transform var(--duration-slow) var(--ease-smooth),
-              border-color var(--duration-slow) var(--ease-smooth);
+              transform var(--duration-slow) var(--ease-smooth);
 }
 
 .card-base:hover {
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
-  border-color: var(--color-slate-300);
+}
+
+/* ─── Button base system ────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-btn);
+  transition: all var(--duration-base) var(--ease-smooth);
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-gilgal-navy);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  padding: 0.8125rem 1.75rem;
+  background-color: var(--color-gilgal-navy);
+  color: #fff;
+  border-color: var(--color-gilgal-navy);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gilgal-navy-dark);
+  border-color: var(--color-gilgal-navy-dark);
+  box-shadow: var(--shadow-btn-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-secondary {
+  padding: 0.8125rem 1.75rem;
+  background-color: transparent;
+  color: #334155;
+  border-color: #C8C4BC;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-gilgal-navy);
+  color: var(--color-gilgal-navy);
+  background-color: rgb(1 53 101 / 0.04);
+}
+
+.btn-secondary:active {
+  background-color: rgb(1 53 101 / 0.07);
+}
+
+/* Ghost on dark backgrounds */
+.btn-ghost-light {
+  padding: 0.8125rem 1.75rem;
+  background-color: transparent;
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.btn-ghost-light:hover {
+  background-color: rgba(255,255,255,0.10);
+  color: #fff;
+  border-color: rgba(255,255,255,0.40);
+}
+
+/* ─── Gold accent rule ──────────────────────────────────────── */
+.gold-rule {
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background-color: var(--color-gold-400);
 }

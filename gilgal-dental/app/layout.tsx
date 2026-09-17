@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -13,22 +13,32 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Gilgal Dental Clinics | Dental Care in Ikoyi, Lagos",
+    default: "Gilgal Dental Clinics | Specialist Dental Care in Ikoyi, Lagos",
     template: "%s | Gilgal Dental Clinics",
   },
   description:
-    "Gilgal Dental Clinics offers comprehensive general, cosmetic, implant, and restorative dental care in Ikoyi, Lagos. Experienced dental team, relaxed environment, and patient-centred care. Book your appointment today.",
+    "Gilgal Dental Clinics offers specialist restorative and family dental care in Ikoyi, Lagos. Dr. Osaze Ugbo — 17+ years experience, 200+ dental implants, trained at Eastman Dental Institute UK. Book a consultation today.",
   keywords: [
     "dental clinic Ikoyi Lagos",
     "dentist Ikoyi",
     "dental care Lagos Nigeria",
     "cosmetic dentistry Lagos",
     "dental implants Lagos",
+    "restorative dentistry Ikoyi",
     "general dentistry Ikoyi",
     "orthodontics Lagos",
-    "Gilgal Dental",
+    "Gilgal Dental Clinics",
+    "Dr Osaze Ugbo",
     "dentist Lagos",
   ],
   authors: [{ name: "Gilgal Dental Clinics" }],
@@ -43,16 +53,15 @@ export const metadata: Metadata = {
     locale: "en_NG",
     url: "https://gilgaldentalclinics.com",
     siteName: "Gilgal Dental Clinics",
-    title: "Gilgal Dental Clinics | Dental Care in Ikoyi, Lagos",
+    title: "Gilgal Dental Clinics | Specialist Dental Care in Ikoyi, Lagos",
     description:
-      "Comprehensive dental care in a relaxed, friendly environment in Ikoyi, Lagos. Book an appointment with Gilgal Dental Clinics today.",
-    // opengraph-image.tsx is auto-discovered by Next.js — no explicit image needed here
+      "Specialist restorative and family dental care in Ikoyi, Lagos. 17+ years experience. Book a consultation with Dr. Osaze Ugbo.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gilgal Dental Clinics | Dental Care in Ikoyi, Lagos",
+    title: "Gilgal Dental Clinics | Specialist Dental Care in Ikoyi, Lagos",
     description:
-      "Comprehensive dental care in a relaxed, friendly environment in Ikoyi, Lagos.",
+      "Specialist restorative and family dental care in Ikoyi, Lagos. 17+ years experience.",
   },
   robots: {
     index: true,
@@ -72,8 +81,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-jakarta)] antialiased bg-[#FDFEFF] text-slate-900">
+    <html lang="en" className={`${plusJakarta.variable} ${cormorant.variable} h-full`}>
+      <body className="min-h-full flex flex-col font-[family-name:var(--font-jakarta)] antialiased bg-[#F9F8F6] text-slate-900">
         <StructuredData />
         <Header />
         <main id="main-content" className="flex-1">

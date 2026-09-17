@@ -179,11 +179,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* CTAs */}
             <div className="px-4 py-6 border-t border-slate-100 space-y-3">
-              <Button href="/book-an-appointment" variant="primary" size="md" className="w-full justify-center" onClick={onClose}>
-                Book an Appointment
+              <Button href="/book-an-appointment" variant="primary" size="md" className="w-full justify-center rounded-[2px]" onClick={onClose}>
+                Book a Consultation
               </Button>
-              <Button href={buildWhatsAppUrl()} variant="whatsapp" size="md" className="w-full justify-center" external>
-                Book via WhatsApp
+              <Button href={buildWhatsAppUrl()} variant="whatsapp" size="md" className="w-full justify-center rounded-[2px]" external>
+                WhatsApp the Clinic
               </Button>
             </div>
           </motion.div>
