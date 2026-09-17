@@ -105,9 +105,8 @@ export default function Hero() {
               className="text-slate-500 mb-10 max-w-[430px]"
               style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}
             >
-              Comprehensive dental care for every stage of life — from routine
-              examinations to dental implants and restorative treatment — delivered by
-              an experienced clinical team in the heart of Ikoyi.
+              Comprehensive dental care for individuals and families in Ikoyi,
+              with particular expertise in restorative dentistry and implant treatment.
             </motion.p>
 
             {/* CTAs — rectangular per spec */}

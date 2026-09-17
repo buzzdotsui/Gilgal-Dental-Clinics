@@ -9,35 +9,24 @@ const stepVariant: Variants = {
 };
 const staggerGrid: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.05, delayChildren: 0 } },
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0 } },
 };
 
-// Concrete explanation of what patients can expect — no fabricated quotes
-const steps = [
+const stages = [
   {
     number: "01",
-    heading: "Consultation",
-    body: "Your first appointment begins with a thorough conversation. We listen to your concerns, discuss your dental history, and understand your goals before any examination begins.",
+    heading: "Understand",
+    body: "Every appointment begins with a proper conversation. We listen carefully to your concerns, review your dental history, and carry out a thorough clinical examination before discussing what we find. Nothing is rushed.",
   },
   {
     number: "02",
-    heading: "Examination & Diagnosis",
-    body: "We carry out a comprehensive clinical examination, supported by appropriate imaging where needed. Every finding is explained clearly and honestly.",
+    heading: "Plan",
+    body: "Where treatment is needed, we walk you through the options available, including expected timelines and costs. You are fully involved in the decision before any work begins. We do not proceed without your informed consent.",
   },
   {
     number: "03",
-    heading: "Treatment Planning",
-    body: "Where treatment is needed, we walk you through all available options, including timelines, costs, and what to expect at each stage. You decide the pace.",
-  },
-  {
-    number: "04",
-    heading: "Treatment",
-    body: "Appointments are structured so you are never rushed. We explain each step before it happens and check in with you throughout.",
-  },
-  {
-    number: "05",
-    heading: "Ongoing Care",
-    body: "After treatment, we provide clear aftercare guidance and schedule appropriate follow-up appointments to monitor your long-term dental health.",
+    heading: "Care",
+    body: "Treatment is carried out at a pace that suits you. We explain each step as we go, check in with you throughout, and provide clear aftercare guidance when you leave. Follow-up is arranged based on your individual needs.",
   },
 ];
 
@@ -47,12 +36,12 @@ export default function PatientExperience() {
 
   return (
     <section
-      className="section-padding bg-[#F9F8F6]"
+      className="section-padding bg-[#F4F3F1]"
       aria-labelledby="experience-heading"
     >
       <div className="container-site">
-        {/* Section header — static, no animation needed */}
-        <div className="max-w-2xl mb-14">
+        {/* Section header */}
+        <div className="max-w-xl mb-14">
           <p className="text-overline mb-4">Patient Experience</p>
           <h2
             id="experience-heading"
@@ -64,53 +53,56 @@ export default function PatientExperience() {
               letterSpacing: "-0.02em",
             }}
           >
-            What to expect at Gilgal
+            A dental visit should feel personal.
           </h2>
           <p
             className="text-slate-500 mt-4"
             style={{ fontSize: "1.0625rem", lineHeight: 1.65 }}
           >
-            From your first visit to your ongoing care, every appointment is
-            structured around clarity, comfort, and your individual needs.
+            From your first visit to ongoing care, every appointment is
+            structured around clarity, communication, and your individual needs.
           </p>
         </div>
 
-        {/* Process steps — stagger only the grid, not the header */}
+        {/* Three stages */}
         <motion.div
           ref={ref}
           variants={staggerGrid}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-[#E2DFD9]"
+          className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-[#E2DFD9]"
         >
-          {steps.map((step, i) => (
+          {stages.map((stage, i) => (
             <motion.div
-              key={step.number}
+              key={stage.number}
               variants={stepVariant}
               className={[
-                "py-8",
-                i < steps.length - 1 ? "lg:pr-8" : "",
-                i > 0 && i % 3 !== 0 ? "lg:pl-8 lg:border-l lg:border-[#E2DFD9]" : "",
-                i > 0 && i % 2 !== 0 ? "sm:pl-8 sm:border-l sm:border-[#E2DFD9] lg:border-none lg:pl-0" : "",
-                i >= 3 ? "lg:border-t lg:border-[#E2DFD9]" : "",
-                i >= 2 ? "sm:border-t sm:border-[#E2DFD9] lg:border-t-0" : "",
+                "py-10",
+                i < stages.length - 1 ? "md:pr-10 md:border-r md:border-[#E2DFD9]" : "",
+                i > 0 ? "md:pl-10" : "",
+                i > 0 ? "border-t border-[#E2DFD9] md:border-t-0" : "",
               ].join(" ")}
             >
               <p
-                className="text-[#013565]/20 font-bold mb-4 tabular-nums"
-                style={{ fontSize: "0.75rem", letterSpacing: "0.08em" }}
+                className="text-[#013565]/20 font-bold mb-5 tabular-nums"
+                style={{ fontSize: "0.75rem", letterSpacing: "0.1em" }}
                 aria-hidden="true"
               >
-                {step.number}
+                {stage.number}
               </p>
               <h3
-                className="text-slate-900 font-semibold mb-3"
-                style={{ fontSize: "1rem", lineHeight: 1.3 }}
+                className="text-slate-900 font-semibold mb-4"
+                style={{
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  fontSize: "clamp(1.25rem, 2vw, 1.625rem)",
+                  fontWeight: 500,
+                  lineHeight: 1.2,
+                }}
               >
-                {step.heading}
+                {stage.heading}
               </h3>
-              <p className="text-slate-500" style={{ fontSize: "0.9375rem", lineHeight: 1.65 }}>
-                {step.body}
+              <p className="text-slate-500" style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
+                {stage.body}
               </p>
             </motion.div>
           ))}

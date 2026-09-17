@@ -29,9 +29,9 @@ export default function Introduction() {
                 letterSpacing: "-0.025em",
               }}
             >
-              Comprehensive care.
+              Dentistry that starts
               <br />
-              Experienced hands.
+              with understanding.
             </h2>
 
             <p
@@ -39,7 +39,7 @@ export default function Introduction() {
               style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}
             >
               At Gilgal Dental Clinics, we deliver high-quality dental care across
-              a broad range of specialties — from routine examinations and preventive
+              a broad range of specialties, from routine examinations and preventive
               care to complex restorative work and dental implants.
             </p>
 
@@ -48,7 +48,7 @@ export default function Introduction() {
               style={{ fontSize: "1rem", lineHeight: 1.65 }}
             >
               Based in Ikoyi, Lagos, our practice is built around clinical excellence
-              and a patient experience that is unhurried, clear, and reassuring,
+              and a patient experience that is unhurried, clear, and reassuring
               for adults and children alike.
             </p>
 
@@ -68,8 +68,8 @@ export default function Introduction() {
               style={{ aspectRatio: "3/4", borderRadius: "4px" }}
             >
               <Image
-                src="/images/hero/group-picture.png"
-                alt="The Gilgal Dental Clinics team, Ikoyi Lagos"
+                src="/images/dental-examination.png"
+                alt="A dental examination in progress at Gilgal Dental Clinics, Ikoyi Lagos"
                 fill
                 className="object-cover object-center"
                 sizes="50vw"

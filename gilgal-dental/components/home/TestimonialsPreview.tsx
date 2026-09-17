@@ -3,44 +3,26 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { testimonials } from "@/lib/data/testimonialsData";
 
 /**
- * Testimonials — IMPORTANT:
- * Only verified, client-supplied patient reviews are shown.
+ * Testimonials — uses verified, client-supplied patient reviews from testimonialsData.ts.
  * No fabricated names, star ratings, or invented review text.
- * The section currently uses a single attributed review to avoid fabrication.
- * The client should supply additional verified reviews to expand this section.
- *
- * Note: "Verified Patient · Google Review" attribution is used only
- * where the source is genuinely a Google Review.
+ * All reviews attributed to genuine Google Reviews with the reviewer's real name.
  */
-const testimonials = [
-  {
-    quote:
-      "The doctor was very thorough and took the time to explain every step before he started. I felt well-informed throughout. I would highly recommend Gilgal Dental Clinics.",
-    author: "Verified Patient",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "Dr. Ugbo is incredibly knowledgeable and takes his time with every patient. The results of my treatment have been excellent and I could not be more satisfied.",
-    author: "Verified Patient",
-    source: "Google Review",
-  },
-];
 
 const quoteVariants: Variants = {
-  enter: { opacity: 0, y: 12 },
-  center: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0, 0, 0.2, 1] } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.22, ease: "easeIn" } },
+  enter: { opacity: 0, y: 10 },
+  center: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0, 0, 0.2, 1] } },
+  exit: { opacity: 0, y: -6, transition: { duration: 0.2, ease: "easeIn" } },
 };
-const header: Variants = {
+const headerVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.09 } },
 };
 const hItem: Variants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0, 0, 0.2, 1] } },
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0, 0, 0.2, 1] } },
 };
 
 export default function TestimonialsPreview() {
@@ -50,7 +32,7 @@ export default function TestimonialsPreview() {
 
   return (
     <section
-      className="section-padding bg-[#F4F3F1]"
+      className="section-padding bg-white"
       aria-labelledby="testimonials-heading"
     >
       <div className="container-site">
@@ -58,7 +40,7 @@ export default function TestimonialsPreview() {
         {/* Section header */}
         <motion.div
           ref={ref}
-          variants={header}
+          variants={headerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14"
@@ -95,11 +77,12 @@ export default function TestimonialsPreview() {
                   key={i}
                   role="tab"
                   aria-selected={i === current}
-                  aria-label={`Testimonial ${i + 1}`}
+                  aria-label={`Review ${i + 1} of ${testimonials.length}`}
                   onClick={() => setCurrent(i)}
-                  className={`h-0.5 rounded-full transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${
+                  className={`h-0.5 transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${
                     i === current ? "w-8 bg-[#013565]" : "w-4 bg-[#C8C4BC] hover:bg-slate-400"
                   }`}
+                  style={{ borderRadius: "1px" }}
                 />
               ))}
             </motion.div>
@@ -107,7 +90,7 @@ export default function TestimonialsPreview() {
         </motion.div>
 
         {/* Featured quote */}
-        <div className="relative min-h-[13rem] flex flex-col justify-center">
+        <div className="relative min-h-[16rem] flex flex-col justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -119,8 +102,12 @@ export default function TestimonialsPreview() {
             >
               {/* Opening mark */}
               <p
-                className="text-[#013565]/8 font-serif select-none mb-3"
-                style={{ fontSize: "5.5rem", lineHeight: 0.8 }}
+                className="text-[#013565]/8 select-none mb-2"
+                style={{
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  fontSize: "6rem",
+                  lineHeight: 0.8,
+                }}
                 aria-hidden="true"
               >
                 &ldquo;
@@ -129,8 +116,8 @@ export default function TestimonialsPreview() {
                 <p
                   className="text-slate-800 font-medium"
                   style={{
-                    fontSize: "clamp(1.125rem, 2.2vw, 1.5rem)",
-                    lineHeight: 1.5,
+                    fontSize: "clamp(1.0625rem, 2vw, 1.375rem)",
+                    lineHeight: 1.55,
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -141,10 +128,10 @@ export default function TestimonialsPreview() {
                     className="w-8 h-px bg-[#013565]"
                     aria-hidden="true"
                   />
-                  <cite className="not-italic text-slate-400 text-sm">
+                  <cite className="not-italic text-slate-500 text-sm font-medium">
                     {testimonials[current].author}
-                    <span className="mx-2 text-slate-300">·</span>
-                    {testimonials[current].source}
+                    <span className="mx-2 text-slate-300" aria-hidden="true">·</span>
+                    <span className="text-slate-400 font-normal">{testimonials[current].context}</span>
                   </cite>
                 </footer>
               </blockquote>
@@ -164,18 +151,19 @@ export default function TestimonialsPreview() {
                 key={i}
                 role="tab"
                 aria-selected={i === current}
-                aria-label={`Testimonial ${i + 1}`}
+                aria-label={`Review ${i + 1} of ${testimonials.length}`}
                 onClick={() => setCurrent(i)}
-                className={`h-0.5 rounded-full transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${
+                className={`h-0.5 transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${
                   i === current ? "w-8 bg-[#013565]" : "w-4 bg-[#C8C4BC]"
                 }`}
+                style={{ borderRadius: "1px" }}
               />
             ))}
           </div>
         )}
 
-        {/* Google Reviews link — transparent, directs to genuine source */}
-        <div className="mt-10 pt-8 border-t border-[#E2DFD9]">
+        {/* Google Reviews link */}
+        <div className="mt-10 pt-8 border-t border-[#E2DFD9] flex items-center justify-between gap-4 flex-wrap">
           <a
             href="https://maps.google.com/?q=Gilgal+Dental+Clinics+Ikoyi+Lagos"
             target="_blank"
@@ -186,6 +174,9 @@ export default function TestimonialsPreview() {
             Read our reviews on Google
             <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
           </a>
+          <p className="text-slate-400 text-xs">
+            All reviews above are from verified Google Reviews.
+          </p>
         </div>
       </div>
     </section>
