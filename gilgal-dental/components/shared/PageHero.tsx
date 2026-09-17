@@ -1,9 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -14,15 +10,20 @@ interface PageHeroProps {
   primaryCTAHref?: string;
   align?: "left" | "center";
   className?: string;
-  dark?: boolean; // navy background variant
+  dark?: boolean;
 }
 
+/**
+ * Interior page hero — server component (no animation).
+ * Typography-led, left-aligned by default.
+ * Responsive: full width on mobile, max-w-3xl on desktop.
+ */
 export function PageHero({
   eyebrow,
   heading,
   subheading,
   showCTAs = false,
-  primaryCTALabel = "Book an Appointment",
+  primaryCTALabel = "Book a Consultation",
   primaryCTAHref = "/book-an-appointment",
   align = "left",
   className,
@@ -31,56 +32,65 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "section-padding",
-        dark ? "bg-[#013565]" : "bg-[#FDFEFF] border-b border-slate-100",
+        "section-padding border-b",
+        dark
+          ? "bg-[#013565] border-white/10"
+          : "bg-[#F4F3F1] border-[#E2DFD9]",
         className
       )}
+      aria-label={`${eyebrow} — page introduction`}
     >
       <div className="container-site">
-        <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className={cn("text-eyebrow mb-3", dark ? "text-sky-300" : "text-[#013565]")}
-          >
+        <div
+          className={cn(
+            "max-w-3xl",
+            align === "center" && "mx-auto text-center"
+          )}
+        >
+          <p className={cn("mb-5", dark ? "text-overline-light" : "text-overline")}>
             {eyebrow}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className={cn("text-h1 mb-4", dark ? "text-white" : "text-slate-900")}
+          </p>
+
+          <h1
+            className={cn(dark ? "text-white" : "text-slate-900")}
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
+              fontWeight: 600,
+              lineHeight: 1.08,
+              letterSpacing: "-0.01em",
+            }}
           >
             {heading}
-          </motion.h1>
+          </h1>
+
           {subheading && (
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className={cn("text-body-lg max-w-2xl", dark ? "text-slate-300" : "text-slate-500", align === "center" && "mx-auto")}
+            <p
+              className={cn(
+                "mt-5 max-w-2xl",
+                dark ? "text-white/55" : "text-slate-500",
+                align === "center" && "mx-auto"
+              )}
+              style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}
             >
               {subheading}
-            </motion.p>
+            </p>
           )}
+
           {showCTAs && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.18 }}
-              className="flex flex-wrap items-center gap-3 mt-8"
-            >
-              <Button
+            <div className="flex flex-wrap items-center gap-3 mt-8">
+              <Link
                 href={primaryCTAHref}
-                variant={dark ? "outline-white" : "primary"}
-                size="lg"
-                className={dark ? "!border-white/30 !text-white hover:!bg-white/15" : ""}
+                className={cn(
+                  "inline-flex items-center px-6 py-3 text-sm font-semibold rounded-[2px] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+                  dark
+                    ? "bg-white text-[#013565] hover:bg-[#F4F3F1] focus-visible:ring-white focus-visible:ring-offset-[#013565]"
+                    : "bg-[#013565] text-white hover:bg-[#0A2E58] focus-visible:ring-[#013565]"
+                )}
               >
                 {primaryCTALabel}
-              </Button>
-              <WhatsAppButton size="lg" />
-            </motion.div>
+              </Link>
+            </div>
           )}
         </div>
       </div>

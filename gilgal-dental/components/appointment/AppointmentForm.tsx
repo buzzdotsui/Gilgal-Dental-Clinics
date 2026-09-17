@@ -74,7 +74,7 @@ function StepProgress({ current }: { current: number }) {
             <li key={step.number} className="flex items-center flex-1">
               <div className="flex flex-col items-center flex-shrink-0">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                  className={`w-7 h-7 rounded-[2px] flex items-center justify-center text-xs font-bold transition-all duration-300 ${
                     done
                       ? "bg-[#013565] text-white"
                       : active
@@ -141,7 +141,7 @@ function Field({
 }
 
 const inputClass =
-  "w-full px-4 py-3 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#013565] focus:border-transparent transition-shadow";
+  "w-full px-4 py-3 text-sm border border-[#E2DFD9] rounded-[2px] bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#013565] focus:border-transparent transition-shadow";
 const inputErrorClass = "border-red-300 focus:ring-red-500";
 
 // ─── Step 1: Your Details ────────────────────────────────────────
@@ -317,7 +317,7 @@ function Step4({ data }: { data: AppointmentFormData }) {
           </div>
         ))}
       </div>
-      <div className="bg-slate-50 border border-slate-200 rounded-xl px-5 py-4">
+      <div className="bg-[#F4F3F1] border border-[#E2DFD9] rounded-[4px] px-5 py-4">
         <p className="text-xs text-slate-500 leading-relaxed">
           <strong className="text-slate-700 font-semibold">Please note:</strong> Appointment
           requests are subject to confirmation by the clinic. After submitting, we will contact you
@@ -349,7 +349,7 @@ function NavButtons({
         type="button"
         onClick={onBack}
         disabled={step === 1}
-        className="px-5 py-2.5 text-sm font-medium text-slate-500 hover:text-slate-700 disabled:opacity-0 disabled:pointer-events-none transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-lg"
+        className="px-5 py-2.5 text-sm font-medium text-slate-500 hover:text-slate-700 disabled:opacity-0 disabled:pointer-events-none transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"
       >
         ← Back
       </button>
@@ -357,7 +357,7 @@ function NavButtons({
         <button
           type="button"
           onClick={onNext}
-          className="px-7 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-lg hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 shadow-sm"
+          className="px-7 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#0A2E58] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
         >
           Continue →
         </button>
@@ -366,7 +366,7 @@ function NavButtons({
           type="button"
           onClick={onNext}
           disabled={submitting}
-          className="px-7 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-lg hover:bg-[#012550] disabled:opacity-70 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 shadow-sm"
+          className="px-7 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#0A2E58] disabled:opacity-70 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
           aria-busy={submitting}
         >
           {submitting ? "Submitting…" : "Submit Request"}
@@ -449,7 +449,7 @@ export default function AppointmentForm() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-[0_4px_24px_-4px_rgb(1_53_101/0.1)] p-6 sm:p-8 lg:p-10">
+    <div className="bg-white rounded-[4px] border border-[#E2DFD9] shadow-[0_1px_3px_0_rgb(0_0_0/0.06),0_4px_16px_0_rgb(0_0_0/0.05)] p-6 sm:p-8 lg:p-10">
       {/* Honeypot — hidden from real users, bots fill it */}
       <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
         <label htmlFor="website">Website (leave blank)</label>

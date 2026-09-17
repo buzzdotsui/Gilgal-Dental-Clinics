@@ -16,40 +16,52 @@ export const metadata: Metadata = {
 
 export default function BookAnAppointmentPage() {
   return (
-    <section className="section-padding bg-[#FDFEFF]" aria-label="Book an appointment">
+    <section
+      className="section-padding bg-[#F4F3F1] border-b border-[#E2DFD9]"
+      aria-label="Book an appointment"
+    >
       <div className="container-site">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
 
           {/* Left: intro */}
           <div className="lg:col-span-2 lg:sticky lg:top-28">
-            <p className="text-eyebrow mb-3">Request an Appointment</p>
-            <h1 className="text-h1 text-slate-900 mb-4">
+            <p className="text-overline mb-5">Request an Appointment</p>
+            <h1
+              className="text-slate-900 mb-4"
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 600,
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
+              }}
+            >
               Book an Appointment
             </h1>
-            <p className="text-body text-slate-500 mb-6 leading-relaxed">
+            <p className="text-slate-500 mb-7 leading-relaxed" style={{ fontSize: "1rem" }}>
               Complete the form to request an appointment at Gilgal Dental Clinics. We will
               contact you to confirm your preferred date and time.
             </p>
 
-            <div className="bg-[#013565]/5 border border-[#013565]/10 rounded-xl p-5 mb-6">
-              <p className="text-xs font-semibold text-[#013565] uppercase tracking-wider mb-2">
-                Please note
-              </p>
-              <p className="text-body-sm text-slate-600 leading-relaxed">
+            {/* Note */}
+            <div className="border-l-2 border-[#013565]/20 pl-5 mb-7">
+              <p className="text-[0.8125rem] font-semibold text-[#013565] mb-1">Please note</p>
+              <p className="text-slate-500 text-sm leading-relaxed">
                 Appointment requests are subject to confirmation by the clinic. Submitting this
                 form does not automatically book a specific slot.
               </p>
             </div>
 
-            <div className="space-y-3 text-sm text-slate-500">
+            {/* Contact details */}
+            <div className="border-t border-[#E2DFD9] pt-6 space-y-2 text-sm text-slate-500">
               <p>
-                <span className="font-medium text-slate-700">Phone:</span>{" "}
+                <span className="font-medium text-slate-700">Phone: </span>
                 <a href="tel:+2348099906233" className="hover:text-[#013565] transition-colors">
                   +234 809 990 6233
                 </a>
               </p>
               <p>
-                <span className="font-medium text-slate-700">Email:</span>{" "}
+                <span className="font-medium text-slate-700">Email: </span>
                 <a
                   href="mailto:gilgaldentalclinics@gmail.com"
                   className="hover:text-[#013565] transition-colors break-all"
@@ -58,8 +70,8 @@ export default function BookAnAppointmentPage() {
                 </a>
               </p>
               <p>
-                <span className="font-medium text-slate-700">Hours:</span> Mon–Fri 9AM–6PM,
-                Sat 9AM–3PM
+                <span className="font-medium text-slate-700">Hours: </span>
+                Mon&ndash;Fri 9AM&ndash;6PM, Sat 9AM&ndash;3PM
               </p>
             </div>
           </div>

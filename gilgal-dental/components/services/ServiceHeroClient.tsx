@@ -1,9 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { services } from "@/lib/data/servicesData";
+import Link from "next/link";
+import { buildWhatsAppUrl } from "@/lib/data/clinicInfo";
 
 interface ServiceHeroClientProps {
   title: string;
@@ -16,59 +14,55 @@ export default function ServiceHeroClient({
   title,
   heroHeadline,
   heroSubheading,
-  slug,
 }: ServiceHeroClientProps) {
-  // Resolve the icon on the client side using the slug — avoids server→client function serialization
-  const service = services.find((s) => s.slug === slug);
-  const Icon = service?.icon;
+  const whatsappUrl = buildWhatsAppUrl();
 
   return (
-    <section className="section-padding bg-[#FDFEFF] border-b border-slate-100" aria-label={`${title} — hero`}>
+    <section
+      className="section-padding bg-[#F4F3F1] border-b border-[#E2DFD9]"
+      aria-label={`${title} — overview`}
+    >
       <div className="container-site">
         <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2.5 mb-5"
-          >
-            {Icon && (
-              <div className="w-8 h-8 rounded-lg bg-[#013565]/8 flex items-center justify-center" aria-hidden="true">
-                <Icon className="w-4 h-4 text-[#013565]" strokeWidth={1.75} />
-              </div>
-            )}
-            <p className="text-eyebrow">{title}</p>
-          </motion.div>
+          <p className="text-overline mb-5">{title}</p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="text-h1 text-slate-900 mb-4"
+          <h1
+            className="text-slate-900 mb-5"
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
+              fontWeight: 600,
+              lineHeight: 1.08,
+              letterSpacing: "-0.01em",
+            }}
           >
             {heroHeadline}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-body-lg text-slate-500 mb-8 max-w-2xl"
+          <p
+            className="text-slate-500 mb-9 max-w-2xl"
+            style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}
           >
             {heroSubheading}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex flex-wrap items-center gap-3"
-          >
-            <Button href="/book-an-appointment" variant="primary" size="lg">
-              Book an Appointment
-            </Button>
-            <WhatsAppButton size="lg" />
-          </motion.div>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/book-an-appointment"
+              className="inline-flex items-center px-6 py-3 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#0A2E58] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
+            >
+              Book a Consultation
+            </Link>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 border border-[#C8C4BC] text-slate-700 text-sm font-semibold rounded-[2px] hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
+              aria-label="Message us on WhatsApp"
+            >
+              WhatsApp Us
+            </a>
+          </div>
         </div>
       </div>
     </section>

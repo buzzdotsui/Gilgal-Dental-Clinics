@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface FAQItem {
@@ -16,36 +15,59 @@ interface FAQAccordionProps {
   className?: string;
 }
 
-function FAQAccordionItem({ item, isOpen, onToggle }: {
+function FAQAccordionItem({
+  item,
+  isOpen,
+  onToggle,
+}: {
   item: FAQItem;
   isOpen: boolean;
   onToggle: () => void;
 }) {
   return (
-    <div className={cn("border border-slate-200 rounded-xl overflow-hidden transition-colors duration-200", isOpen && "border-[#013565]/20")}>
+    <div className="border-b border-[#E2DFD9] last:border-b-0">
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${item.id}`}
         id={`faq-trigger-${item.id}`}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-inset"
+        className="w-full flex items-center justify-between gap-6 py-5 text-left hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#013565]"
       >
-        <span className="font-semibold text-slate-900 text-sm md:text-base leading-snug pr-2">
-          {item.question}
-        </span>
         <span
           className={cn(
-            "w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-colors duration-200",
-            isOpen ? "bg-[#013565] text-white" : "bg-slate-100 text-slate-500"
+            "font-medium text-sm md:text-base leading-snug transition-colors duration-150",
+            isOpen ? "text-[#013565]" : "text-slate-800"
+          )}
+        >
+          {item.question}
+        </span>
+        {/* Rectangular +/- indicator */}
+        <span
+          className={cn(
+            "w-6 h-6 flex-shrink-0 flex items-center justify-center border transition-all duration-200 rounded-[2px]",
+            isOpen
+              ? "bg-[#013565] border-[#013565] text-white"
+              : "border-[#C8C4BC] text-slate-400"
           )}
           aria-hidden="true"
         >
-          {isOpen ? (
-            <Minus className="w-3.5 h-3.5" />
-          ) : (
-            <Plus className="w-3.5 h-3.5" />
-          )}
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            fill="none"
+            aria-hidden="true"
+          >
+            {isOpen ? (
+              <line x1="1" y1="5" x2="9" y2="5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            ) : (
+              <>
+                <line x1="5" y1="1" x2="5" y2="9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="1" y1="5" x2="9" y2="5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </>
+            )}
+          </svg>
         </span>
       </button>
 
@@ -60,13 +82,13 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{
-              height: { duration: 0.3, ease: [0, 0, 0.2, 1] },
-              opacity: { duration: 0.22, ease: [0, 0, 0.2, 1] },
+              height: { duration: 0.28, ease: [0, 0, 0.2, 1] },
+              opacity: { duration: 0.2, ease: [0, 0, 0.2, 1] },
             }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5 pt-1 border-t border-slate-100 bg-white">
-              <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+            <div className="pb-5">
+              <p className="text-slate-500 text-sm md:text-[0.9375rem] leading-relaxed">
                 {item.answer}
               </p>
             </div>
@@ -85,7 +107,10 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
   };
 
   return (
-    <div className={cn("space-y-3", className)} role="list">
+    <div
+      className={cn("border-t border-[#E2DFD9]", className)}
+      role="list"
+    >
       {items.map((item) => (
         <div key={item.id} role="listitem">
           <FAQAccordionItem

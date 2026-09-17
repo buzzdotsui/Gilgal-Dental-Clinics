@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { InternalCTA } from "@/components/shared/InternalCTA";
 import { services } from "@/lib/data/servicesData";
@@ -24,42 +23,51 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Our Services"
         heading="Comprehensive dental care for every stage of your smile."
-        subheading="Gilgal Dental Clinics offers a broad range of dental services — from routine care and prevention to restorative treatment, implants, orthodontics and cosmetic dentistry."
+        subheading="Gilgal Dental Clinics offers a broad range of services — from routine care and prevention to restorative treatment, implants, orthodontics and cosmetic dentistry."
       />
 
-      <section className="section-padding bg-[#FDFEFF]" aria-label="Service areas">
+      <section className="section-padding bg-white" aria-label="Service areas">
         <div className="container-site">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-6">
-            {services.map((service, i) => {
-              const Icon = service.icon;
-              return (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="group card-base bg-white p-7 flex flex-col gap-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 rounded-xl"
-                  aria-label={`${service.title} — learn more`}
+          <div className="border-t border-[#E2DFD9]">
+            {services.map((service, i) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className={`group flex items-start justify-between gap-8 py-7 transition-colors duration-150 hover:bg-[#F4F3F1] -mx-6 px-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#013565] ${
+                  i < services.length - 1 ? "border-b border-[#E2DFD9]" : ""
+                }`}
+                aria-label={`${service.title} — learn more`}
+              >
+                <div className="flex-1 grid grid-cols-1 lg:grid-cols-[3rem_16rem_1fr] gap-3 lg:gap-10 items-baseline">
+                  <p
+                    className="text-[#013565]/25 font-bold tabular-nums flex-shrink-0"
+                    style={{ fontSize: "0.75rem", letterSpacing: "0.1em" }}
+                    aria-hidden="true"
+                  >
+                    {service.number}
+                  </p>
+                  <h2
+                    className="text-slate-900 font-semibold group-hover:text-[#013565] transition-colors duration-150"
+                    style={{ fontSize: "0.9375rem", lineHeight: 1.4 }}
+                  >
+                    {service.title}
+                  </h2>
+                  <p className="text-slate-500" style={{ fontSize: "0.9375rem", lineHeight: 1.65 }}>
+                    {service.shortDescription}
+                  </p>
+                </div>
+
+                {/* Arrow */}
+                <span
+                  className="flex-shrink-0 mt-0.5 text-slate-300 group-hover:text-[#013565] group-hover:translate-x-1 transition-all duration-200"
+                  aria-hidden="true"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-[#013565]/8 group-hover:bg-[#013565]/15 flex items-center justify-center flex-shrink-0 transition-colors duration-200" aria-hidden="true">
-                      <Icon className="w-5 h-5 text-[#013565]" strokeWidth={1.75} />
-                    </div>
-                    <span className="text-xs font-semibold text-slate-300 tabular-nums pt-1">{service.number}</span>
-                  </div>
-
-                  <div className="flex-1">
-                    <h2 className="font-semibold text-slate-900 text-base mb-2 group-hover:text-[#013565] transition-colors duration-200">
-                      {service.title}
-                    </h2>
-                    <p className="text-body-sm text-slate-500 leading-relaxed">{service.shortDescription}</p>
-                  </div>
-
-                  <div className="flex items-center gap-1.5 text-[#013565] text-sm font-semibold">
-                    Learn more
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-                  </div>
-                </Link>
-              );
-            })}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

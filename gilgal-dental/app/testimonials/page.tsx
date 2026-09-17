@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Quote } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { InternalCTA } from "@/components/shared/InternalCTA";
 import { testimonials } from "@/lib/data/testimonialsData";
@@ -26,29 +25,43 @@ export default function TestimonialsPage() {
         subheading="The following reviews have been shared by patients of Gilgal Dental Clinics. We are grateful to everyone who takes the time to share their experience."
       />
 
-      <section className="section-padding bg-[#FDFEFF]" aria-label="Patient reviews">
+      <section className="section-padding bg-white" aria-label="Patient reviews">
         <div className="container-site">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {testimonials.map((t) => (
+
+          {/* Ruled testimonial rows */}
+          <div className="border-t border-[#E2DFD9]">
+            {testimonials.map((t, i) => (
               <article
                 key={t.id}
-                className="card-base bg-white p-7 flex flex-col gap-5"
+                className={`grid grid-cols-1 lg:grid-cols-[14rem_1fr] gap-6 lg:gap-16 py-10 ${
+                  i < testimonials.length - 1 ? "border-b border-[#E2DFD9]" : ""
+                }`}
                 aria-label={`Review from ${t.author}`}
               >
-                <Quote className="w-7 h-7 text-[#013565]/20 flex-shrink-0" aria-hidden="true" />
-                <blockquote className="flex-1">
-                  <p className="text-body text-slate-700 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+                {/* Author meta */}
+                <div>
+                  <p className="font-semibold text-slate-900" style={{ fontSize: "0.9375rem" }}>
+                    {t.author}
+                  </p>
+                  <p className="text-slate-400 text-xs mt-1">{t.context}</p>
+                </div>
+
+                {/* Quote */}
+                <blockquote>
+                  <p
+                    className="text-slate-600"
+                    style={{ fontSize: "1.0625rem", lineHeight: 1.75, fontStyle: "italic" }}
+                  >
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
                 </blockquote>
-                <footer className="border-t border-slate-100 pt-4">
-                  <p className="font-semibold text-slate-900 text-sm">{t.author}</p>
-                  <p className="text-xs text-slate-400 mt-0.5">{t.context}</p>
-                </footer>
               </article>
             ))}
           </div>
 
-          <div className="mt-14 pt-10 border-t border-slate-200 max-w-xl mx-auto text-center">
-            <p className="text-body-sm text-slate-500 leading-relaxed">
+          {/* Disclaimer */}
+          <div className="mt-14 pt-10 border-t border-[#E2DFD9] max-w-xl">
+            <p className="text-slate-400" style={{ fontSize: "0.875rem", lineHeight: 1.65 }}>
               These reviews are shared as received. If you have visited Gilgal Dental Clinics and
               would like to share your experience, you are welcome to leave a review on Google.
             </p>
