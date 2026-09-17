@@ -39,7 +39,7 @@ export default function OurDentistPage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 {/* Name badge */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/50 shadow-lg">
+                <div className="absolute bottom-4 left-4 right-4 bg-white rounded-[4px] p-4 border border-slate-100 shadow-sm">
                   <p className="font-bold text-slate-900 text-base">{dentistData.name}</p>
                   <p className="text-[#013565] text-sm font-medium">{dentistData.title}</p>
                 </div>

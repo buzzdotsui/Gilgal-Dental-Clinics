@@ -15,7 +15,7 @@ export const testimonials: Testimonial[] = [
     id: "ife-dixon",
     author: "Ife Dixon",
     quote:
-      "Very thorough examination and Dr Ugbo explained everything clearly before starting any treatment. I felt completely at ease. The clinic is clean and comfortable — I would definitely recommend it.",
+      "Very thorough examination and Dr Ugbo explained everything clearly before starting any treatment. I felt completely at ease. The clinic is clean and comfortable. I would definitely recommend it.",
     context: "Google Review",
   },
   {

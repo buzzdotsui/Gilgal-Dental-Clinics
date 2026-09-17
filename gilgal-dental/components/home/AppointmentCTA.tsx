@@ -1,47 +1,24 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { motion, useInView, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 const WA_URL = `https://wa.me/2348099906233?text=${encodeURIComponent(
   "Hello Gilgal Dental Clinics, I would like to book a consultation. Please let me know the available dates and times."
 )}`;
 
-const container: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.09 } },
-};
-const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0, 0, 0.2, 1] } },
-};
-
 export default function AppointmentCTA() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" as never });
-
   return (
     <section
       className="section-padding bg-[#F9F8F6] border-y border-[#E2DFD9]"
       aria-labelledby="cta-heading"
     >
       <div className="container-site">
-        <motion.div
-          ref={ref}
-          variants={container}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="max-w-2xl"
-        >
-          <motion.p variants={item} className="text-overline mb-5">
-            Book an appointment
-          </motion.p>
+        <div className="max-w-2xl">
+          <p className="text-overline mb-5">Book an appointment</p>
 
-          <motion.h2
+          <h2
             id="cta-heading"
-            variants={item}
             className="text-slate-900 mb-5"
             style={{
               fontSize: "clamp(1.75rem, 4vw, 3rem)",
@@ -53,18 +30,17 @@ export default function AppointmentCTA() {
             Your next dental visit
             <br />
             <span className="text-[#013565]">starts here.</span>
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            variants={item}
+          <p
             className="text-slate-500 mb-10"
             style={{ fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "480px" }}
           >
             Request a consultation at Gilgal Dental Clinics in Ikoyi, Lagos.
             We&rsquo;ll confirm your preferred date and time as soon as possible.
-          </motion.p>
+          </p>
 
-          <motion.div variants={item} className="flex flex-wrap items-center gap-3 mb-10">
+          <div className="flex flex-wrap items-center gap-3 mb-10">
             <Link
               href="/book-an-appointment"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] border border-[#013565] hover:bg-[#0A2E58] hover:border-[#0A2E58] hover:-translate-y-px active:translate-y-0 shadow-[0_1px_3px_0_rgb(1_53_101/0.25)] hover:shadow-[0_4px_12px_0_rgb(1_53_101/0.30)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
@@ -81,12 +57,9 @@ export default function AppointmentCTA() {
             >
               WhatsApp the Clinic
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={item}
-            className="flex flex-wrap items-center gap-5 text-sm text-slate-400 pt-8 border-t border-[#E2DFD9]"
-          >
+          <div className="flex flex-wrap items-center gap-5 text-sm text-slate-400 pt-8 border-t border-[#E2DFD9]">
             <a
               href="tel:+2348099906233"
               className="hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:underline"
@@ -102,8 +75,8 @@ export default function AppointmentCTA() {
             >
               gilgaldentalclinics@gmail.com
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
