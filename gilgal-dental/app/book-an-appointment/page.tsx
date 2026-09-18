@@ -44,7 +44,7 @@ export default function BookAnAppointmentPage() {
               contact you to confirm your preferred date and time.
             </p>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[4px] bg-slate-100 mb-7">
-              <Image src="/images/phase35/consultation.jpg" alt="Dentist discussing treatment with a patient" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
+              <Image src="/images/phase35/consultation.jpg" alt="Dentist discussing treatment with a patient" fill className="object-contain" sizes="(max-width: 1024px) 100vw, 40vw" />
             </div>
 
             {/* Note */}

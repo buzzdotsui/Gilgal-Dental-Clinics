@@ -63,7 +63,7 @@ export default function DoctorPreview() {
                 src="/images/dr-ugbo.png"
                 alt="Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics, Ikoyi Lagos"
                 fill
-                className="object-cover object-top"
+                className="object-contain object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

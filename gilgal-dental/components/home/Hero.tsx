@@ -193,7 +193,7 @@ export default function Hero() {
                     src={slides[current].src}
                     alt={slides[current].alt}
                     fill
-                    className="object-cover object-top"
+                    className="object-contain object-center"
                     preload={current === 0}
                     sizes="(max-width: 1024px) 100vw, 500px"
                   />

@@ -34,7 +34,7 @@ export function ServicePageLayout({ service, relatedServices }: ServicePageLayou
       <section className="bg-white" aria-label={`${service.title} treatment context`}>
         <div className="container-site py-8 lg:py-12">
           <div className="relative aspect-[16/7] w-full overflow-hidden rounded-[4px] bg-slate-100">
-            <Image src={service.image} alt={service.imageAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 1184px" />
+            <Image src={service.image} alt={service.imageAlt} fill className="object-contain" sizes="(max-width: 768px) 100vw, 1184px" />
           </div>
         </div>
       </section>

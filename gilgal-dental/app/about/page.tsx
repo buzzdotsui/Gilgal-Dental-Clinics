@@ -33,7 +33,7 @@ export default function AboutPage() {
       <section className="bg-white" aria-label="Gilgal clinical environment">
         <div className="container-site py-8 lg:py-12">
           <div className="relative aspect-[16/7] overflow-hidden rounded-[4px] bg-slate-100">
-            <Image src="/images/phase35/equipment.jpeg" alt="Dental equipment prepared for clinical care at Gilgal Dental Clinics" fill className="object-cover" sizes="(max-width: 768px) 100vw, 1184px" />
+            <Image src="/images/phase35/equipment.jpeg" alt="Dental equipment prepared for clinical care at Gilgal Dental Clinics" fill className="object-contain" sizes="(max-width: 768px) 100vw, 1184px" />
           </div>
         </div>
       </section>

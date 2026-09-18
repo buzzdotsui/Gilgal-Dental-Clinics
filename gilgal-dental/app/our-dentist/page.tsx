@@ -35,7 +35,7 @@ export default function OurDentistPage() {
                   src="/images/phase35/dr-osaze-ugbo.png"
                   alt={dentistData.imageAlt}
                   fill
-                  className="object-cover object-top"
+                  className="object-contain object-center"
                   preload
                   sizes="(max-width: 1024px) 100vw, 340px"
                 />

@@ -66,10 +66,10 @@ export default function Introduction() {
               style={{ aspectRatio: "3/4", borderRadius: "4px" }}
             >
               <Image
-                src="/images/dental-examination.png"
-                alt="A dental examination in progress at Gilgal Dental Clinics, Ikoyi Lagos"
+                src="/images/phase35/general-dentistry.png"
+                alt="Dental hygienist examining a patient during a preventive dental visit"
                 fill
-                className="object-cover object-center"
+                className="object-contain object-center"
                 sizes="50vw"
               />
               <div

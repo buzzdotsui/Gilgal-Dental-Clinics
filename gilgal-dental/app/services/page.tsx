@@ -29,7 +29,7 @@ export default function ServicesPage() {
       <section className="bg-white" aria-label="Restorative treatment at Gilgal">
         <div className="container-site pt-8 lg:pt-12">
           <div className="relative aspect-[16/6] overflow-hidden rounded-[4px] bg-slate-100">
-            <Image src="/images/phase35/smile-treatment.jpg" alt="Dentist discussing restorative treatment with a patient" fill className="object-cover" sizes="(max-width: 768px) 100vw, 1184px" />
+            <Image src="/images/phase35/smile-treatment.jpg" alt="Dentist discussing restorative treatment with a patient" fill className="object-contain" sizes="(max-width: 768px) 100vw, 1184px" />
           </div>
         </div>
       </section>
