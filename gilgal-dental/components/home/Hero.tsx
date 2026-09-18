@@ -6,24 +6,19 @@ import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-// Dr. Ugbo portrait leads as first slide per design brief.
-// Building exterior (slideshow-1.jpg) is removed from primary position.
+// Clinic imagery establishes the practice; the doctor's portrait is reserved for /our-dentist.
 const slides = [
   {
-    src: "/images/dr-ugbo.png",
-    alt: "Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics, Ikoyi Lagos",
+    src: "/images/phase35/clinic-1.png",
+    alt: "Gilgal Dental Clinics exterior in Ikoyi, Lagos",
   },
   {
-    src: "/images/hero/slideshow-2.png",
+    src: "/images/phase35/clinic-2.png",
     alt: "Gilgal Dental Clinics — modern dental treatment room, Ikoyi Lagos",
   },
   {
-    src: "/images/hero/slideshow-3.png",
+    src: "/images/phase35/clinic-3.png",
     alt: "Gilgal Dental Clinics — professional clinical environment",
-  },
-  {
-    src: "/images/hero/group-picture.png",
-    alt: "Gilgal Dental Clinics — clinical team",
   },
 ];
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import AppointmentForm from "@/components/appointment/AppointmentForm";
 
 export const metadata: Metadata = {
@@ -42,6 +43,9 @@ export default function BookAnAppointmentPage() {
               Complete the form to request an appointment at Gilgal Dental Clinics. We will
               contact you to confirm your preferred date and time.
             </p>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[4px] bg-slate-100 mb-7">
+              <Image src="/images/phase35/consultation.jpg" alt="Dentist discussing treatment with a patient" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
+            </div>
 
             {/* Note */}
             <div className="border-l-2 border-[#013565]/20 pl-5 mb-7">

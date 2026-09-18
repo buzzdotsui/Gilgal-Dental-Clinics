@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/shared/PageHero";
 import { InternalCTA } from "@/components/shared/InternalCTA";
 import AboutPhilosophy from "@/components/about/AboutPhilosophy";
@@ -29,6 +30,13 @@ export default function AboutPage() {
         primaryCTALabel="Book an Appointment"
         primaryCTAHref="/book-an-appointment"
       />
+      <section className="bg-white" aria-label="Gilgal clinical environment">
+        <div className="container-site py-8 lg:py-12">
+          <div className="relative aspect-[16/7] overflow-hidden rounded-[4px] bg-slate-100">
+            <Image src="/images/phase35/equipment.jpeg" alt="Dental equipment prepared for clinical care at Gilgal Dental Clinics" fill className="object-cover" sizes="(max-width: 768px) 100vw, 1184px" />
+          </div>
+        </div>
+      </section>
       <AboutPhilosophy />
       <AboutWhyChoose />
       <AboutContact />

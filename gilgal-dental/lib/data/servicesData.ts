@@ -8,6 +8,8 @@ export interface ServiceData {
   icon: LucideIcon;
   number: string;
   title: string;
+  image: string;
+  imageAlt: string;
   tagline: string;
   shortDescription: string;
   heroHeadline: string;
@@ -27,6 +29,8 @@ export const services: ServiceData[] = [
     icon: Stethoscope,
     number: "01",
     title: "General Dentistry",
+    image: "/images/phase35/general-dentistry.png",
+    imageAlt: "Dental hygienist examining a patient during a preventive dental visit",
     tagline: "Routine care that keeps your smile healthy.",
     shortDescription: "Routine examinations, cleanings, fillings, and preventive care to maintain your oral health.",
     heroHeadline: "Your oral health, in experienced hands.",
@@ -89,6 +93,8 @@ export const services: ServiceData[] = [
     icon: Bone,
     number: "02",
     title: "Implant Dentistry",
+    image: "/images/phase35/implant-treatment.jpg",
+    imageAlt: "Dentist providing active treatment to a patient in a dental chair",
     tagline: "A stable, long-term solution for missing teeth.",
     shortDescription: "Natural-looking dental implants to replace missing teeth with lasting, stable results.",
     heroHeadline: "Replacing missing teeth with confidence.",
@@ -139,6 +145,8 @@ export const services: ServiceData[] = [
     icon: Sparkles,
     number: "03",
     title: "Cosmetic Dentistry",
+    image: "/images/phase35/cosmetic-care.jpg",
+    imageAlt: "Dentist providing attentive clinical care to a patient",
     tagline: "Smile improvements that feel natural.",
     shortDescription: "Smile-enhancing treatments including veneers, bonding, and aesthetic improvements.",
     heroHeadline: "A smile you feel comfortable with.",
@@ -185,6 +193,8 @@ export const services: ServiceData[] = [
     icon: AlignCenter,
     number: "04",
     title: "Orthodontics",
+    image: "/images/phase35/braces.webp",
+    imageAlt: "Close-up of orthodontic braces used to align teeth",
     tagline: "Straighter teeth, better alignment.",
     shortDescription: "Teeth straightening solutions and orthodontic assessment for patients of all ages.",
     heroHeadline: "Teeth alignment, assessed and planned carefully.",
@@ -235,6 +245,8 @@ export const services: ServiceData[] = [
     icon: RefreshCw,
     number: "05",
     title: "Restorative Dentistry",
+    image: "/images/phase35/restorative-treatment.jpg",
+    imageAlt: "Dentist carrying out a restorative filling procedure",
     tagline: "Restoring function, health and confidence.",
     shortDescription: "Crowns, bridges, dentures, and restorations to rebuild and strengthen damaged or missing teeth.",
     heroHeadline: "Rebuilding dental health, one tooth at a time.",
@@ -289,6 +301,8 @@ export const services: ServiceData[] = [
     icon: Baby,
     number: "06",
     title: "Children's Dentistry",
+    image: "/images/phase35/childrens-dentistry.jpg",
+    imageAlt: "Child attending a friendly dental check-up",
     tagline: "Gentle dental care for your little ones.",
     shortDescription: "Patient, gentle dental care designed to help children feel comfortable and build healthy habits.",
     heroHeadline: "Caring for young smiles, gently.",
@@ -339,6 +353,8 @@ export const services: ServiceData[] = [
     icon: Zap,
     number: "07",
     title: "Laser Teeth Whitening",
+    image: "/images/phase35/whitening-treatment.jpg",
+    imageAlt: "Clinical dental treatment in progress",
     tagline: "Professional whitening, in the clinic.",
     shortDescription: "Professional in-clinic laser teeth whitening for a noticeably brighter smile.",
     heroHeadline: "A brighter smile, professionally delivered.",

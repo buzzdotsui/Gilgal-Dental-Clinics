@@ -32,7 +32,7 @@ export default function OurDentistPage() {
             <div className="w-full lg:w-[340px] flex-shrink-0 order-2 lg:order-1">
               <div className="relative overflow-hidden aspect-[3/4] max-h-[440px] bg-slate-100 rounded-[4px]">
                 <Image
-                  src={dentistData.image}
+                  src="/images/phase35/dr-osaze-ugbo.png"
                   alt={dentistData.imageAlt}
                   fill
                   className="object-cover object-top"

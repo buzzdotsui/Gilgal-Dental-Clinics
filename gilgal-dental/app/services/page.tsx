@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/shared/PageHero";
 import { InternalCTA } from "@/components/shared/InternalCTA";
@@ -25,6 +26,13 @@ export default function ServicesPage() {
         heading="Comprehensive dental care for every stage of your smile."
         subheading="Gilgal Dental Clinics offers a broad range of services — from routine care and prevention to restorative treatment, implants, orthodontics and cosmetic dentistry."
       />
+      <section className="bg-white" aria-label="Restorative treatment at Gilgal">
+        <div className="container-site pt-8 lg:pt-12">
+          <div className="relative aspect-[16/6] overflow-hidden rounded-[4px] bg-slate-100">
+            <Image src="/images/phase35/smile-treatment.jpg" alt="Dentist discussing restorative treatment with a patient" fill className="object-cover" sizes="(max-width: 768px) 100vw, 1184px" />
+          </div>
+        </div>
+      </section>
 
       <section className="section-padding bg-white" aria-label="Service areas">
         <div className="container-site">

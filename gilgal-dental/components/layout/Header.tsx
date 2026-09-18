@@ -126,7 +126,7 @@ export default function Header() {
           >
             <div className="relative w-8 h-8 rounded-full overflow-hidden ring-1 ring-slate-200 flex-shrink-0">
               <Image
-                src="/images/logo.jpg"
+                src="/images/phase35/logo.jpg"
                 alt="Gilgal Dental Clinics logo"
                 fill
                 className="object-contain"
@@ -276,7 +276,7 @@ export default function Header() {
                   aria-label="Gilgal Dental Clinics — Home"
                 >
                   <div className="relative w-8 h-8 rounded-full overflow-hidden ring-1 ring-slate-200">
-                    <Image src="/images/logo.jpg" alt="Gilgal Dental Clinics logo" fill className="object-contain" sizes="32px" />
+                    <Image src="/images/phase35/logo.jpg" alt="Gilgal Dental Clinics logo" fill className="object-contain" sizes="32px" />
                   </div>
                   <span className="font-semibold text-slate-900 text-sm">Gilgal Dental Clinics</span>
                 </Link>

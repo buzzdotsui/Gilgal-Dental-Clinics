@@ -1,6 +1,7 @@
 // Server Component — safe to receive ServiceData (with icon functions)
 // because this runs on the server and never serializes to the client.
 import Link from "next/link";
+import Image from "next/image";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { InternalCTA } from "@/components/shared/InternalCTA";
@@ -30,6 +31,13 @@ export function ServicePageLayout({ service, relatedServices }: ServicePageLayou
         heroSubheading={service.heroSubheading}
         slug={service.slug}
       />
+      <section className="bg-white" aria-label={`${service.title} treatment context`}>
+        <div className="container-site py-8 lg:py-12">
+          <div className="relative aspect-[16/7] w-full overflow-hidden rounded-[4px] bg-slate-100">
+            <Image src={service.image} alt={service.imageAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 1184px" />
+          </div>
+        </div>
+      </section>
 
       {/* ── Introduction + Patient Experience ── */}
       <section className="section-padding bg-white" aria-labelledby={`${service.slug}-intro-heading`}>

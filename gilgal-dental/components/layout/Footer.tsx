@@ -43,7 +43,7 @@ export default function Footer() {
             >
               <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/15 flex-shrink-0">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/phase35/logo.jpg"
                   alt="Gilgal Dental Clinics logo"
                   fill
                   className="object-contain"
@@ -196,18 +196,6 @@ export default function Footer() {
             © {currentYear} Gilgal Dental Clinics. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            <Link
-              href="/privacy-policy"
-              className="text-white/65 hover:text-white text-xs transition-colors focus-visible:outline-none focus-visible:underline"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-white/65 hover:text-white text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-[2px]"
-            >
-              Terms &amp; Conditions
-            </Link>
             <a
               href="https://www.instagram.com/gilgaldental.clinic/"
               target="_blank"
