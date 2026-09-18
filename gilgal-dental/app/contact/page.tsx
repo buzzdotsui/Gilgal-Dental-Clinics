@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/shared/PageHero";
 import { InternalCTA } from "@/components/shared/InternalCTA";
 import { clinicInfo, buildWhatsAppUrl } from "@/lib/data/clinicInfo";
@@ -47,7 +48,7 @@ export default function ContactPage() {
                       Ikoyi, Lagos, Nigeria
                     </address>
                     <a
-                      href="https://www.google.com/maps/search/?api=1&query=2+Olawale+Daodu+Road+off+Kingsway+Road+Ikoyi+Lagos+Nigeria"
+                      href={clinicInfo.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-3 text-xs font-semibold text-[#013565] hover:underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"
@@ -161,12 +162,12 @@ export default function ContactPage() {
                   Submit a request and we will contact you to confirm your preferred date and time.
                 </p>
                 <div className="flex flex-col gap-3">
-                  <a
+                  <Link
                     href="/book-an-appointment"
                     className="inline-flex items-center justify-center px-6 py-3 bg-white text-[#013565] text-sm font-semibold rounded-[2px] hover:bg-[#F4F3F1] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
                     Book an Appointment
-                  </a>
+                  </Link>
                   <a
                     href={whatsappUrl}
                     target="_blank"

@@ -208,6 +208,7 @@ export default function Header() {
             </div>
 
             <Link href="/our-dentist" className={navLinkClass("/our-dentist")} aria-current={isActive("/our-dentist") ? "page" : undefined}>Our Dentist</Link>
+            <Link href="/testimonials" className={navLinkClass("/testimonials")} aria-current={isActive("/testimonials") ? "page" : undefined}>Testimonials</Link>
             <Link href="/faqs" className={navLinkClass("/faqs")} aria-current={isActive("/faqs") ? "page" : undefined}>FAQs</Link>
             <Link href="/contact" className={navLinkClass("/contact")} aria-current={isActive("/contact") ? "page" : undefined}>Contact</Link>
           </nav>

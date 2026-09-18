@@ -75,7 +75,7 @@ export const serviceOptions = [
 ] as const;
 
 export const timeSlotOptions = [
-  "Morning (9:00 AM – 12:00 PM)",
-  "Afternoon (12:00 PM – 3:00 PM)",
-  "Late Afternoon (3:00 PM – 6:00 PM)",
+  "Morning (9:00 AM \u2013 12:00 PM)",
+  "Afternoon (12:00 PM \u2013 3:00 PM)",
+  "Late Afternoon (3:00 PM \u2013 6:00 PM)",
 ] as const;

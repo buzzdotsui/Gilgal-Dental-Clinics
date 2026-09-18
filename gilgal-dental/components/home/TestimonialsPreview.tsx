@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { testimonials } from "@/lib/data/testimonialsData";
+import { clinicInfo } from "@/lib/data/clinicInfo";
 
 /**
  * Testimonials — uses verified, client-supplied patient reviews from testimonialsData.ts.
@@ -69,14 +70,13 @@ export default function TestimonialsPreview() {
             <motion.div
               variants={hItem}
               className="hidden lg:flex items-center gap-2"
-              role="tablist"
+              role="group"
               aria-label="Testimonial navigation"
             >
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  role="tab"
-                  aria-selected={i === current}
+                  aria-pressed={i === current}
                   aria-label={`Review ${i + 1} of ${testimonials.length}`}
                   onClick={() => setCurrent(i)}
                   className={`h-0.5 transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${
@@ -143,14 +143,13 @@ export default function TestimonialsPreview() {
         {testimonials.length > 1 && (
           <div
             className="flex lg:hidden items-center gap-3 mt-10"
-            role="tablist"
+            role="group"
             aria-label="Testimonial navigation"
           >
             {testimonials.map((_, i) => (
               <button
                 key={i}
-                role="tab"
-                aria-selected={i === current}
+                aria-pressed={i === current}
                 aria-label={`Review ${i + 1} of ${testimonials.length}`}
                 onClick={() => setCurrent(i)}
                 className={`h-0.5 transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${
@@ -165,7 +164,7 @@ export default function TestimonialsPreview() {
         {/* Google Reviews link */}
         <div className="mt-10 pt-8 border-t border-[#E2DFD9] flex items-center justify-between gap-4 flex-wrap">
           <a
-            href="https://maps.google.com/?q=Gilgal+Dental+Clinics+Ikoyi+Lagos"
+            href={clinicInfo.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-[#013565] text-sm font-medium hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"

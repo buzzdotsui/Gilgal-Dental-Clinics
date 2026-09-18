@@ -8,6 +8,8 @@ export const clinicInfo = {
     country: "Nigeria",
     full: "2 Olawale Daodu Road, off Kingsway Road, Ikoyi, Lagos, Nigeria",
   },
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=2+Olawale+Daodu+Road+off+Kingsway+Road+Ikoyi+Lagos+Nigeria",
   phones: [
     { number: "+234 809 990 6233", href: "tel:+2348099906233", primary: true },
     { number: "+234 1 293 0857", href: "tel:+23412930857", primary: false },

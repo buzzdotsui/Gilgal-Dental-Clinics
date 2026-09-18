@@ -1,0 +1,946 @@
+# PHASE 5.0 — FINAL PRODUCTION HARDENING + LAUNCH READINESS
+
+You are continuing the existing Gilgal Dental Clinics website.
+
+Phase 1, Phase 2, Phase 3.5, and Phase 4 have already been implemented.
+
+This is the FINAL PRE-LAUNCH ENGINEERING PHASE.
+
+IMPORTANT:
+
+I will personally perform the visual/browser/device QA.
+
+DO NOT create a visual QA workflow.
+DO NOT ask me to review screenshots.
+DO NOT redesign the website from scratch.
+DO NOT begin another design phase.
+
+Your responsibility is to make the existing website technically production-ready and verify that the complete implementation is coherent, functional, secure, accessible, performant, indexable, and deployable.
+
+IMPLEMENT fixes where necessary.
+
+Do not merely report problems.
+
+==================================================
+1. PROJECT
+==================================================
+
+Project:
+Gilgal Dental Clinics
+
+Application:
+Next.js App Router + TypeScript + Tailwind CSS v4
+
+Canonical application directory:
+
+C:\Users\TESTYX\Desktop\Gilgal Dental Clinic\gilgal-dental
+
+Git repository root:
+
+C:\Users\TESTYX\Desktop\Gilgal Dental Clinic
+
+IMPORTANT:
+
+Work only on the canonical `gilgal-dental` application.
+
+Do NOT use or copy implementation from:
+
+`.kilo/worktrees/harmless-shamrock`
+
+That worktree is obsolete/historical.
+
+==================================================
+2. BUSINESS FACTS — VERIFIED
+==================================================
+
+Use only these verified facts.
+
+Gilgal Dental Clinics
+
+Address:
+
+2 Olawale Daodu Road,
+off Kingsway Road,
+Ikoyi,
+Lagos, Nigeria
+
+Principal Dentist:
+
+Dr. Osaze Ugbo
+
+Verified professional information:
+
+- 17+ years experience
+- General Dentist
+- Special interest in Restorative Dentistry
+- 200+ dental implants
+- Trained at Eastman Dental Institute, UK
+- BICON Institute, USA
+- Affiliate member of the American Dental Association (ADA)
+
+Practice positioning:
+
+Experienced, family-friendly dental practice in Ikoyi providing comprehensive dental care from preventive dentistry through restorative, implant, cosmetic, orthodontic and children's dentistry.
+
+Services:
+
+General Dentistry:
+- dental examinations & diagnosis
+- cleaning/scaling
+- wisdom-tooth removal
+- root canal treatment
+- endodontic care
+- periodontal care
+
+Specialized/Elective:
+- dental implants
+- cosmetic dentistry
+- orthodontics
+- restorative dentistry
+- children's dentistry
+- laser teeth whitening
+
+Hours:
+
+Monday–Friday:
+9:00 AM–6:00 PM
+
+Saturday:
+9:00 AM–3:00 PM
+
+Public holidays:
+9:00 AM–3:00 PM
+
+Sunday:
+Closed
+
+DO NOT invent additional facts.
+
+==================================================
+3. FINAL PRODUCTION ROUTE INVENTORY
+==================================================
+
+Verify that all required public routes exist and function:
+
+/
+ /about
+ /our-dentist
+ /services
+ /services/general-dentistry
+ /services/implant-dentistry
+ /services/cosmetic-dentistry
+ /services/orthodontics
+ /services/restorative-dentistry
+ /services/childrens-dentistry
+ /services/laser-teeth-whitening
+ /testimonials
+ /faqs
+ /contact
+ /book-an-appointment
+
+Also verify:
+
+- `/api/appointment`
+
+Do not remove or rename existing service slugs.
+
+==================================================
+4. ROUTE / LINK INTEGRITY
+==================================================
+
+Perform a complete code-level internal-link audit.
+
+Check:
+
+- Header navigation
+- Services dropdown
+- Mobile navigation
+- Footer navigation
+- Homepage CTAs
+- service links
+- related service links
+- breadcrumb links
+- appointment links
+- contact links
+- dentist links
+- FAQ links
+- WhatsApp links
+- telephone links
+- email links
+
+Find and fix:
+
+- broken internal routes
+- incorrect paths
+- stale routes
+- links to pages that do not exist
+- accidental localhost links
+- accidental development URLs
+- malformed anchors
+- incorrect service slugs
+
+No public navigation element should point to a nonexistent page.
+
+==================================================
+5. EXTERNAL LINK AUDIT
+==================================================
+
+Audit all external URLs.
+
+Check:
+
+- social links
+- WhatsApp
+- maps/location links
+- ADA reference if linked
+- external professional/training references if linked
+
+Remove or correct dead/placeholder URLs.
+
+Do not invent external profiles.
+
+Do not add external links merely for decoration.
+
+==================================================
+6. IMAGE / ASSET FINAL INTEGRITY
+==================================================
+
+This is NON-NEGOTIABLE.
+
+The 15 supplied assets from Phase 3.5 must remain fully integrated.
+
+Verify all 15.
+
+Required result:
+
+15/15 files exist.
+15/15 are actually rendered.
+15/15 remain meaningfully visible on real public routes.
+
+The doctor portrait:
+
+- MUST remain on `/our-dentist`
+- MUST NOT be used in homepage hero
+- MUST NOT be used in homepage slideshow
+- MUST NOT be used as homepage hero background
+
+Homepage hero:
+
+- must continue using the supplied clinic/exterior imagery.
+
+Logo:
+
+- must remain correctly integrated into Header/Footer.
+
+Do not remove image usage simply because an asset is not immediately necessary for performance.
+
+==================================================
+7. IMAGE DELIVERY HARDENING
+==================================================
+
+Audit all images for:
+
+- broken paths
+- incorrect formats
+- missing dimensions
+- missing alt text
+- incorrect `sizes`
+- incorrect priority
+- unnecessary eager loading
+- unnecessary preload
+- oversized source assets
+- layout shift risks
+
+Use `next/image` where appropriate.
+
+Preserve the Phase 3.5 hero strategy:
+
+- initial hero image may be prioritized/preloaded
+- other hero images remain non-blocking
+- below-fold imagery remains lazy where appropriate
+
+Do NOT:
+
+- preload every image
+- eagerly load every image
+- remove meaningful images
+- sacrifice visible quality unnecessarily
+
+==================================================
+8. FONT / CSS FINAL HARDENING
+==================================================
+
+Verify:
+
+- Plus Jakarta Sans loads correctly
+- Cormorant Garamond loads correctly
+- no accidental fallback to another design font
+- no unnecessary font weights
+- no duplicate font declarations
+- no external font dependency unless intentionally required
+
+Audit CSS/Tailwind for:
+
+- obsolete classes
+- contradictory styles
+- accidental gradients
+- excessive rounded corners
+- hidden overflow that masks layout problems
+- unnecessary animations
+- duplicated rules
+
+Do not introduce a new styling system.
+
+==================================================
+9. JAVASCRIPT / CLIENT COMPONENT AUDIT
+==================================================
+
+Review all `"use client"` components.
+
+For each client component determine whether client-side behavior is genuinely required.
+
+Where safe:
+
+- keep static components server-rendered
+- reduce unnecessary hydration
+- remove unnecessary state
+- remove unnecessary effects
+- remove unnecessary browser event listeners
+
+Do not perform risky rewrites.
+
+Do not break existing interactive components.
+
+==================================================
+10. HYDRATION / RUNTIME ERROR HARDENING
+==================================================
+
+Audit for likely hydration problems.
+
+Check for:
+
+- browser APIs during server rendering
+- date/time differences
+- random values during render
+- unstable IDs
+- conditional rendering that differs server/client
+- client-only data used during SSR
+- image dimension mismatches
+
+Run the production application.
+
+Inspect runtime output for:
+
+- hydration errors
+- uncaught exceptions
+- failed requests
+- broken asset requests
+- server errors
+
+Fix real issues found.
+
+==================================================
+11. APPOINTMENT FUNCTIONALITY
+==================================================
+
+This functionality must NOT regress.
+
+Audit:
+
+`/book-an-appointment`
+
+and:
+
+`/api/appointment`
+
+Verify:
+
+- form renders
+- fields work
+- labels work
+- validation works
+- required fields work
+- invalid submissions are rejected
+- loading state works
+- success state works
+- error state works
+- API responds correctly
+- rate limiting remains enabled
+- existing security controls remain intact
+- no secrets are exposed client-side
+
+Do NOT remove:
+
+- Zod validation
+- rate limiting
+- honeypot/security controls
+- server-side validation
+- existing API protections
+
+Do NOT weaken the API merely to make testing easier.
+
+==================================================
+12. CONTACT FUNCTIONALITY
+==================================================
+
+Audit `/contact`.
+
+Verify:
+
+- address
+- hours
+- phone links if present
+- email links if present
+- WhatsApp CTA if present
+- appointment CTA
+- map/location link if present
+
+Ensure all links are valid.
+
+Do not invent contact information.
+
+==================================================
+13. ACCESSIBILITY FINAL HARDENING
+==================================================
+
+Perform a code-level accessibility audit.
+
+Verify:
+
+- one logical H1 per page
+- proper heading hierarchy
+- semantic landmarks
+- keyboard navigation
+- visible focus states
+- button/link semantics
+- form label association
+- error association
+- alt text
+- decorative image handling
+- sufficient contrast classes
+- touch target sizing
+- reduced motion
+- accessible mobile menu
+- accessible services dropdown
+- accessible FAQ accordion
+
+Interactive controls must work without a mouse.
+
+Check that no important information is conveyed only through:
+
+- color
+- hover
+- animation
+- imagery
+
+Fix clear accessibility defects.
+
+==================================================
+14. SEO FINAL HARDENING
+==================================================
+
+Audit every public route.
+
+Each page should have appropriate:
+
+- title
+- description
+- canonical
+- Open Graph metadata
+- metadataBase handling where applicable
+
+Ensure titles are unique and natural.
+
+Avoid keyword stuffing.
+
+Verify:
+
+- sitemap
+- robots
+- favicon
+- manifest if present
+- canonical URLs
+- no accidental noindex
+- API routes are not treated as public content pages
+
+==================================================
+15. STRUCTURED DATA
+==================================================
+
+Audit all structured data.
+
+Verify that structured data matches actual visible/verified information.
+
+Potential schemas where appropriate:
+
+- DentalClinic
+- Dentist
+- LocalBusiness
+- Organization
+- WebSite
+- BreadcrumbList
+- FAQPage
+
+Do not create duplicate/conflicting schema.
+
+Do not fabricate:
+
+- ratings
+- review counts
+- prices
+- awards
+- credentials
+- patient numbers
+- treatment success rates
+
+==================================================
+16. LOCAL SEO CONSISTENCY
+==================================================
+
+Verify exact consistency of:
+
+Gilgal Dental Clinics
+
+2 Olawale Daodu Road,
+off Kingsway Road,
+Ikoyi,
+Lagos, Nigeria
+
+Hours:
+
+Monday–Friday:
+9:00 AM–6:00 PM
+
+Saturday:
+9:00 AM–3:00 PM
+
+Public holidays:
+9:00 AM–3:00 PM
+
+Sunday:
+Closed
+
+Check consistency across:
+
+- contact page
+- footer
+- structured data
+- metadata where appropriate
+
+Do not introduce another address.
+
+Do not introduce another branch.
+
+==================================================
+17. INDEXABILITY
+==================================================
+
+Verify that intended public pages can be indexed.
+
+Check:
+
+- robots.txt
+- sitemap
+- metadata
+- canonical
+- noindex directives
+- route accessibility
+
+Public content pages should not accidentally be blocked.
+
+API routes should not be presented as indexable content.
+
+==================================================
+18. SECURITY HARDENING
+==================================================
+
+Perform a code-level security review.
+
+Look for:
+
+- exposed secrets
+- API keys in client components
+- sensitive environment variables using `NEXT_PUBLIC_`
+- unsafe interpolation
+- dangerouslySetInnerHTML
+- unsanitized user content
+- weak server-side validation
+- accidental debug output
+- sensitive error messages
+- development-only code in production paths
+
+Do NOT print secrets in the report.
+
+Do NOT change environment variable values.
+
+Do NOT commit secrets.
+
+Do not weaken security controls.
+
+==================================================
+19. DEPENDENCY AUDIT
+==================================================
+
+Review package dependencies.
+
+Identify:
+
+- unnecessary dependencies
+- duplicate libraries
+- dependencies no longer used
+- obviously obsolete packages
+
+Do NOT perform a risky major-version upgrade during this phase.
+
+Do NOT migrate frameworks.
+
+Do NOT replace Tailwind.
+
+Do NOT replace Next.js.
+
+Do NOT replace Framer Motion.
+
+Only remove a dependency if it is clearly unused and removal is safe.
+
+==================================================
+20. ERROR / NOT-FOUND / LOADING STATES
+==================================================
+
+Verify:
+
+- error page
+- not-found page
+- loading states
+- appointment loading/error/success states
+- mobile navigation state
+- FAQ state
+
+They should use the established Gilgal design system.
+
+No developer-looking placeholder UI should remain.
+
+==================================================
+21. CONTENT / BRAND CONTAMINATION CHECK
+==================================================
+
+Perform a complete repository search for:
+
+- Metabotics
+- METABOTICS
+- previous unrelated project names
+- unrelated medical claims
+- placeholder company names
+- placeholder addresses
+- placeholder phone numbers
+- localhost URLs
+- test/demo content
+
+Remove genuine accidental contamination if found.
+
+IMPORTANT:
+
+Do not remove legitimate dependencies or historical Git data merely because a string appears there.
+
+Focus on active application/source/public content.
+
+The Gilgal website must contain only Gilgal-related content.
+
+==================================================
+22. AI-SLOP / DESIGN REGRESSION CHECK
+==================================================
+
+Search active application content for obvious remnants of:
+
+- generic AI marketing language
+- "world-class"
+- "cutting-edge"
+- "revolutionary"
+- "your journey begins"
+- "where excellence meets"
+- generic luxury filler
+- fake claims
+- fake reviews
+- fake statistics
+
+Also verify these remain absent:
+
+- purple gradients
+- gradient text
+- glassmorphism
+- pill buttons
+- excessive rounded cards
+- emoji UI
+- cursor-following effects
+- excessive scroll animations
+- noisy decorative effects
+- grain/noise textures
+- em dashes
+
+Only change genuine problems.
+
+Do not rewrite good existing copy simply to create unnecessary churn.
+
+==================================================
+23. PERFORMANCE SAFETY CHECK
+==================================================
+
+Verify that the site does not regress from Phase 4.
+
+Check:
+
+- no accidental global client component
+- no excessive hydration
+- no giant JavaScript dependency introduced
+- no image preload explosion
+- no font preload explosion
+- no blocking third-party scripts without necessity
+- no unnecessary animation libraries
+- no repeated data fetching
+- no duplicate API calls
+- no layout shift caused by missing image dimensions
+
+Preserve Server Components wherever possible.
+
+==================================================
+24. PRODUCTION BUILD
+==================================================
+
+Run the actual production build.
+
+Verify:
+
+- TypeScript passes
+- ESLint passes
+- production build passes
+- all routes generate successfully
+- dynamic service routes generate successfully
+- no broken imports
+- no broken image references
+- no build-time errors
+
+Existing non-blocking warnings may be reported separately.
+
+Do not hide errors simply to make the build appear successful.
+
+==================================================
+25. PRODUCTION RUNTIME TEST
+==================================================
+
+Start the production application using the project's normal production start procedure.
+
+Verify all required public routes return HTTP 200.
+
+Verify:
+
+- homepage
+- all static pages
+- all seven service pages
+- appointment page
+- API endpoint behavior
+- static assets
+- images
+- favicon
+- robots
+- sitemap
+
+Also check server output for:
+
+- exceptions
+- hydration errors
+- failed asset requests
+- unexpected 4xx/5xx responses
+
+==================================================
+26. FINAL ASSET MATRIX
+==================================================
+
+Produce this exact type of table in the final report:
+
+| # | Asset | Used | Route | Section | Visible | Purpose |
+|---|---|---|---|---|---|---|
+
+All 15 assets must report:
+
+Used = YES
+Visible = YES
+
+Also explicitly confirm:
+
+Doctor portrait:
+`/our-dentist` only
+Homepage hero:
+NOT used
+
+==================================================
+27. FINAL ROUTE MATRIX
+==================================================
+
+Produce:
+
+| Route | Exists | Build | Runtime | HTTP |
+|---|---|---|---|---|
+
+Every required route must be:
+
+Exists = YES
+Build = PASS
+Runtime = PASS
+HTTP = 200
+
+==================================================
+28. FINAL QUALITY GATE
+==================================================
+
+Do not declare Phase 5.0 complete unless all of these are true:
+
+[ ] All required public routes exist
+[ ] All 7 service detail pages work
+[ ] Appointment page works
+[ ] Appointment API remains protected
+[ ] Internal links are valid
+[ ] External links are valid where used
+[ ] All 15 supplied images remain used
+[ ] All 15 supplied images remain visible
+[ ] Doctor portrait remains on `/our-dentist`
+[ ] Doctor portrait is NOT in homepage hero
+[ ] Homepage uses clinic imagery
+[ ] Logo remains integrated
+[ ] No Metabotics contamination
+[ ] No fake claims
+[ ] No accidental placeholder content
+[ ] Accessibility defects fixed
+[ ] Reduced motion preserved
+[ ] SEO metadata is valid
+[ ] Canonicals are valid
+[ ] Sitemap is valid
+[ ] Robots is valid
+[ ] Structured data is valid
+[ ] Local business information is consistent
+[ ] No exposed secrets
+[ ] No hydration errors
+[ ] No broken image paths
+[ ] TypeScript passes
+[ ] ESLint passes with no new errors
+[ ] Production build passes
+[ ] Runtime route checks pass
+[ ] `git diff --check` passes
+
+==================================================
+29. GIT SAFETY
+==================================================
+
+Do not reset the repository.
+
+Do not use:
+
+- git reset --hard
+- git clean -fd
+- destructive history rewriting
+- force push
+
+Do not overwrite unrelated work.
+
+Keep changes limited to Phase 5.0.
+
+Do not commit automatically unless explicitly instructed.
+
+==================================================
+30. FINAL REPORT
+==================================================
+
+When finished, provide a concise but complete report with:
+
+# PHASE 5.0 IMPLEMENTATION REPORT
+
+## 1. Executive Summary
+
+State whether production hardening is complete.
+
+## 2. Fixes Implemented
+
+List actual fixes made.
+
+## 3. Route Validation
+
+Provide the complete route matrix.
+
+## 4. Asset Validation
+
+Provide the complete 15-asset matrix.
+
+## 5. Appointment/API Validation
+
+State exactly what was tested and preserved.
+
+## 6. Accessibility
+
+List actual fixes.
+
+## 7. SEO
+
+List actual fixes.
+
+## 8. Performance
+
+List actual fixes.
+
+## 9. Security
+
+List actual findings/fixes.
+
+Do NOT expose secrets.
+
+## 10. Runtime Validation
+
+Report actual production runtime results.
+
+## 11. Build Validation
+
+Report actual:
+
+- TypeScript
+- ESLint
+- production build
+- route generation
+- `git diff --check`
+
+## 12. Remaining Warnings
+
+Separate genuine blockers from harmless pre-existing warnings.
+
+## 13. Modified Files
+
+List every modified file.
+
+## 14. Final Status
+
+Use only:
+
+PASS
+
+or
+
+BLOCKED
+
+Do not use vague phrases such as:
+"mostly complete"
+"looks good"
+"should be ready"
+
+==================================================
+FINAL INSTRUCTION
+==================================================
+
+Implement Phase 5.0 completely.
+
+This is the final engineering hardening phase.
+
+Do not start another redesign.
+Do not perform visual QA.
+Do not ask for screenshot approval.
+
+The final result must be a technically clean, production-ready Gilgal Dental Clinics website that preserves the premium Quiet Clinical Luxury design established in the previous phases.
+
+I will personally handle final visual/browser/device QA after this phase.
+
+STOP after Phase 5.0.

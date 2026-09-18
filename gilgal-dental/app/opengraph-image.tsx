@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt = "Gilgal Dental Clinics | Dental Care in Ikoyi, Lagos";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -102,21 +101,19 @@ export default function Image() {
               lineHeight: 1.4,
             }}
           >
-            Experienced dental care, centered around you.
+            Specialist restorative and family dental care in Ikoyi.
           </p>
         </div>
 
-        {/* Bottom CTA pill */}
+        {/* Bottom call to action */}
         <div
           style={{
             marginTop: 40,
             display: "flex",
             alignItems: "center",
             gap: 8,
-            background: "rgba(255,255,255,0.1)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            borderRadius: 999,
-            padding: "10px 20px",
+            borderTop: "1px solid rgba(255,255,255,0.2)",
+            paddingTop: 16,
           }}
         >
           <span style={{ color: "#FDFEFF", fontSize: 16, fontWeight: 500 }}>

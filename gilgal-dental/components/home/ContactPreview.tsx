@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { clinicInfo } from "@/lib/data/clinicInfo";
 
 export default function ContactPreview() {
   return (
@@ -41,7 +42,7 @@ export default function ContactPreview() {
               Ikoyi, Lagos, Nigeria
             </address>
             <a
-              href="https://maps.google.com/?q=Gilgal+Dental+Clinics+Ikoyi+Lagos"
+              href={clinicInfo.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-[#013565] text-sm font-medium hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"

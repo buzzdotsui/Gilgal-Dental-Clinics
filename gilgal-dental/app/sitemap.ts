@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { services } from "@/lib/data/servicesData";
 
 const BASE_URL = "https://gilgaldentalclinics.com";
 
@@ -56,16 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const serviceRoutes: MetadataRoute.Sitemap = [
-    "general-dentistry",
-    "implant-dentistry",
-    "cosmetic-dentistry",
-    "orthodontics",
-    "restorative-dentistry",
-    "childrens-dentistry",
-    "laser-teeth-whitening",
-  ].map((slug) => ({
-    url: `${BASE_URL}/services/${slug}`,
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${BASE_URL}/services/${service.slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.85,

@@ -8,8 +8,8 @@ export function StructuredData() {
     "@id": "https://gilgaldentalclinics.com/#dentist",
     name: clinicInfo.name,
     url: "https://gilgaldentalclinics.com",
-    telephone: "+2348099906233",
-    email: "gilgaldentalclinics@gmail.com",
+    telephone: clinicInfo.phones[0].number,
+    email: clinicInfo.emails[0].address,
     address: {
       "@type": "PostalAddress",
       streetAddress: clinicInfo.address.street,
@@ -35,12 +35,18 @@ export function StructuredData() {
         opens: "09:00",
         closes: "15:00",
       },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "PublicHolidays",
+        opens: "09:00",
+        closes: "15:00",
+      },
     ],
     sameAs: [
       clinicInfo.social.instagram,
       clinicInfo.social.facebook,
     ],
-    hasMap: "https://maps.google.com/?q=2+Olawale+Daodu+Road+Ikoyi+Lagos+Nigeria",
+    hasMap: clinicInfo.mapUrl,
     medicalSpecialty: "Dentistry",
     employee: {
       "@type": "Person",

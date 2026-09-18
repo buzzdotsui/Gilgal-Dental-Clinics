@@ -1,7 +1,7 @@
 // Image compression script — run once with: node scripts/compress-images.mjs
 // Uses sharp which is bundled with Next.js — no extra install needed.
 import sharp from "sharp";
-import { readdir, stat } from "fs/promises";
+import { stat } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 

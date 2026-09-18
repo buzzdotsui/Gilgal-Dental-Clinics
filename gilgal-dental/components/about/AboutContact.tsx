@@ -52,7 +52,7 @@ export default function AboutContact() {
                 {clinicInfo.address.full}
               </address>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=2+Olawale+Daodu+Road+off+Kingsway+Road+Ikoyi+Lagos+Nigeria"
+                href={clinicInfo.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-3 text-xs font-semibold text-[#013565] hover:underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"

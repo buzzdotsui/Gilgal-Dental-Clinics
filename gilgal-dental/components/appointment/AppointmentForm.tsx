@@ -9,7 +9,6 @@ import {
   serviceOptions,
   timeSlotOptions,
 } from "@/lib/appointment/submitAppointment";
-import { buildAppointmentWhatsAppUrl } from "@/lib/data/clinicInfo";
 import AppointmentSuccess from "./AppointmentSuccess";
 import AppointmentError from "./AppointmentError";
 

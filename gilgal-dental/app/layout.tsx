@@ -85,9 +85,15 @@ export default function RootLayout({
     <html lang="en" className={`${plusJakarta.variable} ${cormorant.variable} h-full`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-jakarta)] antialiased bg-[#F9F8F6] text-slate-900">
         <StructuredData />
+        <a
+          href="#main-content"
+          className="sr-only fixed left-4 top-4 z-[60] rounded-[2px] bg-[#013565] px-4 py-3 text-sm font-semibold text-white shadow-lg focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#013565]"
+        >
+          Skip to main content
+        </a>
         <MotionProvider>
           <Header />
-          <main id="main-content" className="flex-1">
+          <main id="main-content" className="flex-1 scroll-mt-24">
             {children}
           </main>
           <Footer />
