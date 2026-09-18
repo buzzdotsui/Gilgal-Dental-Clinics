@@ -56,7 +56,7 @@ const categories = [
 export default function ServicesPreview() {
   return (
     <section
-      className="section-padding bg-[#F9F8F6]"
+      className="section-padding bg-[#F4F3F1]"
       aria-labelledby="services-heading"
     >
       <div className="container-site">

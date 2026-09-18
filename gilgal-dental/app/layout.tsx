@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { MotionProvider } from "@/components/ui/MotionProvider";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -84,12 +85,14 @@ export default function RootLayout({
     <html lang="en" className={`${plusJakarta.variable} ${cormorant.variable} h-full`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-jakarta)] antialiased bg-[#F9F8F6] text-slate-900">
         <StructuredData />
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
+        <MotionProvider>
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -199,7 +199,7 @@ export default function Hero() {
                     alt={slides[current].alt}
                     fill
                     className="object-cover object-top"
-                    priority={current === 0}
+                    preload={current === 0}
                     sizes="(max-width: 1024px) 100vw, 500px"
                   />
                   {/* Subtle bottom gradient only — no heavy overlay */}

@@ -3,16 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { services } from "@/lib/data/servicesData";
 import { buildWhatsAppUrl } from "@/lib/data/clinicInfo";
-
-const primaryNav = [
-  { label: "About", href: "/about" },
-  { label: "Our Dentist", href: "/our-dentist" },
-  { label: "Contact", href: "/contact" },
-];
 
 const linkCls =
   "px-3 py-2 text-[0.8125rem] font-medium text-slate-600 hover:text-[#013565] rounded-[2px] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]";
@@ -21,7 +16,22 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const pathname = usePathname();
   const servicesRef = useRef<HTMLDivElement>(null);
+  const servicesTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuTriggerRef = useRef<HTMLButtonElement>(null);
+  const closeMenuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === href : pathname === href || (href === "/services" && pathname.startsWith("/services/"));
+  const navLinkClass = (href: string) =>
+    `${linkCls} ${isActive(href) ? "text-[#013565] bg-[#013565]/[0.05]" : ""}`;
+
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    window.setTimeout(() => mobileMenuTriggerRef.current?.focus(), 0);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -39,13 +49,54 @@ export default function Header() {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!menuOpen) return;
+
+    closeMenuButtonRef.current?.focus();
+    const panel = mobileMenuRef.current;
+    if (!panel) return;
+
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMobileMenu();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [menuOpen]);
+
+  useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
         setServicesOpen(false);
       }
     };
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setServicesOpen(false);
+      if (e.key === "Escape" && servicesRef.current?.contains(document.activeElement)) {
+        e.preventDefault();
+        setServicesOpen(false);
+        servicesTriggerRef.current?.focus();
+      }
     };
     document.addEventListener("mousedown", handleClick);
     document.addEventListener("keydown", handleKey);
@@ -79,7 +130,6 @@ export default function Header() {
                 alt="Gilgal Dental Clinics logo"
                 fill
                 className="object-contain"
-                priority
                 sizes="32px"
               />
             </div>
@@ -91,18 +141,19 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
 
-            <Link href="/" className={linkCls}>Home</Link>
-            <Link href="/about" className={linkCls}>About</Link>
+            <Link href="/" className={navLinkClass("/")} aria-current={isActive("/") ? "page" : undefined}>Home</Link>
+            <Link href="/about" className={navLinkClass("/about")} aria-current={isActive("/about") ? "page" : undefined}>About</Link>
 
             {/* Services dropdown */}
             <div ref={servicesRef} className="relative">
               <button
                 type="button"
+                ref={servicesTriggerRef}
                 onClick={() => setServicesOpen((v) => !v)}
                 aria-expanded={servicesOpen}
                 aria-haspopup="menu"
                 aria-controls="services-dropdown"
-                className={`${linkCls} flex items-center gap-1.5`}
+                className={`${navLinkClass("/services")} flex items-center gap-1.5`}
               >
                 Services
                 <ChevronDown
@@ -156,9 +207,9 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            <Link href="/our-dentist" className={linkCls}>Our Dentist</Link>
-            <Link href="/faqs" className={linkCls}>FAQs</Link>
-            <Link href="/contact" className={linkCls}>Contact</Link>
+            <Link href="/our-dentist" className={navLinkClass("/our-dentist")} aria-current={isActive("/our-dentist") ? "page" : undefined}>Our Dentist</Link>
+            <Link href="/faqs" className={navLinkClass("/faqs")} aria-current={isActive("/faqs") ? "page" : undefined}>FAQs</Link>
+            <Link href="/contact" className={navLinkClass("/contact")} aria-current={isActive("/contact") ? "page" : undefined}>Contact</Link>
           </nav>
 
           {/* Desktop CTA */}
@@ -174,6 +225,7 @@ export default function Header() {
           {/* Mobile trigger */}
           <button
             type="button"
+            ref={mobileMenuTriggerRef}
             className="lg:hidden p-2 rounded-[2px] text-slate-600 hover:text-[#013565] hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
             onClick={() => setMenuOpen(true)}
             aria-label="Open navigation menu"
@@ -199,12 +251,13 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-50 bg-slate-900/40"
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMobileMenu}
               aria-hidden="true"
             />
             <motion.div
               key="panel"
               id="mobile-menu"
+              ref={mobileMenuRef}
               role="dialog"
               aria-modal="true"
               aria-label="Navigation menu"
@@ -229,7 +282,8 @@ export default function Header() {
                 </Link>
                 <button
                   type="button"
-                  onClick={() => setMenuOpen(false)}
+                  ref={closeMenuButtonRef}
+                  onClick={closeMobileMenu}
                   className="p-2 rounded-[2px] text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
                   aria-label="Close navigation menu"
                 >
@@ -249,7 +303,8 @@ export default function Header() {
                       <Link
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="flex items-center px-4 py-3 text-sm font-medium text-slate-700 hover:text-[#013565] hover:bg-[#F4F3F1] rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
+                        className={`flex items-center px-4 py-3 text-sm font-medium hover:text-[#013565] hover:bg-[#F4F3F1] rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${isActive(link.href) ? "text-[#013565] bg-[#013565]/[0.05]" : "text-slate-700"}`}
+                        aria-current={isActive(link.href) ? "page" : undefined}
                       >
                         {link.label}
                       </Link>
@@ -262,7 +317,8 @@ export default function Header() {
                       type="button"
                       onClick={() => setServicesOpen((v) => !v)}
                       aria-expanded={servicesOpen}
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-slate-700 hover:text-[#013565] hover:bg-[#F4F3F1] rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
+                      aria-controls="mobile-services-list"
+                      className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium hover:text-[#013565] hover:bg-[#F4F3F1] rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${isActive("/services") ? "text-[#013565] bg-[#013565]/[0.05]" : "text-slate-700"}`}
                     >
                       Services
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} aria-hidden="true" />
@@ -270,6 +326,7 @@ export default function Header() {
                     <AnimatePresence>
                       {servicesOpen && (
                         <motion.ul
+                          id="mobile-services-list"
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
@@ -303,7 +360,8 @@ export default function Header() {
                       <Link
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="flex items-center px-4 py-3 text-sm font-medium text-slate-700 hover:text-[#013565] hover:bg-[#F4F3F1] rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
+                        className={`flex items-center px-4 py-3 text-sm font-medium hover:text-[#013565] hover:bg-[#F4F3F1] rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] ${isActive(link.href) ? "text-[#013565] bg-[#013565]/[0.05]" : "text-slate-700"}`}
+                        aria-current={isActive(link.href) ? "page" : undefined}
                       >
                         {link.label}
                       </Link>

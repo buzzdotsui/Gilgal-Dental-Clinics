@@ -64,7 +64,7 @@ export function ServicePageLayout({ service, relatedServices }: ServicePageLayou
               >
                 What to expect at Gilgal
               </h3>
-              <p className="text-white/60" style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
+              <p className="text-white/70" style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
                 {service.patientExperience}
               </p>
             </div>

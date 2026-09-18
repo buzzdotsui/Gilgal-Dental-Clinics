@@ -68,7 +68,7 @@ export default function RestorativeSpotlight() {
 
           <motion.p
             variants={item}
-            className="text-white/55 mb-16 max-w-xl"
+            className="text-white/70 mb-16 max-w-xl"
             style={{ fontSize: "1.0625rem", lineHeight: 1.65 }}
           >
             Dr. Osaze Ugbo brings over 17 years of clinical experience, with a special
@@ -100,7 +100,7 @@ export default function RestorativeSpotlight() {
                   {d.title}
                 </h3>
                 <p
-                  className="text-white/55 mb-8"
+                  className="text-white/70 mb-8"
                   style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}
                 >
                   {d.body}
@@ -142,7 +142,7 @@ export default function RestorativeSpotlight() {
                   {value}
                 </p>
                 <p
-                  className="text-white/40"
+                  className="text-white/65"
                   style={{ fontSize: "0.75rem", lineHeight: 1.4 }}
                 >
                   {label}

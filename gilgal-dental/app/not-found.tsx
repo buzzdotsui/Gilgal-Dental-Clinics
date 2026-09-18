@@ -29,14 +29,14 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#013565] text-white text-sm font-semibold rounded-xl hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 w-full sm:w-auto justify-center"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 w-full sm:w-auto justify-center"
           >
             <ArrowLeft className="w-4 h-4" aria-hidden="true" />
             Return Home
           </Link>
           <Link
             href="/book-an-appointment"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 bg-white w-full sm:w-auto justify-center"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 text-slate-700 text-sm font-semibold rounded-[2px] hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 bg-white w-full sm:w-auto justify-center"
           >
             <CalendarDays className="w-4 h-4" aria-hidden="true" />
             Book an Appointment

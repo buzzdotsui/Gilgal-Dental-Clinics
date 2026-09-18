@@ -1,5 +1,3 @@
-"use client";
-
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
@@ -46,7 +44,7 @@ export default function ContactPreview() {
               href="https://maps.google.com/?q=Gilgal+Dental+Clinics+Ikoyi+Lagos"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#013565] text-sm font-medium hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded"
+              className="inline-flex items-center gap-1.5 text-[#013565] text-sm font-medium hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] rounded-[2px]"
               aria-label="Get directions to Gilgal Dental Clinics (opens Google Maps)"
             >
               Get directions

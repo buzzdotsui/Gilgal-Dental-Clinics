@@ -38,7 +38,7 @@ export default function ContactPage() {
               <div className="border-t border-[#E2DFD9]">
 
                 {/* Address */}
-                <div className="grid grid-cols-[10rem_1fr] gap-8 py-7 border-b border-[#E2DFD9]">
+                <div className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-3 sm:gap-8 py-7 border-b border-[#E2DFD9]">
                   <p className="text-overline">Address</p>
                   <div>
                     <address className="not-italic text-slate-700 text-sm leading-relaxed">
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Phone */}
-                <div className="grid grid-cols-[10rem_1fr] gap-8 py-7 border-b border-[#E2DFD9]">
+                <div className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-3 sm:gap-8 py-7 border-b border-[#E2DFD9]">
                   <p className="text-overline">Phone</p>
                   <ul className="space-y-2" role="list">
                     {clinicInfo.phones.map((p) => (
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Email */}
-                <div className="grid grid-cols-[10rem_1fr] gap-8 py-7 border-b border-[#E2DFD9]">
+                <div className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-3 sm:gap-8 py-7 border-b border-[#E2DFD9]">
                   <p className="text-overline">Email</p>
                   <ul className="space-y-2" role="list">
                     {clinicInfo.emails.map((e) => (
@@ -104,7 +104,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* WhatsApp */}
-                <div className="grid grid-cols-[10rem_1fr] gap-8 py-7">
+                <div className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-3 sm:gap-8 py-7">
                   <p className="text-overline">WhatsApp</p>
                   <div>
                     <p className="text-slate-500 text-sm mb-4 leading-relaxed">
@@ -157,7 +157,7 @@ export default function ContactPage() {
                 >
                   Request an appointment
                 </p>
-                <p className="text-white/55 text-sm leading-relaxed mb-7">
+                <p className="text-white/70 text-sm leading-relaxed mb-7">
                   Submit a request and we will contact you to confirm your preferred date and time.
                 </p>
                 <div className="flex flex-col gap-3">

@@ -48,7 +48,7 @@ function FAQAccordionItem({
             "w-6 h-6 flex-shrink-0 flex items-center justify-center border transition-all duration-200 rounded-[2px]",
             isOpen
               ? "bg-[#013565] border-[#013565] text-white"
-              : "border-[#C8C4BC] text-slate-400"
+              : "border-[#C8C4BC] text-slate-500"
           )}
           aria-hidden="true"
         >

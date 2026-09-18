@@ -68,7 +68,7 @@ export function PageHero({
             <p
               className={cn(
                 "mt-5 max-w-2xl",
-                dark ? "text-white/55" : "text-slate-500",
+                dark ? "text-white/70" : "text-slate-500",
                 align === "center" && "mx-auto"
               )}
               style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}

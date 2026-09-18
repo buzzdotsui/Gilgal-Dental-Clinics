@@ -43,7 +43,7 @@ export function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.95 }}
             transition={{ duration: 0.18, ease: [0, 0, 0.2, 1] }}
-            className="bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap pointer-events-none select-none"
+            className="bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-[4px] shadow-lg whitespace-nowrap pointer-events-none select-none"
             role="tooltip"
             id="whatsapp-tooltip"
           >
@@ -64,24 +64,8 @@ export function FloatingWhatsApp() {
         rel="noopener noreferrer"
         aria-label="Chat with Gilgal Dental Clinics on WhatsApp"
         aria-describedby={hovered ? "whatsapp-tooltip" : undefined}
-        // Idle float — disabled for reduced motion
-        animate={
-          !prefersReduced && !hovered
-            ? { y: [0, -5, 0] }
-            : { y: 0 }
-        }
-        transition={
-          !prefersReduced && !hovered
-            ? {
-                duration: 3.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatType: "loop",
-              }
-            : { duration: 0.2 }
-        }
-        whileHover={prefersReduced ? {} : { scale: 1.08 }}
-        whileTap={{ scale: 0.94 }}
+        whileHover={prefersReduced ? {} : { scale: 1.07 }}
+        whileTap={{ scale: 0.93 }}
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
         onFocus={() => setHovered(true)}

@@ -20,7 +20,7 @@ const serviceLinks = [
   { label: "Laser Teeth Whitening", href: "/services/laser-teeth-whitening" },
 ];
 
-const linkCls = "text-white/50 hover:text-white/85 text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:underline underline-offset-4";
+const linkCls = "text-white/70 hover:text-white text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:underline underline-offset-4";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -56,7 +56,7 @@ export default function Footer() {
             </Link>
 
             {/* Tagline — specific per brief */}
-            <p className="text-white/45 text-sm leading-relaxed mb-7 max-w-[230px]">
+            <p className="text-white/70 text-sm leading-relaxed mb-7 max-w-[230px]">
               Specialist restorative and family dental care in Ikoyi, Lagos.
             </p>
 
@@ -66,7 +66,7 @@ export default function Footer() {
                 href="https://www.instagram.com/gilgaldental.clinic/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-[2px] border border-white/15 hover:border-white/35 hover:bg-white/8 flex items-center justify-center text-white/50 hover:text-white/85 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                className="w-8 h-8 rounded-[2px] border border-white/15 hover:border-white/35 hover:bg-white/8 flex items-center justify-center text-white/70 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 aria-label="Gilgal Dental Clinics on Instagram"
               >
                 <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -79,7 +79,7 @@ export default function Footer() {
                 href="https://web.facebook.com/gilgaldental.clinics/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-[2px] border border-white/15 hover:border-white/35 hover:bg-white/8 flex items-center justify-center text-white/50 hover:text-white/85 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                className="w-8 h-8 rounded-[2px] border border-white/15 hover:border-white/35 hover:bg-white/8 flex items-center justify-center text-white/70 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 aria-label="Gilgal Dental Clinics on Facebook"
               >
                 <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -92,7 +92,7 @@ export default function Footer() {
           {/* ── Explore ── */}
           <div>
             <p
-              className="text-white/30 mb-4"
+              className="text-white/65 mb-4"
               style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
             >
               Explore
@@ -111,7 +111,7 @@ export default function Footer() {
           {/* ── Services ── */}
           <div>
             <p
-              className="text-white/30 mb-4"
+              className="text-white/65 mb-4"
               style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
             >
               Services
@@ -130,19 +130,19 @@ export default function Footer() {
           {/* ── Visit ── */}
           <div>
             <p
-              className="text-white/30 mb-4"
+              className="text-white/65 mb-4"
               style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
             >
               Visit
             </p>
-            <address className="not-italic text-white/55 text-sm leading-relaxed mb-6">
+            <address className="not-italic text-white/70 text-sm leading-relaxed mb-6">
               2 Olawale Daodu Road,<br />
               off Kingsway Road,<br />
               Ikoyi, Lagos, Nigeria
             </address>
 
             <p
-              className="text-white/30 mb-3"
+              className="text-white/65 mb-3"
               style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
             >
               Opening Hours
@@ -154,8 +154,8 @@ export default function Footer() {
                 { day: "Sunday", time: "Closed" },
               ].map(({ day, time }) => (
                 <div key={day} className="flex items-start justify-between gap-4">
-                  <dt className="text-white/45 text-xs">{day}</dt>
-                  <dd className={`text-xs font-medium flex-shrink-0 ${time === "Closed" ? "text-white/25" : "text-white/65"}`}>
+                  <dt className="text-white/65 text-xs">{day}</dt>
+                  <dd className="text-white/75 text-xs font-medium flex-shrink-0">
                     {time}
                   </dd>
                 </div>
@@ -163,7 +163,7 @@ export default function Footer() {
             </dl>
 
             <p
-              className="text-white/30 mb-3"
+              className="text-white/65 mb-3"
               style={{ fontSize: "0.625rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}
             >
               Contact
@@ -171,14 +171,14 @@ export default function Footer() {
             <div className="space-y-1.5">
               <a
                 href="tel:+2348099906233"
-                className="block text-white/55 hover:text-white/85 text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
+                className="block text-white/70 hover:text-white text-sm transition-colors focus-visible:outline-none focus-visible:underline underline-offset-4"
                 aria-label="Call +234 809 990 6233"
               >
                 +234 809 990 6233
               </a>
               <a
                 href="mailto:gilgaldentalclinics@gmail.com"
-                className="block text-white/55 hover:text-white/85 text-sm transition-colors break-all focus-visible:outline-none focus-visible:underline underline-offset-4"
+                className="block text-white/70 hover:text-white text-sm transition-colors break-all focus-visible:outline-none focus-visible:underline underline-offset-4"
                 aria-label="Email gilgaldentalclinics@gmail.com"
               >
                 gilgaldentalclinics@gmail.com
@@ -192,19 +192,19 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/8">
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/30 text-xs">
+          <p className="text-white/65 text-xs">
             © {currentYear} Gilgal Dental Clinics. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link
               href="/privacy-policy"
-              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/65 hover:text-white text-xs transition-colors focus-visible:outline-none focus-visible:underline"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/65 hover:text-white text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-[2px]"
             >
               Terms &amp; Conditions
             </Link>
@@ -212,7 +212,7 @@ export default function Footer() {
               href="https://www.instagram.com/gilgaldental.clinic/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/65 hover:text-white text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-[2px]"
             >
               Instagram
             </a>
@@ -220,7 +220,7 @@ export default function Footer() {
               href="https://web.facebook.com/gilgaldental.clinics/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/30 hover:text-white/55 text-xs transition-colors focus-visible:outline-none focus-visible:underline"
+              className="text-white/65 hover:text-white text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-[2px]"
             >
               Facebook
             </a>

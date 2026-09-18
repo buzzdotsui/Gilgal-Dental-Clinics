@@ -36,7 +36,7 @@ export default function OurDentistPage() {
                   alt={dentistData.imageAlt}
                   fill
                   className="object-cover object-top"
-                  priority
+                  preload
                   sizes="(max-width: 1024px) 100vw, 340px"
                 />
               </div>

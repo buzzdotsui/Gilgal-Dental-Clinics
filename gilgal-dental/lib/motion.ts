@@ -165,7 +165,7 @@ export const successIcon: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] },
+    transition: { duration: duration.base, ease: ease.out },
   },
 };
 

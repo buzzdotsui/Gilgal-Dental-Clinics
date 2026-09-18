@@ -65,7 +65,6 @@ export default function DoctorPreview() {
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
               />
             </div>
           </motion.div>
@@ -133,7 +132,7 @@ export default function DoctorPreview() {
                     {value}
                   </p>
                   <p
-                    className="text-white/50"
+                    className="text-white/65"
                     style={{ fontSize: "0.75rem", lineHeight: 1.5, whiteSpace: "pre-line" }}
                   >
                     {label}
@@ -176,7 +175,7 @@ export default function DoctorPreview() {
                     </span>
                     <div>
                       <p className="text-white text-sm font-medium leading-snug">{c.label}</p>
-                      <p className="text-white/45 text-xs mt-0.5">{c.location}</p>
+                      <p className="text-white/65 text-xs mt-0.5">{c.location}</p>
                     </div>
                   </li>
                 ))}

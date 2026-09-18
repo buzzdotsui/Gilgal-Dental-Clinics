@@ -37,7 +37,7 @@ export function InternalCTA({
             >
               {heading}
             </h2>
-            <p className="text-white/55 max-w-xl" style={{ fontSize: "1rem", lineHeight: 1.65 }}>
+            <p className="text-white/70 max-w-xl" style={{ fontSize: "1rem", lineHeight: 1.65 }}>
               {subheading}
             </p>
           </div>

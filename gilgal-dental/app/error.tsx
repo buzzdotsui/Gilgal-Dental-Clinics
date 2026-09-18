@@ -32,19 +32,19 @@ export default function GlobalError({
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <button
           onClick={reset}
-          className="px-6 py-3 bg-[#013565] text-white text-sm font-semibold rounded-xl hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 w-full sm:w-auto"
+          className="px-6 py-3 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#012550] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 w-full sm:w-auto"
         >
           Try Again
         </button>
         <Link
           href="/"
-          className="px-6 py-3 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 bg-white w-full sm:w-auto text-center"
+          className="px-6 py-3 border border-slate-200 text-slate-700 text-sm font-semibold rounded-[2px] hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 bg-white w-full sm:w-auto text-center"
         >
           Return Home
         </Link>
         <Link
           href="/contact"
-          className="px-6 py-3 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 bg-white w-full sm:w-auto text-center"
+          className="px-6 py-3 border border-slate-200 text-slate-700 text-sm font-semibold rounded-[2px] hover:border-[#013565] hover:text-[#013565] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2 bg-white w-full sm:w-auto text-center"
         >
           Contact the Clinic
         </Link>

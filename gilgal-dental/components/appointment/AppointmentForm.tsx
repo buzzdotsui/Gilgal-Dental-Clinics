@@ -54,6 +54,12 @@ function validateStep(step: number, data: AppointmentFormData): FieldErrors {
   return errors;
 }
 
+function getLocalDateString() {
+  const date = new Date();
+  const offset = date.getTimezoneOffset();
+  return new Date(date.getTime() - offset * 60_000).toISOString().split("T")[0];
+}
+
 // ─── Progress indicator ─────────────────────────────────────────
 
 const STEPS = [
@@ -132,7 +138,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <p className="mt-1.5 text-xs text-red-600 flex items-center gap-1" role="alert" aria-live="polite">
+        <p id={`${id}-error`} className="mt-1.5 text-xs text-red-600 flex items-center gap-1" role="alert" aria-live="polite">
           {error}
         </p>
       )}
@@ -167,6 +173,7 @@ function Step1({
           className={`${inputClass} ${errors.fullName ? inputErrorClass : ""}`}
           placeholder="Your full name"
           aria-required="true"
+          aria-invalid={Boolean(errors.fullName)}
           aria-describedby={errors.fullName ? "fullName-error" : undefined}
         />
       </Field>
@@ -180,6 +187,8 @@ function Step1({
           className={`${inputClass} ${errors.phone ? inputErrorClass : ""}`}
           placeholder="+234 800 000 0000"
           aria-required="true"
+          aria-invalid={Boolean(errors.phone)}
+          aria-describedby={errors.phone ? "phone-error" : undefined}
         />
       </Field>
       <Field label="Email Address" id="email" error={errors.email} required>
@@ -192,6 +201,8 @@ function Step1({
           className={`${inputClass} ${errors.email ? inputErrorClass : ""}`}
           placeholder="you@example.com"
           aria-required="true"
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? "email-error" : undefined}
         />
       </Field>
     </div>
@@ -209,8 +220,7 @@ function Step2({
   errors: FieldErrors;
   onChange: (k: keyof AppointmentFormData, v: string) => void;
 }) {
-  // Compute today's date in YYYY-MM-DD for min attribute
-  const today = new Date().toISOString().split("T")[0];
+  const today = getLocalDateString();
 
   return (
     <div className="space-y-5">
@@ -221,6 +231,8 @@ function Step2({
           onChange={(e) => onChange("service", e.target.value)}
           className={`${inputClass} ${errors.service ? inputErrorClass : ""} cursor-pointer`}
           aria-required="true"
+          aria-invalid={Boolean(errors.service)}
+          aria-describedby={errors.service ? "service-error" : undefined}
         >
           <option value="">Select a service…</option>
           {serviceOptions.map((opt) => (
@@ -238,6 +250,8 @@ function Step2({
             onChange={(e) => onChange("preferredDate", e.target.value)}
             className={`${inputClass} ${errors.preferredDate ? inputErrorClass : ""}`}
             aria-required="true"
+            aria-invalid={Boolean(errors.preferredDate)}
+            aria-describedby={errors.preferredDate ? "preferredDate-error" : undefined}
           />
         </Field>
         <Field label="Preferred Time" id="preferredTime" error={errors.preferredTime} required>
@@ -247,6 +261,8 @@ function Step2({
             onChange={(e) => onChange("preferredTime", e.target.value)}
             className={`${inputClass} ${errors.preferredTime ? inputErrorClass : ""} cursor-pointer`}
             aria-required="true"
+            aria-invalid={Boolean(errors.preferredTime)}
+            aria-describedby={errors.preferredTime ? "preferredTime-error" : undefined}
           >
             <option value="">Select a time…</option>
             {timeSlotOptions.map((opt) => (
@@ -285,6 +301,8 @@ function Step3({
           className={`${inputClass} ${errors.message ? inputErrorClass : ""} resize-none`}
           placeholder="Any additional context — e.g. a specific concern, previous dental history, or questions for the team. (Optional)"
           maxLength={600}
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
         <p className={`text-xs mt-1 text-right ${remaining < 50 ? "text-amber-500" : "text-slate-400"}`}>
           {remaining} characters remaining
@@ -334,13 +352,11 @@ function NavButtons({
   step,
   totalSteps,
   onBack,
-  onNext,
   submitting,
 }: {
   step: number;
   totalSteps: number;
   onBack: () => void;
-  onNext: () => void;
   submitting: boolean;
 }) {
   return (
@@ -355,16 +371,14 @@ function NavButtons({
       </button>
       {step < totalSteps ? (
         <button
-          type="button"
-          onClick={onNext}
+          type="submit"
           className="px-7 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#0A2E58] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
         >
           Continue →
         </button>
       ) : (
         <button
-          type="button"
-          onClick={onNext}
+          type="submit"
           disabled={submitting}
           className="px-7 py-2.5 bg-[#013565] text-white text-sm font-semibold rounded-[2px] hover:bg-[#0A2E58] disabled:opacity-70 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565] focus-visible:ring-offset-2"
           aria-busy={submitting}
@@ -406,6 +420,8 @@ export default function AppointmentForm() {
     const stepErrors = validateStep(step, data);
     if (Object.keys(stepErrors).length > 0) {
       setErrors(stepErrors);
+      const firstField = Object.keys(stepErrors)[0];
+      window.setTimeout(() => document.getElementById(firstField)?.focus(), 0);
       return;
     }
     setErrors({});
@@ -449,7 +465,13 @@ export default function AppointmentForm() {
   ];
 
   return (
-    <div className="bg-white rounded-[4px] border border-[#E2DFD9] shadow-[0_1px_3px_0_rgb(0_0_0/0.06),0_4px_16px_0_rgb(0_0_0/0.05)] p-6 sm:p-8 lg:p-10">
+    <form
+      className="bg-white rounded-[4px] border border-[#E2DFD9] shadow-[0_1px_3px_0_rgb(0_0_0/0.06),0_4px_16px_0_rgb(0_0_0/0.05)] p-6 sm:p-8 lg:p-10"
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleNext();
+      }}
+    >
       {/* Honeypot — hidden from real users, bots fill it */}
       <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
         <label htmlFor="website">Website (leave blank)</label>
@@ -492,9 +514,8 @@ export default function AppointmentForm() {
         step={step}
         totalSteps={STEPS.length}
         onBack={handleBack}
-        onNext={handleNext}
         submitting={status === "submitting"}
       />
-    </div>
+    </form>
   );
 }
