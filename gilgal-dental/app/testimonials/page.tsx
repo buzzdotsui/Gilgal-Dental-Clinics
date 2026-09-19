@@ -70,6 +70,18 @@ export default function TestimonialsPage() {
             ))}
           </div>
 
+          <div className="mt-12 text-center">
+            <a
+              href="https://www.google.com/search?q=gilgal+dental+clinic&oq=gilgal+denta&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyDQgBEC4YrwEYxwEYgAQyBggCEEUYOTIICAMQABgWGB4yCAgEEAAYFhgeMggIBRAAGBYYHjIGCAYQRRg8MgYIBxBFGD3SAQg3NjExajBqOagCBrACAfEFU9hJzx04m4s&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x103b93c6888de759:0x40d6c42bbe3cf5f8,1,,,,"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#013565] text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#012a52] transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#013565]"
+            >
+              View All Reviews on Google
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+
         </div>
       </section>
 
