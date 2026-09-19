@@ -8,6 +8,8 @@ export interface Testimonial {
   author: string;
   quote: string;
   context: string;
+  url: string;
+  rating: number;
 }
 
 export const testimonials: Testimonial[] = [
@@ -15,35 +17,45 @@ export const testimonials: Testimonial[] = [
     id: "ife-dixon",
     author: "Ife Dixon",
     quote:
-      "Very thorough examination and Dr Ugbo explained everything clearly before starting any treatment. I felt completely at ease. The clinic is clean and comfortable. I would definitely recommend it.",
+      "I was referred to the clinic by a colleague and the experience was amazing. It’s a typical small but mighty adage.\nThe Dr. did an extensive examination on my child and gave detailed explanation as to the cause of his mouth sore. My son had visited an acclaimed A rated clinic but no improvement. I will recommend Gilgal to anyone for free.\nYou guys are simply the best.",
     context: "Google Review",
+    url: "https://share.google/twP2UDMMNk05bqUWs",
+    rating: 5,
   },
   {
     id: "ephraim-bright",
     author: "Ephraim 'Funso Bright",
     quote:
-      "Excellent experience. Dr Ugbo is patient, knowledgeable and takes time to explain what he is doing and why. I came in for a filling and was impressed by how professional and caring the whole process was.",
+      "I had dental examinations & treatments at Gilgal Dental Clinic; scaling & polishing, composite fillings, teeth dentures design & fixing.\nI deeply appreciate the caring, warm & friendliness. Neat, modern & high quality tools are quite impressive. I highly recommend Gilgal Dental Clinic.",
     context: "Google Review",
+    url: "https://share.google/3r0bJM19im9zXQJOr",
+    rating: 5,
   },
   {
     id: "agatha-obi",
     author: "Agatha Obi",
     quote:
-      "I had a scaling and polishing done here and I was genuinely impressed. The team was friendly, the environment was modern and clean, and I appreciated how thorough Dr Ugbo was. I will be coming back.",
+      "The principal dentist was really helpful and patient, encouraging every step of the way and he ensured to keep me in the know as the extraction was going on. For a visit to a dentist’s chair I had a swell time, would absolutely recommend",
     context: "Google Review",
+    url: "https://share.google/ksR5hbAsJpk2WpwZ2",
+    rating: 5,
   },
   {
     id: "debola-adebanjo",
     author: "Debola Adebanjo",
     quote:
-      "I brought my child here for the first time and it could not have gone better. Dr Ugbo was calm and reassuring throughout, which really helped. A family-friendly clinic that I trust.",
+      "Totally recommend this place. My service and the dentist who runs this place is pretty efficient.",
     context: "Google Review",
+    url: "https://share.google/VcF8BL55ovjXUpQKP",
+    rating: 5,
   },
   {
     id: "clarissa-juliana",
     author: "Clarissa Juliana",
     quote:
-      "I had dentures fitted and I am very happy with the result. The consultation was detailed and Dr Ugbo made sure I understood all my options before we proceeded. Professional and attentive from start to finish.",
+      "Very comfortable and safe, in the new normal era, so you don't have to be afraid of control.",
     context: "Google Review",
+    url: "https://share.google/ZtmgY2xbPzovv6FtT",
+    rating: 5,
   },
 ];
