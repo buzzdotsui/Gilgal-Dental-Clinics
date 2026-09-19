@@ -7,7 +7,7 @@ import AboutWhyChoose from "@/components/about/AboutWhyChoose";
 import AboutContact from "@/components/about/AboutContact";
 
 export const metadata: Metadata = {
-  title: "About | Gilgal Dental Clinics — Ikoyi, Lagos",
+  title: { absolute: "About | Gilgal Dental Clinics — Ikoyi, Lagos" },
   description:
     "Learn about Gilgal Dental Clinics — a family-friendly dental practice in Ikoyi, Lagos, delivering comprehensive dental care in a relaxed, comfortable environment.",
   alternates: { canonical: "/about" },

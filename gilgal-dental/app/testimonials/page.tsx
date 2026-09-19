@@ -4,7 +4,7 @@ import { InternalCTA } from "@/components/shared/InternalCTA";
 import { testimonials } from "@/lib/data/testimonialsData";
 
 export const metadata: Metadata = {
-  title: "Patient Testimonials | Gilgal Dental Clinics — Ikoyi, Lagos",
+  title: { absolute: "Patient Testimonials | Gilgal Dental Clinics — Ikoyi, Lagos" },
   description:
     "Read what patients say about Gilgal Dental Clinics — genuine reviews from patients treated by Dr. Osaze Ugbo in Ikoyi, Lagos.",
   alternates: { canonical: "/testimonials" },

@@ -5,7 +5,7 @@ import { InternalCTA } from "@/components/shared/InternalCTA";
 import { dentistData } from "@/lib/data/dentistData";
 
 export const metadata: Metadata = {
-  title: "Our Dentist — Dr. Osaze Ugbo | Gilgal Dental Clinics",
+  title: { absolute: "Our Dentist — Dr. Osaze Ugbo | Gilgal Dental Clinics" },
   description:
     "Meet Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics. Over 26 years of clinical experience, trained at the Eastman Dental Institute, UK and BICON Institute, USA.",
   alternates: { canonical: "/our-dentist" },

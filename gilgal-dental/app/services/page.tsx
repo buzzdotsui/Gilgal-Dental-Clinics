@@ -6,7 +6,7 @@ import { InternalCTA } from "@/components/shared/InternalCTA";
 import { services } from "@/lib/data/servicesData";
 
 export const metadata: Metadata = {
-  title: "Dental Services | Gilgal Dental Clinics — Ikoyi, Lagos",
+  title: { absolute: "Dental Services | Gilgal Dental Clinics — Ikoyi, Lagos" },
   description:
     "Comprehensive dental services in Ikoyi, Lagos — General Dentistry, Implant Dentistry, Cosmetic Dentistry, Orthodontics, Restorative Dentistry, Children's Dentistry and Laser Teeth Whitening.",
   alternates: { canonical: "/services" },

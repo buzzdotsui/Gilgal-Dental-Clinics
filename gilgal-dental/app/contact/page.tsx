@@ -5,7 +5,7 @@ import { InternalCTA } from "@/components/shared/InternalCTA";
 import { clinicInfo, buildWhatsAppUrl } from "@/lib/data/clinicInfo";
 
 export const metadata: Metadata = {
-  title: "Contact | Gilgal Dental Clinics — Ikoyi, Lagos",
+  title: { absolute: "Contact | Gilgal Dental Clinics — Ikoyi, Lagos" },
   description:
     "Contact Gilgal Dental Clinics in Ikoyi, Lagos. Phone, email, WhatsApp, address and opening hours.",
   alternates: { canonical: "/contact" },

@@ -5,7 +5,7 @@ import { InternalCTA } from "@/components/shared/InternalCTA";
 import { faqCategories } from "@/lib/data/faqsData";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Gilgal Dental Clinics",
+  title: { absolute: "Frequently Asked Questions | Gilgal Dental Clinics" },
   description:
     "Find answers to common questions about appointments, services, location and opening hours at Gilgal Dental Clinics in Ikoyi, Lagos.",
   alternates: { canonical: "/faqs" },

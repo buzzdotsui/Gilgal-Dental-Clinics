@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, CalendarDays } from "lucide-react";
 
 export const metadata = {
-  title: "Page Not Found",
+  title: { absolute: "Page Not Found | Gilgal Dental Clinics" },
   description: "The page you are looking for does not exist.",
   robots: { index: false, follow: false },
 };

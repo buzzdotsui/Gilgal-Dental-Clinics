@@ -3,7 +3,7 @@ import Image from "next/image";
 import AppointmentForm from "@/components/appointment/AppointmentForm";
 
 export const metadata: Metadata = {
-  title: "Book an Appointment | Gilgal Dental Clinics — Ikoyi, Lagos",
+  title: { absolute: "Book an Appointment | Gilgal Dental Clinics — Ikoyi, Lagos" },
   description:
     "Request a dental appointment at Gilgal Dental Clinics in Ikoyi, Lagos. Fill in your details and preferred date — we will confirm with you directly.",
   alternates: { canonical: "/book-an-appointment" },

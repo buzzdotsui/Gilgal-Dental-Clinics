@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
   if (!service) return {};
   return {
-    title: service.metaTitle,
+    title: { absolute: service.metaTitle },
     description: service.metaDescription,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {
