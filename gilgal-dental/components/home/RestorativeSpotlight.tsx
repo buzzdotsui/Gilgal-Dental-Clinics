@@ -71,7 +71,7 @@ export default function RestorativeSpotlight() {
             className="text-white/70 mb-16 max-w-xl"
             style={{ fontSize: "1.0625rem", lineHeight: 1.65 }}
           >
-            Dr. Osaze Ugbo brings over 17 years of clinical experience, with a special
+            Dr. Osaze Ugbo brings over 26 years of clinical experience, with a special
             interest in restorative dentistry and a proven track record in dental implant treatment.
           </motion.p>
 
@@ -121,7 +121,7 @@ export default function RestorativeSpotlight() {
             className="border-t border-white/10 pt-10 mt-4 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0"
           >
             {[
-              { value: "17+", label: "Years of experience" },
+              { value: "26+", label: "Years of experience" },
               { value: "200+", label: "Implants placed" },
               { value: "Eastman", label: "Dental Institute, UK" },
               { value: "BICON", label: "Institute, USA" },

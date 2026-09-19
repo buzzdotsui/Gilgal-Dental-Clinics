@@ -103,7 +103,7 @@ export const faqCategories: FAQCategory[] = [
         id: "dentist",
         question: "Who is the dentist at Gilgal?",
         answer:
-          "Our Principal Dentist is Dr. Osaze Ugbo, who has more than 17 years of clinical experience. He practises General Dentistry with a special interest in Restorative Dentistry and has trained at the Eastman Dental Institute in the UK and the BICON Institute in the USA.",
+          "Our Principal Dentist is Dr. Osaze Ugbo, who has more than 26 years of clinical experience. He practises General Dentistry with a special interest in Restorative Dentistry and has trained at the Eastman Dental Institute in the UK and the BICON Institute in the USA.",
       },
     ],
   },

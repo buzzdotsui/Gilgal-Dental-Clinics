@@ -3,10 +3,10 @@ export const dentistData = {
   title: "Principal Dentist",
   image: "/images/dr-ugbo.png",
   imageAlt: "Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics",
-  yearsExperience: "17+",
+  yearsExperience: "26+",
   implantsPlaced: "200+",
   bio: [
-    "Dr. Osaze Ugbo is the Principal Dentist at Gilgal Dental Clinics. With more than 17 years of clinical experience, he brings a depth of knowledge and a genuine passion for dentistry to every patient he treats.",
+    "Dr. Osaze Ugbo is the Principal Dentist at Gilgal Dental Clinics. With more than 26 years of clinical experience, he brings a depth of knowledge and a genuine passion for dentistry to every patient he treats.",
     "He practises General Dentistry with a particular interest in Restorative Dentistry. Over the course of his career, Dr. Ugbo has successfully placed more than 200 dental implants.",
     "Dr. Ugbo's commitment to professional development has led him to undertake training at internationally recognised institutions. He has attended courses at the Eastman Dental Institute in the United Kingdom and the BICON Institute in the United States of America.",
     "He is an affiliate member of the American Dental Association.",

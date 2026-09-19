@@ -3,8 +3,8 @@ import type { FC } from "react";
 const reasons = [
   {
     number: "01",
-    title: "17+ years of clinical experience",
-    body: "Dr. Osaze Ugbo has practised general and restorative dentistry since 2007, with advanced training at the Eastman Dental Institute, University College London, and the BICON Institute in Boston.",
+    title: "26+ years of clinical experience",
+    body: "Dr. Osaze Ugbo has practised general and restorative dentistry since 1998, with advanced training at the Eastman Dental Institute, University College London, and the BICON Institute in Boston.",
   },
   {
     number: "02",

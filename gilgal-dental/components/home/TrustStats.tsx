@@ -1,8 +1,8 @@
 const credentials = [
   {
-    value: "17+",
+    value: "26+",
     label: "Years of experience",
-    detail: "Clinical practice since 2007",
+    detail: "Clinical practice since 1998",
   },
   {
     value: "200+",

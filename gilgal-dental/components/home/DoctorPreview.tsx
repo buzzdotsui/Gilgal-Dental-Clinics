@@ -113,7 +113,7 @@ export default function DoctorPreview() {
               className="flex items-start gap-0 mb-8 pb-8 border-b border-white/10"
             >
               {[
-                { value: "17+", label: "Years of\nclinical experience" },
+                { value: "26+", label: "Years of\nclinical experience" },
                 { value: "200+", label: "Dental implants\nsuccessfully placed" },
               ].map(({ value, label }, i) => (
                 <div
@@ -143,7 +143,7 @@ export default function DoctorPreview() {
 
             <motion.div variants={textItem} className="space-y-4 mb-10">
               <p className="text-white/65" style={{ fontSize: "1rem", lineHeight: 1.7 }}>
-                Dr. Osaze Ugbo brings over 17 years of clinical experience to Gilgal
+                Dr. Osaze Ugbo brings over 26 years of clinical experience to Gilgal
                 Dental Clinics. He practises General Dentistry with a particular
                 interest in Restorative Dentistry, and has successfully placed more
                 than 200 dental implants.

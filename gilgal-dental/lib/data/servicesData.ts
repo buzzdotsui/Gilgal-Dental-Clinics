@@ -253,7 +253,7 @@ export const services: ServiceData[] = [
     heroSubheading: "Restorative dentistry focuses on repairing and replacing damaged or missing teeth to restore function and maintain oral health.",
     introduction: [
       "Restorative dentistry covers a broad range of treatments aimed at repairing teeth that have been damaged, decayed or lost — and restoring the mouth to a healthy, functional state.",
-      "Dr. Osaze Ugbo has a particular interest in restorative dentistry and brings more than 17 years of clinical experience to this area. Whether you need a single crown, a bridge or more complex restorative work, the starting point is always a thorough assessment and honest discussion.",
+      "Dr. Osaze Ugbo has a particular interest in restorative dentistry and brings more than 26 years of clinical experience to this area. Whether you need a single crown, a bridge or more complex restorative work, the starting point is always a thorough assessment and honest discussion.",
     ],
     whatWeOffer: [
       {

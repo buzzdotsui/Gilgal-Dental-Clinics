@@ -46,7 +46,7 @@ export function StructuredData() {
       clinicInfo.social.instagram,
       clinicInfo.social.facebook,
     ],
-    hasMap: clinicInfo.mapUrl,
+    hasMap: "https://maps.google.com/?q=Gilgal+Dental+Clinics+Ikoyi+Lagos",
     medicalSpecialty: "Dentistry",
     employee: {
       "@type": "Person",

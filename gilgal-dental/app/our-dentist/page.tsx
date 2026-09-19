@@ -7,12 +7,12 @@ import { dentistData } from "@/lib/data/dentistData";
 export const metadata: Metadata = {
   title: "Our Dentist — Dr. Osaze Ugbo | Gilgal Dental Clinics",
   description:
-    "Meet Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics. Over 17 years of clinical experience, trained at the Eastman Dental Institute, UK and BICON Institute, USA.",
+    "Meet Dr. Osaze Ugbo, Principal Dentist at Gilgal Dental Clinics. Over 26 years of clinical experience, trained at the Eastman Dental Institute, UK and BICON Institute, USA.",
   alternates: { canonical: "/our-dentist" },
   openGraph: {
     title: "Dr. Osaze Ugbo — Principal Dentist | Gilgal Dental Clinics",
     description:
-      "More than 17 years of clinical experience. Trained at the Eastman Dental Institute, UK and BICON Institute, USA.",
+      "More than 26 years of clinical experience. Trained at the Eastman Dental Institute, UK and BICON Institute, USA.",
     url: "https://gilgaldentalclinics.com/our-dentist",
   },
 };
@@ -35,8 +35,8 @@ export default function OurDentistPage() {
                   src="/images/phase35/dr-osaze-ugbo.png"
                   alt={dentistData.imageAlt}
                   fill
-                  className="object-contain object-center"
-                  preload
+                  className="object-cover object-top"
+                  priority
                   sizes="(max-width: 1024px) 100vw, 340px"
                 />
               </div>

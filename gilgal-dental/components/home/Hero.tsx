@@ -142,7 +142,7 @@ export default function Hero() {
               className="flex items-center gap-0 pt-8 border-t border-[#E2DFD9]"
             >
               {[
-                { value: "17+", label: "Years of clinical experience" },
+                { value: "26+", label: "Years of clinical experience" },
                 { value: "200+", label: "Implants placed" },
                 { value: "Ikoyi", label: "Lagos, Nigeria" },
               ].map(({ value, label }, i) => (
@@ -193,8 +193,8 @@ export default function Hero() {
                     src={slides[current].src}
                     alt={slides[current].alt}
                     fill
-                    className="object-contain object-center"
-                    preload={current === 0}
+                    className="object-cover object-center"
+                    priority={current === 0}
                     sizes="(max-width: 1024px) 100vw, 500px"
                   />
                   {/* Subtle bottom gradient only — no heavy overlay */}

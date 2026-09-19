@@ -1,5 +1,4 @@
 import Hero from "@/components/home/Hero";
-import TrustStats from "@/components/home/TrustStats";
 import Introduction from "@/components/home/Introduction";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import RestorativeSpotlight from "@/components/home/RestorativeSpotlight";
@@ -14,9 +13,6 @@ export default function HomePage() {
     <>
       {/* 1. Hero — main visual anchor, full editorial headline */}
       <Hero />
-
-      {/* 2. Trust strip — immediate clinical credibility after the hero */}
-      <TrustStats />
 
       {/* 3. Introduction — who Gilgal is */}
       <Introduction />

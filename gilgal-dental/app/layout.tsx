@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Gilgal Dental Clinics",
   },
   description:
-    "Gilgal Dental Clinics offers specialist restorative and family dental care in Ikoyi, Lagos. Dr. Osaze Ugbo — 17+ years experience, 200+ dental implants, trained at Eastman Dental Institute UK. Book a consultation today.",
+    "Gilgal Dental Clinics offers specialist restorative and family dental care in Ikoyi, Lagos. Dr. Osaze Ugbo — 26+ years experience, 200+ dental implants, trained at Eastman Dental Institute UK. Book a consultation today.",
   keywords: [
     "dental clinic Ikoyi Lagos",
     "dentist Ikoyi",
@@ -56,13 +56,13 @@ export const metadata: Metadata = {
     siteName: "Gilgal Dental Clinics",
     title: "Gilgal Dental Clinics | Specialist Dental Care in Ikoyi, Lagos",
     description:
-      "Specialist restorative and family dental care in Ikoyi, Lagos. 17+ years experience. Book a consultation with Dr. Osaze Ugbo.",
+      "Specialist restorative and family dental care in Ikoyi, Lagos. 26+ years experience. Book a consultation with Dr. Osaze Ugbo.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Gilgal Dental Clinics | Specialist Dental Care in Ikoyi, Lagos",
     description:
-      "Specialist restorative and family dental care in Ikoyi, Lagos. 17+ years experience.",
+      "Specialist restorative and family dental care in Ikoyi, Lagos. 26+ years experience.",
   },
   robots: {
     index: true,
