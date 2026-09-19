@@ -58,4 +58,12 @@ export const testimonials: Testimonial[] = [
     url: "https://share.google/ZtmgY2xbPzovv6FtT",
     rating: 5,
   },
+  {
+    id: "adebambo-boluwatife",
+    author: "Adebambo Boluwatife",
+    quote: "",
+    context: "Google Review",
+    url: "https://www.google.com/maps/contrib/110961424828941852604/reviews?hl=en",
+    rating: 5,
+  },
 ];

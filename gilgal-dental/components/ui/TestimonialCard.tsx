@@ -25,11 +25,19 @@ export function TestimonialCard({ quote, author, context, url, rating = 5, class
       </div>
 
       {/* Quote text */}
-      <blockquote className="flex-1 mb-6">
-        <p className={`text-slate-700 leading-relaxed ${className || ''}`} style={{ fontSize: "1.0625rem" }}>
-          &ldquo;{quote}&rdquo;
-        </p>
-      </blockquote>
+      {quote ? (
+        <blockquote className="flex-1 mb-6">
+          <p className={`text-slate-700 leading-relaxed ${className || ''}`} style={{ fontSize: "1.0625rem" }}>
+            &ldquo;{quote}&rdquo;
+          </p>
+        </blockquote>
+      ) : (
+        <div className="flex-1 mb-6 flex items-center">
+          <p className="text-slate-400 italic" style={{ fontSize: "0.9375rem" }}>
+            (No written review provided)
+          </p>
+        </div>
+      )}
 
       {/* Footer: Attribution & Google Link */}
       <footer className="border-t border-slate-100 pt-5 mt-auto flex flex-wrap items-center justify-between gap-4 transition-colors duration-400 group-hover:border-slate-200">
