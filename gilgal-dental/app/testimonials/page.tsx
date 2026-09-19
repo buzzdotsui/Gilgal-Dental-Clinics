@@ -44,15 +44,6 @@ export default function TestimonialsPage() {
             <p className="text-slate-600 mb-8">
               Real experiences from patients of Gilgal Dental Clinic.
             </p>
-            <a
-              href={clinicInfo.mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#013565] px-6 py-3 rounded-full font-medium hover:bg-slate-50 transition-all shadow-sm hover:shadow border border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#013565]"
-            >
-              View Our Google Reviews
-              <ExternalLink className="w-4 h-4" aria-hidden="true" />
-            </a>
           </div>
 
           {/* Testimonial Cards Grid */}
